@@ -7,4 +7,4 @@ description: |-
 category: Desktop Apps
 subcategory: Interactive HPC
 role: ihpc
-url: /pun/dev/vncsim/%{app_token}/sessions
+url: /pun/sys/vncsim/%{app_token}/sessions
