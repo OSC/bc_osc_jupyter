@@ -1,0 +1,18 @@
+{
+  "name": "bc_osc_jupyter",
+  "homepage": "https://github.com/OSC/bc_osc_jupyter",
+  "authors": [
+    "Jeremy Nicklas <jnicklas@osc.edu"
+  ],
+  "description": "Batch Connect - OSC Jupyter",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

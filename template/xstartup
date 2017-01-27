@@ -1,0 +1,7 @@
+#!/bin/bash -l
+
+# Load the require modules
+module load ${PYTHON_MODULE}
+
+# Start up the Jupyter Notebook Server
+jupyter notebook --config="${CONFIG_FILE}"

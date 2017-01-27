@@ -1,0 +1,15 @@
+title: 'Jupyter'
+connection: 'connection.html.mustache'
+compute:
+  - name: 'Jupyter'
+    batch: 'owens'
+    node:
+      - type: 'any'
+        ppn: 28
+        desc: >
+          Choose any type of compute node. This reduces the wait time
+          as there are no node specific requirements.
+    webserver?: true
+    pbs:
+      envvars:
+        PYTHON_MODULE: 'python/3.5'

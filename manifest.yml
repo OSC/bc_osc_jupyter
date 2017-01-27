@@ -1,0 +1,10 @@
+---
+name: Jupyter
+description: |-
+  **Jupyter** provides access to a Jupyter notebook server running on one or
+  more compute nodes on the Owens cluster at the Ohio Supercomputer Center
+  (OSC).
+category: Desktop Apps
+subcategory: Interactive HPC
+role: ihpc
+url: /pun/dev/vncsim/%{app_token}/sessions
