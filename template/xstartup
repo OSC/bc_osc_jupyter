@@ -3,5 +3,8 @@
 # Load the require modules
 module load ${PYTHON_MODULE}
 
+# Set working directory to home directory
+cd ${HOME}
+
 # Start up the Jupyter Notebook Server
 jupyter notebook --config="${CONFIG_FILE}"
