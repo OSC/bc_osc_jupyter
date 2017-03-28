@@ -19,5 +19,11 @@ c.NotebookApp.base_url = '/node/${HOST}/${HOST_PORT}/'
 c.NotebookApp.open_browser = False
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.notebook_dir = '${HOME}'
+c.NotebookApp.kernel_spec_manager_class = "nb_conda_kernels.CondaKernelSpecManager"
+c.NotebookApp.nbserver_extensions = {
+  "nb_conda": True,
+  "nb_anacondacloud": True,
+  "nbpresent": True
+}
 EOL
 )
