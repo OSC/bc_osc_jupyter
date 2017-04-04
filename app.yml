@@ -9,6 +9,17 @@ compute:
         desc: >
           Choose any type of compute node. This reduces the wait time
           as there are no node specific requirements.
+      - title: 'gpu'
+        type: 'gpus=1'
+        ppn: 28
+        desc: >
+          This node includes an NVIDIA Tesla P100 GPU allowing for CUDA
+          computations. There are currently only 160 of these nodes on Owens.
+      - type: 'hugemem'
+        ppn: 48
+        desc: >
+          This node has 1.5 TB of available RAM as well as 48 cores. There are
+          currently only 16 of these nodes on Owens.
     webserver?: true
     pbs:
       envvars:
