@@ -10,31 +10,43 @@ supercomputer environment.
 
 1. Git clone this app in the desired location and go into the directory:
 
-  ```sh
-  $ git clone <repo> bc_osc_jupyter
+   ```sh
+   git clone <repo> bc_osc_jupyter
 
-  $ cd bc_osc_jupyter
-  ```
+   cd bc_osc_jupyter
+   ```
 
 2. Checkout the version of the app you want to deploy:
 
-  ```sh
-  $ git checkout <tag>
-  ```
+   ```sh
+   git checkout <tag>
+   ```
+
+3. Setup the app for use:
+
+   ```sh
+   bin/setup
+   ```
 
 ## Update
 
 1. Fetch the updated code:
 
-  ```sh
-  $ git fetch
-  ```
+   ```sh
+   git fetch
+   ```
 
 2. Checkout the desired tag:
 
-  ```sh
-  $ git checkout <tag>
-  ```
+   ```sh
+   git checkout <tag>
+   ```
+
+3. Setup the app for use:
+
+   ```sh
+   bin/setup
+   ```
 
 ## Specification
 
