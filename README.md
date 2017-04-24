@@ -8,45 +8,28 @@ supercomputer environment.
 
 ## Install
 
-1. Git clone this app in the desired location and go into the directory:
+Use git to clone this app and checkout the desired branch/version you want to
+use:
 
-   ```sh
-   git clone <repo> bc_osc_jupyter
+```sh
+git clone <repo>
+cd <dir>
+git checkout <tag/branch>
+```
 
-   cd bc_osc_jupyter
-   ```
+You will not need to do anything beyond this as all necessary assets are
+installed. You will also not need to restart this app as it isn't a Passenger
+app.
 
-2. Checkout the version of the app you want to deploy:
+To update the app you would:
 
-   ```sh
-   git checkout <tag>
-   ```
+```sh
+cd <dir>
+git fetch
+git checkout <tag/branch>
+```
 
-3. Setup the app for use:
-
-   ```sh
-   bin/setup
-   ```
-
-## Update
-
-1. Fetch the updated code:
-
-   ```sh
-   git fetch
-   ```
-
-2. Checkout the desired tag:
-
-   ```sh
-   git checkout <tag>
-   ```
-
-3. Setup the app for use:
-
-   ```sh
-   bin/setup
-   ```
+Again, you do not need to restart the app as it isn't a Passenger app.
 
 ## Specification
 
