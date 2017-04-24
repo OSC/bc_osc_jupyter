@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.0.3 (2017-04-24)
+
 Features:
 
   - version assets removing need for `bin/setup`
