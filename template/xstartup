@@ -2,6 +2,7 @@
 
 # Load the require modules
 module load ${PYTHON_MODULE}
+[[ ${CUDA_MODULE} ]] && module load ${CUDA_MODULE}
 
 # Set working directory to home directory
 cd ${HOME}

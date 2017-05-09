@@ -9,12 +9,6 @@ compute:
         desc: >
           Choose any type of compute node. This reduces the wait time
           as there are no node specific requirements.
-      - title: 'gpu'
-        type: 'gpus=1'
-        ppn: 28
-        desc: >
-          This node includes an NVIDIA Tesla P100 GPU allowing for CUDA
-          computations. There are currently only 160 of these nodes on Owens.
       - type: 'hugemem'
         ppn: 48
         desc: >
@@ -24,3 +18,17 @@ compute:
     pbs:
       envvars:
         PYTHON_MODULE: 'python/3.5'
+  - name: 'Jupyter w/ CUDA'
+    batch: 'owens'
+    node:
+      - title: 'gpu'
+        type: 'gpus=1'
+        ppn: 28
+        desc: >
+          This node includes an NVIDIA Tesla P100 GPU allowing for CUDA
+          computations. There are currently only 160 of these nodes on Owens.
+    webserver?: true
+    pbs:
+      envvars:
+        PYTHON_MODULE: 'python/3.5'
+        CUDA_MODULE: 'cuda/8.0.44'

@@ -1,5 +1,9 @@
 ## Unreleased
 
+Features:
+
+  - added CUDA support to Jupyter through a separate sub-app
+
 ## 0.0.3 (2017-04-24)
 
 Features:
