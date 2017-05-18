@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.0.5 (2017-05-18)
+
 Bugfixes:
 
   - disable xsrf protection that broke VNCSim auto-login capabilities
