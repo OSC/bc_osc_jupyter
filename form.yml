@@ -4,6 +4,8 @@ cluster: "owens"
 description: |
   This app will launch a Jupyter Notebook server on one or more Owens nodes.
 attributes:
+  bc_account:
+    help: "You can leave this blank if **not** in multiple projects."
   node_type:
     widget: select
     label: "Node type"
