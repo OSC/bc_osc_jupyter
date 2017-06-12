@@ -1,5 +1,9 @@
 ## Unreleased
 
+Features:
+
+  - refactored for the new Batch Connect app
+
 ## 0.0.5 (2017-05-18)
 
 Bugfixes:
