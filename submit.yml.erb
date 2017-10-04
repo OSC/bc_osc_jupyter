@@ -1,10 +1,7 @@
 ---
+batch_connect:
+  template: "basic"
 script:
-  job_environment:
-    PYTHON_MODULE: "python/3.5"
-    <%- if node_type.include? "gpus" -%>
-    CUDA_MODULE: "cuda/8.0.44"
-    <%- end -%>
   native:
     resources:
-      nodes: "<%= bc_num_slots %><%= node_type %>"
+      nodes: "<%= bc_num_slots.blank? ? "1" : bc_num_slots %><%= node_type %>"

@@ -1,11 +1,5 @@
 #!/bin/bash -l
 
-# Get current working directory
-export OUTPUT_ROOT="${PWD}"
-
-# Get source directory of this script
-export STAGED_ROOT="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-
 # Set working directory to home directory
 cd "${HOME}"
 
@@ -17,8 +11,7 @@ cd "${HOME}"
 module restore
 
 # Load the require modules
-module load ${PYTHON_MODULE}
-[[ ${CUDA_MODULE} ]] && module load ${CUDA_MODULE}
+module load python/3.5 <%= "cuda/8.0.44" if context.node_type.include? "gpus" %>
 
 # Launch the Jupyter Notebook Server
 jupyter notebook --config="${CONFIG_FILE}"
