@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added `bin/setup` script for easier deployment.
 
-## 0.0.1 (2017-04-04)
+## 0.0.1 - 2017-04-04
 ### Added
 - Initial release!
 
