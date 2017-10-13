@@ -1,9 +1,3 @@
-<p>
-  If you see <code>Failed to connect to ...</code>, then wait a few seconds
-  before trying the <strong>Connect to Jupyter</strong> button again. This
-  warning appeared because the Jupyter Notebook is still starting up.
-</p>
-
 <form action="/node/<%= host %>/<%= port %>/login" method="post" target="_blank">
   <input type="hidden" name="password" value="<%= password %>">
   <button class="btn btn-primary" type="submit">
