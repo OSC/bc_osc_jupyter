@@ -1,10 +1,10 @@
 ---
 cluster: "owens"
 form:
+  - bc_account
   - bc_num_hours
   - bc_num_slots
   - node_type
-  - bc_account
   - bc_email_on_started
 attributes:
   bc_num_slots: "1"
