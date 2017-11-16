@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added helpful links in the app description and node type description.
+  [#17](https://github.com/OSC/bc_osc_jupyter/issues/17)
+
+### Changed
+- Updated links in `README.md` to point to correct locations.
+  [#15](https://github.com/OSC/bc_osc_jupyter/issues/15)
+
+### Fixed
+- Fixed some text formatting issues.
+  [#16](https://github.com/OSC/bc_osc_jupyter/issues/16)
+- Removed references to RStudio.
+  [#14](https://github.com/OSC/bc_osc_jupyter/issues/14)
 
 ## [0.2.1] - 2017-10-20
 ### Changed
@@ -42,7 +55,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## 0.0.1 - 2017-04-04
 ### Added
 - Initial release!
-
 
 [Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.2.1...HEAD
 [0.2.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.2.0...v0.2.1

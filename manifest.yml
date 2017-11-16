@@ -4,4 +4,6 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a Jupyter Notebook server on an Owens node.
+  This app will launch a [Jupyter Notebook](http://jupyter.org/) server using
+  [Python](https://www.python.org/) 3.5 on the [Owens
+  cluster](https://www.osc.edu/resources/technical_support/supercomputers/owens).
