@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated links in `README.md` to point to correct locations.
   [#15](https://github.com/OSC/bc_osc_jupyter/issues/15)
+- Made log file more verbose.
 
 ### Fixed
 - Fixed some text formatting issues.

@@ -1,17 +1,19 @@
 #!/bin/bash -l
 
-# Set working directory to home directory
-cd "${HOME}"
-
 #
 # Start Jupyter Notebook server
 #
 
-# Restore the module environment to avoid conflicts
-module restore
+# Load the required environment
+setup_env () {
+  module purge
+  module load python/3.5 <%= "cuda/8.0.44" if context.node_type.include? "gpus" %>
+}
+setup_env
 
-# Load the require modules
-module load python/3.5 <%= "cuda/8.0.44" if context.node_type.include? "gpus" %>
+# Set working directory to home directory
+cd "${HOME}"
 
 # Launch the Jupyter Notebook server
+set -x
 jupyter notebook --config="${CONFIG_FILE}"
