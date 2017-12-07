@@ -1,4 +1,4 @@
-# Batch Connect - OSC Jupyter Notebook Server
+# Batch Connect - OSC Jupyter Notebook
 
 ![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_jupyter.svg)
 ![GitHub License](https://img.shields.io/github/license/osc/bc_osc_jupyter.svg)
@@ -19,10 +19,10 @@ OnDemand node):
 
 **Optional** software:
 
-- [Anaconda](https://www.continuum.io/anaconda-overview) 4.3.13+ and its
-  [Jupyter Notebook extensions](https://docs.continuum.io/anaconda/user-guide/tasks/use-jupyter-notebook-extensions)
-  that allow users to define custom environment-based kernels from within the
-  Jupyter notebook dashboard.
+- [Anaconda](https://www.anaconda.com/distribution/) 4.3.13+ and its
+  [Jupyter Notebook extensions](https://docs.anaconda.com/anaconda/user-guide/tasks/use-jupyter-notebook-extensions)
+  that allow users to use conda environment-based kernels from the Jupyter
+  dashboard and the notebook's Kernel menu.
 - [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod)
   6.0.1+ or any other `module restore` and `module load <modules>` based CLI
   used to load appropriate environments within the batch job before launching
