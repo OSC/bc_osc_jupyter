@@ -1,4 +1,74 @@
-#!/bin/bash -l
+#!/usr/bin/env bash
+
+<%-
+  cuda = context.node_type.include?("gpus")
+  wrapper = session.staged_root.join("launch_wrapper.sh")
+  wrapper_log = session.staged_root.join("launch_wrapper.log")
+
+  kernels = {
+    python36: {
+      display_name: "Python 3.6 [python/3.6#{" cuda/8.0.44" if cuda}]",
+      language: "python",
+      argv: [
+        wrapper,
+        "python",
+        "-m",
+        "ipykernel_launcher",
+        "-f",
+        "{connection_file}"
+      ],
+      env: {
+        MODULES: "python/3.6#{" cuda/8.0.44" if cuda}"
+      }
+    },
+    python35: {
+      display_name: "Python 3.5 [python/3.5#{" cuda/8.0.44" if cuda}]",
+      language: "python",
+      argv: [
+        wrapper,
+        "python",
+        "-m",
+        "ipykernel",
+        "-f",
+        "{connection_file}"
+      ],
+      env: {
+        MODULES: "python/3.5#{" cuda/8.0.44" if cuda}"
+      }
+    },
+    python27: {
+      display_name: "Python 2.7 [python/2.7#{" cuda/8.0.44" if cuda}]",
+      language: "python",
+      argv: [
+        wrapper,
+        "python",
+        "-m",
+        "ipykernel",
+        "-f",
+        "{connection_file}"
+      ],
+      env: {
+        MODULES: "python/2.7#{" cuda/8.0.44" if cuda}"
+      }
+    },
+    julia051: {
+      display_name: "Julia 0.5.1 [julia/0.5.1#{" cuda/8.0.44" if cuda}]",
+      language: "julia",
+      argv: [
+        wrapper,
+        "julia",
+        "-i",
+        "--startup-file=yes",
+        "--color=yes",
+        "/usr/local/julia/0.5.1/share/julia/site/v0.5/IJulia/src/kernel.jl",
+        "{connection_file}"
+      ],
+      env: {
+        MODULES: "julia/0.5.1#{" cuda/8.0.44" if cuda}"
+      }
+    },
+  }
+-%>
 
 #
 # Start Jupyter Notebook server
@@ -7,9 +77,49 @@
 # Load the required environment
 setup_env () {
   module purge
-  module load python/3.5 <%= "cuda/8.0.44" if context.node_type.include? "gpus" %>
+  export PATH=/usr/local/anaconda-notebook/bin:${PATH}
 }
 setup_env
+
+# Create launcher wrapper
+(
+umask 077
+sed 's/^ \{2\}//' > "<%= wrapper %>" << EOL
+  #!/usr/bin/env bash
+
+  # Log all output from this script
+  exec &>>"<%= wrapper_log %>"
+
+  # Load the required environment
+  module purge
+  module load \${MODULES}
+  module list
+
+  # Launch the original command
+  set -x
+  exec "\${@}"
+EOL
+)
+chmod 700 "<%= wrapper %>"
+
+# Create Jupyter kernels
+export JUPYTER_PATH="${PWD}/jupyter"
+<%- kernels.each do |name, kernel| -%>
+<%- path = "${JUPYTER_PATH}/kernels/#{name}" -%>
+mkdir -p "<%= path %>"
+cp "${PWD}/assets/<%= name.to_s.gsub(/\d/, "") %>"/* "<%= path %>/."
+(
+umask 077
+cat > "<%= path %>/kernel.json" << EOL
+<%= JSON.pretty_generate kernel %>
+EOL
+)
+<%- end -%>
+
+# List available kernels for debugging purposes
+set -x
+jupyter kernelspec list
+{ set +x; } 2>/dev/null
 
 # Set working directory to home directory
 cd "${HOME}"

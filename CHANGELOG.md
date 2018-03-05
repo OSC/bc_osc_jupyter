@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added the various Python modules on OSC Owens as Jupyter kernels.
+- Added the Julia module on OSC Owens as a Jupyter kernel.
+
+### Changed
+- Changed the way we launch Jupyter notebook by now pointing to a custom
+  location for the Jupyter notebook installation.
+- Stopped using login shells to speed up process start times.
 
 ## [0.3.0] - 2017-12-07
 ### Added
