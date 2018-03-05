@@ -9,6 +9,7 @@ form:
 attributes:
   bc_num_slots: "1"
   bc_account:
+    label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
   node_type:
     widget: select
