@@ -9,6 +9,9 @@ SALT="$(create_passwd 16)"
 password="$(create_passwd 16)"
 PASSWORD_SHA1="$(echo -n "${password}${SALT}" | openssl dgst -sha1 | awk '{print $NF}')"
 
+# Notebook root directory
+export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
+
 # The `$CONFIG_FILE` environment variable is exported as it is used in the main
 # `script.sh.erb` file when launching the Jupyter Notebook server.
 export CONFIG_FILE="${PWD}/config.py"
@@ -26,7 +29,7 @@ c.NotebookApp.password = u'sha1:${SALT}:${PASSWORD_SHA1}'
 c.NotebookApp.base_url = '/node/${host}/${port}/'
 c.NotebookApp.open_browser = False
 c.NotebookApp.allow_origin = '*'
-c.NotebookApp.notebook_dir = '${HOME}'
+c.NotebookApp.notebook_dir = '${NOTEBOOK_ROOT}'
 c.NotebookApp.disable_check_xsrf = True
 EOL
 )

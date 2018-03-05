@@ -121,8 +121,8 @@ set -x
 jupyter kernelspec list
 { set +x; } 2>/dev/null
 
-# Set working directory to home directory
-cd "${HOME}"
+# Set working directory to notebook root directory
+cd "${NOTEBOOK_ROOT}"
 
 # Launch the Jupyter Notebook server
 set -x
