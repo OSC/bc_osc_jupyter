@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added the Julia module on OSC Owens as a Jupyter kernel.
 
 ### Changed
+- Updated date in `LICENSE.md`.
 - Renamed Account to Project.
 - Changed favicon to cogs.
 - Changed the way we launch Jupyter notebook by now pointing to a custom
