@@ -1,7 +1,7 @@
 # Batch Connect - OSC Jupyter Notebook
 
 ![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_jupyter.svg)
-![GitHub License](https://img.shields.io/github/license/osc/bc_osc_jupyter.svg)
+[![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 An interactive app designed for OSC OnDemand that launches a Jupyter Notebook
 server within an Owens batch job.
