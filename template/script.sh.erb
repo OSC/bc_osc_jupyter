@@ -77,7 +77,6 @@
 # Load the required environment
 setup_env () {
   module purge
-  export PATH=/usr/local/anaconda-notebook/bin:${PATH}
 }
 setup_env
 
@@ -116,13 +115,21 @@ EOL
 )
 <%- end -%>
 
-# List available kernels for debugging purposes
+# Output debug information
 set -x
-jupyter kernelspec list
+module list
 { set +x; } 2>/dev/null
 
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
+
+# Setup Jupyter Notebook environment
+export PATH="/usr/local/anaconda-notebook/bin:${PATH}"
+
+# List available kernels for debugging purposes
+set -x
+jupyter kernelspec list
+{ set +x; } 2>/dev/null
 
 # Launch the Jupyter Notebook server
 set -x
