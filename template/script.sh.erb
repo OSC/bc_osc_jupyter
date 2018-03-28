@@ -74,11 +74,8 @@
 # Start Jupyter Notebook server
 #
 
-# Load the required environment
-setup_env () {
-  module purge
-}
-setup_env
+# Clean the environment
+module purge
 
 # Create launcher wrapper
 (
@@ -115,16 +112,13 @@ EOL
 )
 <%- end -%>
 
-# Output debug information
-set -x
-module list
-{ set +x; } 2>/dev/null
-
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter Notebook environment
-export PATH="/usr/local/anaconda-notebook/bin:${PATH}"
+module use $MODULEPATH_ROOT/project/ondemand
+module load jupyter/python3.5
+module list
 
 # List available kernels for debugging purposes
 set -x
