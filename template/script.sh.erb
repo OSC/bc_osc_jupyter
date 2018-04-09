@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 <%-
-  cuda = context.node_type.include?("gpus")
+  cuda = context.node_type == "gpu"
   wrapper = session.staged_root.join("launch_wrapper.sh")
   wrapper_log = session.staged_root.join("launch_wrapper.log")
 

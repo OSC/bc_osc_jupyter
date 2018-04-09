@@ -18,13 +18,19 @@ attributes:
       - **any** - (*28 cores*) Use any available Owens node. This reduces the
         wait time as there are no node requirements.
       - **gpu** - (*28 cores*) Use an Owens node that has an [NVIDIA Tesla P100
-        GPU](http://www.nvidia.com/object/tesla-p100.html) and loads the
-        [CUDA](https://developer.nvidia.com/cuda-zone) 8.0.44 module. There are
-        160 of these nodes on Owens.
+        GPU] and loads the [CUDA] 8.0.44 module. There are 160 of these nodes
+        on Owens.
       - **hugemem** - (*48 cores*) Use an Owens node that has 1.5TB of
         available RAM as well as 48 cores. There are 16 of these nodes on
         Owens.
+      - **debug** - (*28 cores*) For short sessions (= 1 hour) the debug queue
+        will have the shortest wait time. This is only accessible during 8AM -
+        6PM, Monday - Friday. There are 6 of these nodes on Owens.
+
+      [NVIDIA Tesla P100 GPU]: http://www.nvidia.com/object/tesla-p100.html
+      [CUDA]: https://developer.nvidia.com/cuda-zone
     options:
-      - [ "any",     ":ppn=28"         ]
-      - [ "gpu",     ":ppn=28:gpus=1"  ]
-      - [ "hugemem", ":ppn=48:hugemem" ]
+      - [ "any",     "any"     ]
+      - [ "gpu",     "gpu"     ]
+      - [ "hugemem", "hugemem" ]
+      - [ "debug",   "debug"   ]
