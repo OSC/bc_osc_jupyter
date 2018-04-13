@@ -1,13 +1,13 @@
 <%-
-  num_nodes  = bc_num_slots.blank? ? 1 : bc_num_slots.to_i
-  properties = case node_type
-               when "gpu"
-                 ":ppn=28:gpus=1"
-               when "hugemem"
-                 ":ppn=48"
-               else
-                 ":ppn=28"
-               end
+  ppn   = num_cores.blank? ? 28 : num_cores.to_i
+  props = case node_type
+          when "gpu"
+            ":ppn=#{ppn}:gpus=1"
+          when "hugemem"
+            ":ppn=48"
+          else
+            ":ppn=#{ppn}"
+          end
 -%>
 ---
 batch_connect:
@@ -18,4 +18,4 @@ script:
   <%- end -%>
   native:
     resources:
-      nodes: "<%= num_nodes %><%= properties %>"
+      nodes: "1<%= props %>"

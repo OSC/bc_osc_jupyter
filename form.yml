@@ -3,11 +3,19 @@ cluster: "owens"
 form:
   - bc_account
   - bc_num_hours
-  - bc_num_slots
   - node_type
+  - num_cores
   - bc_email_on_started
 attributes:
-  bc_num_slots: "1"
+  num_cores:
+    widget: "number_field"
+    label: "Number of cores"
+    help: |
+      Number of cores on node type (4 GB per core unless requesting whole
+      node). Leave blank if requesting full node.
+    min: 1
+    max: 28
+    step: 1
   bc_account:
     label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
@@ -15,15 +23,15 @@ attributes:
     widget: select
     label: "Node type"
     help: |
-      - **any** - (*28 cores*) Use any available Owens node. This reduces the
+      - **any** - (*1-28 cores*) Use any available Owens node. This reduces the
         wait time as there are no node requirements.
-      - **gpu** - (*28 cores*) Use an Owens node that has an [NVIDIA Tesla P100
+      - **gpu** - (*1-28 cores*) Use an Owens node that has an [NVIDIA Tesla P100
         GPU] and loads the [CUDA] 8.0.44 module. There are 160 of these nodes
         on Owens.
       - **hugemem** - (*48 cores*) Use an Owens node that has 1.5TB of
         available RAM as well as 48 cores. There are 16 of these nodes on
         Owens.
-      - **debug** - (*28 cores*) For short sessions (= 1 hour) the debug queue
+      - **debug** - (*1-28 cores*) For short sessions (= 1 hour) the debug queue
         will have the shortest wait time. This is only accessible during 8AM -
         6PM, Monday - Friday. There are 6 of these nodes on Owens.
 
