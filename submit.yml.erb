@@ -1,7 +1,21 @@
+<%-
+  num_nodes  = bc_num_slots.blank? ? 1 : bc_num_slots.to_i
+  properties = case node_type
+               when "gpu"
+                 ":ppn=28:gpus=1"
+               when "hugemem"
+                 ":ppn=48"
+               else
+                 ":ppn=28"
+               end
+-%>
 ---
 batch_connect:
   template: "basic"
 script:
+  <%- if node_type == "debug" -%>
+  queue_name: "debug"
+  <%- end -%>
   native:
     resources:
-      nodes: "<%= bc_num_slots.blank? ? "1" : bc_num_slots.to_i %><%= node_type %>"
+      nodes: "<%= num_nodes %><%= properties %>"
