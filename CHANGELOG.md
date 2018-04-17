@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added debug queue as an option.
 - Users can now specify number of cores on the node.
 
+### Changed
+- Changed server timeout to 120 seconds to account for running on shared node.
+
 ## [0.5.0] - 2018-03-28
 ### Added
 - Added support for user-created Conda environments.
