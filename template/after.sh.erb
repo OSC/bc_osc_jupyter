@@ -1,6 +1,6 @@
 # Wait for the Jupyter Notebook server to start
 echo "Waiting for Jupyter Notebook server to open port ${port}..."
-if wait_until_port_used "${host}:${port}" 120; then
+if wait_until_port_used "${host}:${port}" 600; then
   echo "Discovered Jupyter Notebook server listening on port ${port}!"
 else
   echo "Timed out waiting for Jupyter Notebook server to open port ${port}!"

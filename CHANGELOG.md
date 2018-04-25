@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Added timing information in output logs and increased timeout to 10 minutes.
+
+### Fixed
+- Fixed issue with Conda environments not being loaded properly.
 
 ## [0.6.0] - 2018-04-17
 ### Added

@@ -70,6 +70,9 @@
   }
 -%>
 
+echo "Starting main script..."
+echo "TTT - $(date)"
+
 #
 # Start Jupyter Notebook server
 #
@@ -78,6 +81,7 @@
 module purge
 
 # Create launcher wrapper
+echo "Creating launcher wrapper script..."
 (
 umask 077
 sed 's/^ \{2\}//' > "<%= wrapper %>" << EOL
@@ -97,8 +101,10 @@ sed 's/^ \{2\}//' > "<%= wrapper %>" << EOL
 EOL
 )
 chmod 700 "<%= wrapper %>"
+echo "TTT - $(date)"
 
 # Create custom Jupyter kernels
+echo "Creating custom Jupyter kernels..."
 export JUPYTER_PATH="${PWD}/share/jupyter"
 <%- kernels.each do |name, kernel| -%>
 <%- path = "${JUPYTER_PATH}/kernels/#{name}" -%>
@@ -111,8 +117,10 @@ cat > "<%= path %>/kernel.json" << EOL
 EOL
 )
 <%- end -%>
+echo "TTT - $(date)"
 
 # Create user-created Conda env Jupyter kernels
+echo "Creating custom Jupyter kernels from user-created Conda environments..."
 for dir in "${HOME}/.conda/envs"/*/ "${HOME}/envs"/*/ ; do
   (
   umask 077
@@ -121,16 +129,19 @@ for dir in "${HOME}/.conda/envs"/*/ "${HOME}/envs"/*/ ; do
   KERNEL_PATH="~${dir#${HOME}}"
   [[ -x "${dir}bin/activate" ]] || exit 0
   echo "Creating kernel for ${dir}..."
-  source "${dir}bin/activate"
+  source "${dir}bin/activate" "${KERNEL_NAME}"
   set -x
+  conda install --yes --quiet --no-update-deps ipykernel
   python \
     -m ipykernel \
       install \
       --name "${KERNEL_NAME}" \
       --display-name "${KERNEL_NAME} [${KERNEL_PATH}]" \
       --prefix "${PWD}"
-  )
+  ) &
 done
+wait
+echo "TTT - $(date)"
 
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
@@ -139,11 +150,13 @@ cd "${NOTEBOOK_ROOT}"
 module use $MODULEPATH_ROOT/project/ondemand
 module load jupyter/python3.5
 module list
+echo "TTT - $(date)"
 
 # List available kernels for debugging purposes
 set -x
 jupyter kernelspec list
 { set +x; } 2>/dev/null
+echo "TTT - $(date)"
 
 # Launch the Jupyter Notebook server
 set -x
