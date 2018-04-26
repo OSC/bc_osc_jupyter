@@ -129,7 +129,7 @@ for dir in "${HOME}/.conda/envs"/*/ "${HOME}/envs"/*/ ; do
   KERNEL_PATH="~${dir#${HOME}}"
   [[ -x "${dir}bin/activate" ]] || exit 0
   echo "Creating kernel for ${dir}..."
-  source "${dir}bin/activate" "${KERNEL_NAME}"
+  source "${dir}bin/activate" "${dir}"
   set -x
   conda install --yes --quiet --no-update-deps ipykernel
   python \
