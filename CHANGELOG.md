@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.6.2] - 2018-04-27
 ### Changed
 - Namespace Conda environment kernel paths to avoid collision with module
   environment kernels.
@@ -106,7 +108,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.6.2...HEAD
+[0.6.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.4.1...v0.5.0
