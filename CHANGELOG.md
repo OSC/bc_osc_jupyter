@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Namespace Conda environment kernel paths to avoid collision with module
+  environment kernels.
+- Only attempt to install package if it doesn't exist to speed up launch
+  process.
+
+### Fixed
+- *Hopefully* fixed race condition when downloading packages.
 
 ## [0.6.1] - 2018-04-26
 ### Changed
