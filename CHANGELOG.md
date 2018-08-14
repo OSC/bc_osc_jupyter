@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.0] - 2018-08-14
+### Changed
+- Added support for Julia 1.0 kernel
+
 ## [0.6.2] - 2018-04-27
 ### Changed
 - Namespace Conda environment kernel paths to avoid collision with module
