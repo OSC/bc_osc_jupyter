@@ -51,6 +51,21 @@
         MODULES: "python/2.7#{" cuda/8.0.44" if cuda}"
       }
     },
+    python27conda: {
+      display_name: "Python 2.7 (Conda 5.2) [python/2.7#{" cuda/8.0.44" if cuda}]",
+      language: "python",
+      argv: [
+        wrapper,
+        "python",
+        "-m",
+        "ipykernel",
+        "-f",
+        "{connection_file}"
+      ],
+      env: {
+        MODULES: "python/2.7-conda5.2#{" cuda/8.0.44" if cuda}"
+      }
+    },
     julia051: {
       display_name: "Julia 0.5.1 [julia/0.5.1#{" cuda/8.0.44" if cuda}]",
       language: "julia",
