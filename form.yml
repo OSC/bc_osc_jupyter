@@ -1,5 +1,5 @@
----
-cluster: "owens"
+--- 
+cluster: "pitzer"
 form:
   - bc_account
   - bc_num_hours
@@ -15,7 +15,7 @@ attributes:
       Number of cores on node type (4 GB per core unless requesting whole
       node). Leave blank if requesting full node.
     min: 1
-    max: 28
+    max: 40
     step: 1
   bc_account:
     label: "Project"
@@ -24,19 +24,20 @@ attributes:
     widget: select
     label: "Node type"
     help: |
-      - **any** - (*1-28 cores*) Use any available Owens node. This reduces the
-        wait time as there are no node requirements.
-      - **gpu** - (*1-28 cores*) Use an Owens node that has an [NVIDIA Tesla P100
-        GPU] and loads the [CUDA] 8.0.44 module. There are 160 of these nodes
-        on Owens.
-      - **hugemem** - (*48 cores*) Use an Owens node that has 1.5TB of
-        available RAM as well as 48 cores. There are 16 of these nodes on
-        Owens.
-      - **debug** - (*1-28 cores*) For short sessions (= 1 hour) the debug queue
+      - **any** - (*1-40 cores*) Chooses anyone of the available Pitzer nodes.
+        This reduces the wait time as you have no requirements. Standard Pitzer
+        nodes have 192GB of memory.
+      - **gpu** - (*1-40 cores*) This node includes two [NVIDIA Tesla V100 GPUs]
+        and loads the [CUDA] 9.2.88 module. This node has 384GB of memory.
+        There are currently only 32 of these nodes on Pitzer.
+      - **hugemem** - (*80 cores*) This Pitzer node has 3TB of memory as
+        well as 80 cores. There are only 4 of these nodes on Pitzer. A
+        reservation may be required to use this node.
+      - **debug** - (*1-40 cores*) For short sessions (= 1 hour) the debug queue
         will have the shortest wait time. This is only accessible during 8AM -
-        6PM, Monday - Friday. There are 6 of these nodes on Owens.
-
-      [NVIDIA Tesla P100 GPU]: http://www.nvidia.com/object/tesla-p100.html
+        6PM, Monday - Friday. There are 6 of these nodes on Pitzer.
+        
+      [NVIDIA Tesla V100 GPUs]: http://www.nvidia.com/object/tesla-p100.html
       [CUDA]: https://developer.nvidia.com/cuda-zone
     options:
       - [ "any",     "any"     ]

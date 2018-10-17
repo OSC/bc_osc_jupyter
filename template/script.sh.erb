@@ -6,8 +6,8 @@
   wrapper_log = session.staged_root.join("launch_wrapper.log")
 
   kernels = {
-    python36: {
-      display_name: "Python 3.6 [python/3.6#{" cuda/8.0.44" if cuda}]",
+    python36conda: {
+      display_name: "Python 3.6 (Conda 5.2) [python/3.6-conda5.2#{" cuda/9.2.88" if cuda}]",
       language: "python",
       argv: [
         wrapper,
@@ -18,41 +18,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/3.6#{" cuda/8.0.44" if cuda}"
-      }
-    },
-    python35: {
-      display_name: "Python 3.5 [python/3.5#{" cuda/8.0.44" if cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "python/3.5#{" cuda/8.0.44" if cuda}"
-      }
-    },
-    python27: {
-      display_name: "Python 2.7 [python/2.7#{" cuda/8.0.44" if cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "python/2.7#{" cuda/8.0.44" if cuda}"
+        MODULES: "python/3.6-conda5.2#{" cuda/9.2.88" if cuda}"
       }
     },
     python27conda: {
-      display_name: "Python 2.7 (Conda 5.2) [python/2.7#{" cuda/8.0.44" if cuda}]",
+      display_name: "Python 2.7 (Conda 5.2) [python/2.7-conda5.2#{" cuda/9.2.88" if cuda}]",
       language: "python",
       argv: [
         wrapper,
@@ -63,55 +33,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/2.7-conda5.2#{" cuda/8.0.44" if cuda}"
-      }
-    },
-    julia051: {
-      display_name: "Julia 0.5.1 [julia/0.5.1#{" cuda/8.0.44" if cuda}]",
-      language: "julia",
-      argv: [
-        wrapper,
-        "julia",
-        "-i",
-        "--startup-file=yes",
-        "--color=yes",
-        "/usr/local/julia/0.5.1/share/julia/site/v0.5/IJulia/src/kernel.jl",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "julia/0.5.1#{" cuda/8.0.44" if cuda}"
-      }
-    },
-    julia064: {
-      display_name: "Julia 0.6.4 [julia/0.6.4#{" cuda/8.0.44" if cuda}]",
-      language: "julia",
-      argv: [
-        wrapper,
-        "julia",
-        "-i",
-        "--startup-file=yes",
-        "--color=yes",
-        "/usr/local/julia/0.6.4/site/v0.6/IJulia/src/kernel.jl",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "julia/0.6.4#{" cuda/8.0.44" if cuda}"
-      }
-    },
-    julia100: {
-      display_name: "Julia 1.0.0 [julia/1.0.0#{" cuda/8.0.44" if cuda}]",
-      language: "julia",
-      argv: [
-        wrapper,
-        "julia",
-        "-i",
-        "--startup-file=yes",
-        "--color=yes",
-        "/usr/local/julia/1.0.0/site/packages/IJulia/9RcVi/src/kernel.jl",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "julia/1.0.0#{" cuda/8.0.44" if cuda}"
+        MODULES: "python/2.7-conda5.2#{" cuda/9.2.88" if cuda}"
       }
     },
   }
@@ -196,8 +118,8 @@ echo "TTT - $(date)"
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter Notebook environment
-module use $MODULEPATH_ROOT/project/ondemand
-module load jupyter/python3.5
+module use /apps/lmodfiles/project/ondemand
+module load jupyter/python3.6
 module list
 echo "TTT - $(date)"
 

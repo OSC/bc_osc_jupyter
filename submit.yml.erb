@@ -1,10 +1,10 @@
 <%-
-  ppn   = num_cores.blank? ? 28 : num_cores.to_i
+  ppn   = num_cores.blank? ? 40 : num_cores.to_i
   props = case node_type
           when "gpu"
             ":ppn=#{ppn}:gpus=1"
           when "hugemem"
-            ":ppn=48"
+            ":ppn=80"
           else
             ":ppn=#{ppn}"
           end
