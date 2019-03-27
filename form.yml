@@ -2,11 +2,15 @@
 cluster: "owens"
 form:
   - bc_account
+  - jupyterlab_switch
   - bc_num_hours
   - node_type
   - num_cores
   - bc_email_on_started
 attributes:
+  jupyterlab_switch:
+    widget: "check_box"
+    label: "Use JupyterLab instead of Jupyter Notebook?"
   num_cores:
     widget: "number_field"
     label: "Number of cores"

@@ -209,4 +209,4 @@ echo "TTT - $(date)"
 
 # Launch the Jupyter Notebook server
 set -x
-jupyter notebook --config="${CONFIG_FILE}"
+jupyter <%= context.jupyterlab_switch == "1" ? "lab" : "notebook" %> --config="${CONFIG_FILE}"
