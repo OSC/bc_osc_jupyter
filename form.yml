@@ -11,6 +11,8 @@ attributes:
   jupyterlab_switch:
     widget: "check_box"
     label: "Use JupyterLab instead of Jupyter Notebook?"
+    help: |
+      JupyterLab is the next generation of Jupyter, and is completely compatible with existing Jupyter Notebooks.
   num_cores:
     widget: "number_field"
     label: "Number of cores"
