@@ -13,7 +13,7 @@ PASSWORD_SHA1="$(echo -n "${password}${SALT}" | openssl dgst -sha1 | awk '{print
 export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
 
 # The `$CONFIG_FILE` environment variable is exported as it is used in the main
-# `script.sh.erb` file when launching the Jupyter Notebook server.
+# `script.sh.erb` file when launching the Jupyter server.
 export CONFIG_FILE="${PWD}/config.py"
 
 # Generate Jupyter configuration file with secure file permissions
