@@ -121,7 +121,7 @@ echo "Starting main script..."
 echo "TTT - $(date)"
 
 #
-# Start Jupyter Notebook server
+# Start Jupyter server
 #
 
 # Clean the environment
@@ -195,7 +195,7 @@ echo "TTT - $(date)"
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
 
-# Setup Jupyter Notebook environment
+# Setup Jupyter environment
 module use $MODULEPATH_ROOT/project/ondemand
 module load jupyter/python3.5
 module list
@@ -207,6 +207,6 @@ jupyter kernelspec list
 { set +x; } 2>/dev/null
 echo "TTT - $(date)"
 
-# Launch the Jupyter Notebook server
+# Launch the Jupyter server
 set -x
-jupyter notebook --config="${CONFIG_FILE}"
+jupyter <%= context.jupyterlab_switch == "1" ? "lab" : "notebook" %> --config="${CONFIG_FILE}"

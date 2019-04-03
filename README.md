@@ -1,9 +1,9 @@
-# Batch Connect - OSC Jupyter Notebook
+# Batch Connect - OSC Jupyter
 
 ![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_jupyter.svg)
 [![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-An interactive app designed for OSC OnDemand that launches a Jupyter Notebook
+An interactive app designed for OSC OnDemand that launches a Jupyter
 server within an Owens batch job.
 
 ## Prerequisites
@@ -14,12 +14,12 @@ OnDemand node):
 
 - [Lmod] 6.0.1+ or any other `module purge` and `module load <modules>` based
   CLI used to load appropriate environments within the batch job before
-  launching the Jupyter Notebook server.
-- [Jupyter Notebook] 4.2.3+ (earlier versions are untested but may work for
+  launching the Jupyter server.
+- [Jupyter] 4.2.3+ (earlier versions are untested but may work for
   you)
-- [OpenSSL] 1.0.1+ (used to hash the Jupyter Notebook server password)
+- [OpenSSL] 1.0.1+ (used to hash the Jupyter server password)
 
-[Jupyter Notebook]: https://jupyter.org/
+[Jupyter]: https://jupyter.org/
 [OpenSSL]: https://www.openssl.org/
 [Lmod]: https://www.tacc.utexas.edu/research-development/tacc-projects/lmod
 
