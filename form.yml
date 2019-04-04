@@ -6,6 +6,7 @@ form:
   - bc_num_hours
   - node_type
   - num_cores
+  - version
   - bc_email_on_started
 attributes:
   jupyterlab_switch:
@@ -49,3 +50,9 @@ attributes:
       - [ "gpu",     "gpu"     ]
       - [ "hugemem", "hugemem" ]
       - [ "debug",   "debug"   ]
+  version:
+    widget: select
+    label: "Jupyter Version"
+    help: "This defines the version of Jupyter you want to load."
+    options:
+      - [ "default", "jupyter/python3.5" ]

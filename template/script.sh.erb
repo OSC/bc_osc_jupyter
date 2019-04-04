@@ -197,7 +197,7 @@ cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
 module use $MODULEPATH_ROOT/project/ondemand
-module load jupyter/python3.5
+module load <%= !defined?(context.version) || context.version.nil? ? "jupyter/python3.5" : context.version %>
 module list
 echo "TTT - $(date)"
 
