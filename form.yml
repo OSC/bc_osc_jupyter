@@ -50,9 +50,4 @@ attributes:
       - [ "gpu",     "gpu"     ]
       - [ "hugemem", "hugemem" ]
       - [ "debug",   "debug"   ]
-  version:
-    widget: select
-    label: "Jupyter Version"
-    help: "This defines the version of Jupyter you want to load."
-    options:
-      - [ "default", "jupyter/python3.5" ]
+  version: "jupyter/python3.5" 
