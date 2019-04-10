@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Option to launch JupyterLab instead of Jupyter Notebook
+- Option to specify version of Jupyter/JupyterLab module
 
 ## [0.9.0] - 2018-09-20
 ### Added
