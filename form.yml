@@ -5,6 +5,7 @@ form:
   - jupyterlab_switch
   - bc_num_hours
   - node_type
+  - cuda_version
   - num_cores
   - version
   - bc_email_on_started
@@ -27,6 +28,20 @@ attributes:
   bc_account:
     label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
+  cuda_version:
+      value: ''
+      widget: "select"
+      label: "CUDA Version"
+      help: |
+        CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
+        is required to make use of this functionality.
+      options:
+        - [ "cuda/8.0.44",    "cuda/8.0.44"   ]
+        - [ "cuda/8.0.61",    "cuda/8.0.61"   ]
+        - [ "cuda/9.0.176",   "cuda/9.0.176"  ]
+        - [ "cuda/9.1.85",    "cuda/9.1.85"   ]
+        - [ "cuda/9.2.88",    "cuda/9.2.88"   ]
+        - [ "cuda/10.0.130",  "cuda/10.0.130" ]
   node_type:
     widget: select
     label: "Node type"
