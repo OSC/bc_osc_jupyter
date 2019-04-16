@@ -29,19 +29,18 @@ attributes:
     label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
   cuda_version:
-      value: ''
-      widget: "select"
-      label: "CUDA Version"
-      help: |
-        CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
-        is required to make use of this functionality.
-      options:
-        - [ "cuda/8.0.44",    "cuda/8.0.44"   ]
-        - [ "cuda/8.0.61",    "cuda/8.0.61"   ]
-        - [ "cuda/9.0.176",   "cuda/9.0.176"  ]
-        - [ "cuda/9.1.85",    "cuda/9.1.85"   ]
-        - [ "cuda/9.2.88",    "cuda/9.2.88"   ]
-        - [ "cuda/10.0.130",  "cuda/10.0.130" ]
+    widget: "select"
+    label: "CUDA Version"
+    help: |
+      CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
+      is required to make use of this functionality.
+    options:
+      - [ "cuda/8.0.44",    "cuda/8.0.44"   ]
+      - [ "cuda/8.0.61",    "cuda/8.0.61"   ]
+      - [ "cuda/9.0.176",   "cuda/9.0.176"  ]
+      - [ "cuda/9.1.85",    "cuda/9.1.85"   ]
+      - [ "cuda/9.2.88",    "cuda/9.2.88"   ]
+      - [ "cuda/10.0.130",  "cuda/10.0.130" ]
   node_type:
     widget: select
     label: "Node type"
@@ -49,7 +48,7 @@ attributes:
       - **any** - (*1-28 cores*) Use any available Owens node. This reduces the
         wait time as there are no node requirements.
       - **gpu** - (*1-28 cores*) Use an Owens node that has an [NVIDIA Tesla P100
-        GPU] and loads the [CUDA] 8.0.44 module. There are 160 of these nodes
+        GPU] and loads the requested [CUDA] module. There are 160 of these nodes
         on Owens.
       - **hugemem** - (*48 cores*) Use an Owens node that has 1.5TB of
         available RAM as well as 48 cores. There are 16 of these nodes on
@@ -61,8 +60,28 @@ attributes:
       [NVIDIA Tesla P100 GPU]: http://www.nvidia.com/object/tesla-p100.html
       [CUDA]: https://developer.nvidia.com/cuda-zone
     options:
-      - [ "any",     "any"     ]
-      - [ "gpu",     "gpu"     ]
-      - [ "hugemem", "hugemem" ]
-      - [ "debug",   "debug"   ]
+      - [
+          "any",     "any",
+          data-min-ppn: 0,
+          data-max-ppn: 28,
+          data-can-show-cuda: false
+        ]
+      - [
+          "gpu",     "gpu",
+          data-min-ppn: 0,
+          data-max-ppn: 28,
+          data-can-show-cuda: true
+        ]
+      - [
+          "hugemem", "hugemem",
+          data-min-ppn: 48,
+          data-max-ppn: 48,
+          data-can-show-cuda: false
+        ]
+      - [
+          "debug",   "debug",
+          data-min-ppn: 0,
+          data-max-ppn: 28,
+          data-can-show-cuda: false
+        ]
   version: "jupyter/python3.5" 

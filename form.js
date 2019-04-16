@@ -1,48 +1,46 @@
 'use strict'
 
 /**
+ * Clamp between two numbers
+ *
+ * @param      {number}  min     The minimum
+ * @param      {number}  max     The maximum
+ * @param      {number}  val     The value to clamp
+ */
+function clamp(min, max, val) {
+  return Math.min(max, Math.max(min, val));
+}
+
+/**
  * Fix num cores, allowing blanks to remain
  */
 function fix_num_cores() {
   let node_type_input = $('#batch_connect_session_context_node_type');
-  let node_type = node_type_input.val();
   let num_cores_input = $('#batch_connect_session_context_num_cores');
 
   if(num_cores_input.val() === '') {
     return;
   }
 
-  if(node_type === 'hugemem') {
-    set_ppn_owens_hugemem(num_cores_input);
-  } else {
-    set_ppn_owens_regular(num_cores_input);
-  }
+  set_ppn_by_node_type(node_type_input, num_cores_input);
 }
 
 /**
- * Sets the PPN limits available for Owens hugemem nodes.
+ * Sets the ppn by node type.
  *
- * hugemem reservations are always assigned the full node
- *
- * @param      {element}  num_cores_input  The input for num_cores
+ * @param      {element}  node_type_input  The node type input
+ * @param      {element}  num_cores_input  The number cores input
  */
-function set_ppn_owens_hugemem(num_cores_input) {
-  const NUM_CORES = 48;
-  num_cores_input.attr('max', NUM_CORES);
-  num_cores_input.attr('min', NUM_CORES);
-  num_cores_input.val(NUM_CORES);
-}
+function set_ppn_by_node_type(node_type_input, num_cores_input) {
+  let data = node_type_input.find(':selected').data();
 
-/**
- * Sets the PPN limits available for non hugemem Owens nodes.
- *
- * @param      {element}  num_cores_input  The input for num_cores
- */
-function set_ppn_owens_regular(num_cores_input) {
-  const NUM_CORES = 28;
-  num_cores_input.attr('max', NUM_CORES);
-  num_cores_input.attr('min', 0);
-  num_cores_input.val(Math.min(NUM_CORES, num_cores_input.val()));
+  num_cores_input.attr('max', data.maxPpn);
+  num_cores_input.attr('min', data.minPpn);
+
+  // Clamp value between min and max
+  num_cores_input.val(
+    clamp(data.minPpn, data.maxPpn, num_cores_input.val())
+  );
 }
 
 /**
@@ -66,17 +64,19 @@ function toggle_visibilty_of_form_group(form_id, show) {
 /**
  * Toggle the visibilty of the CUDA select
  *
- * GPU: visible
- * *: hidden
+ * Looking for the value of data-can-show-cuda
  */
 function toggle_cuda_version_visibility() {
-  let cuda_version = $('#batch_connect_session_context_cuda_version');
   let node_type_input = $('#batch_connect_session_context_node_type');
-  let show = (node_type_input.val() === 'gpu');
+
+  // Allow for cuda_version control not existing
+  if ( ! ($('#batch_connect_session_context_cuda_version').length > 0) ) {
+    return;
+  }
 
   toggle_visibilty_of_form_group(
     '#batch_connect_session_context_cuda_version',
-    show
+    node_type_input.find(':selected').data('can-show-cuda')
   );
 }
 
@@ -99,11 +99,11 @@ function node_type_change_hander() {
 /**
  * Main
  */
-$(document).ready(function() {
-  // Set controls to align with the values of the last session context
-  fix_num_cores();
-  toggle_cuda_version_visibility();
 
-  // Install event handlers
-  set_node_type_change_handler();
-});
+// Set controls to align with the values of the last session context
+fix_num_cores();
+toggle_cuda_version_visibility();
+// update_cuda_setting();
+
+// Install event handlers
+set_node_type_change_handler();
