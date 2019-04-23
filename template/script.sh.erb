@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 <%-
-  cuda = context.node_type == "gpu"
+  cuda = (context.node_type == "gpu") ? context.cuda_version : ""
   wrapper = session.staged_root.join("launch_wrapper.sh")
   wrapper_log = session.staged_root.join("launch_wrapper.log")
 
   kernels = {
     python36: {
-      display_name: "Python 3.6 [python/3.6#{" cuda/8.0.44" if cuda}]",
+      display_name: "Python 3.6 [python/3.6 #{cuda}]",
       language: "python",
       argv: [
         wrapper,
@@ -18,11 +18,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/3.6#{" cuda/8.0.44" if cuda}"
+        MODULES: "python/3.6 #{cuda}"
       }
     },
     python35: {
-      display_name: "Python 3.5 [python/3.5#{" cuda/8.0.44" if cuda}]",
+      display_name: "Python 3.5 [python/3.5 #{cuda}]",
       language: "python",
       argv: [
         wrapper,
@@ -33,11 +33,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/3.5#{" cuda/8.0.44" if cuda}"
+        MODULES: "python/3.5 #{cuda}"
       }
     },
     python27: {
-      display_name: "Python 2.7 [python/2.7#{" cuda/8.0.44" if cuda}]",
+      display_name: "Python 2.7 [python/2.7 #{cuda}]",
       language: "python",
       argv: [
         wrapper,
@@ -48,11 +48,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/2.7#{" cuda/8.0.44" if cuda}"
+        MODULES: "python/2.7 #{cuda}"
       }
     },
     python27conda: {
-      display_name: "Python 2.7 (Conda 5.2) [python/2.7#{" cuda/8.0.44" if cuda}]",
+      display_name: "Python 2.7 (Conda 5.2) [python/2.7 #{cuda}]",
       language: "python",
       argv: [
         wrapper,
@@ -63,11 +63,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/2.7-conda5.2#{" cuda/8.0.44" if cuda}"
+        MODULES: "python/2.7-conda5.2 #{cuda}"
       }
     },
     julia051: {
-      display_name: "Julia 0.5.1 [julia/0.5.1#{" cuda/8.0.44" if cuda}]",
+      display_name: "Julia 0.5.1 [julia/0.5.1 #{cuda}]",
       language: "julia",
       argv: [
         wrapper,
@@ -79,11 +79,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "julia/0.5.1#{" cuda/8.0.44" if cuda}"
+        MODULES: "julia/0.5.1 #{cuda}"
       }
     },
     julia064: {
-      display_name: "Julia 0.6.4 [julia/0.6.4#{" cuda/8.0.44" if cuda}]",
+      display_name: "Julia 0.6.4 [julia/0.6.4 #{cuda}]",
       language: "julia",
       argv: [
         wrapper,
@@ -95,11 +95,11 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "julia/0.6.4#{" cuda/8.0.44" if cuda}"
+        MODULES: "julia/0.6.4 #{cuda}"
       }
     },
     julia100: {
-      display_name: "Julia 1.0.0 [julia/1.0.0#{" cuda/8.0.44" if cuda}]",
+      display_name: "Julia 1.0.0 [julia/1.0.0 #{cuda}]",
       language: "julia",
       argv: [
         wrapper,
@@ -111,7 +111,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "julia/1.0.0#{" cuda/8.0.44" if cuda}"
+        MODULES: "julia/1.0.0 #{cuda}"
       }
     },
   }

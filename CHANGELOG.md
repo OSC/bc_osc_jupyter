@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Option to launch JupyterLab instead of Jupyter Notebook
 - Option to specify version of Jupyter/JupyterLab module
+- Add form.js to sync node type selection with options for core count and cuda
+  options
 
 ## [0.9.0] - 2018-09-20
 ### Added
