@@ -103,7 +103,6 @@ function node_type_change_hander() {
 // Set controls to align with the values of the last session context
 fix_num_cores();
 toggle_cuda_version_visibility();
-// update_cuda_setting();
 
 // Install event handlers
 set_node_type_change_handler();
