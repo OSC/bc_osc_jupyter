@@ -139,7 +139,7 @@ sed 's/^ \{2\}//' > "<%= wrapper %>" << EOL
 
   # Load the required environment
   module purge
-  module load \${MODULES}
+  module load xalt/latest \${MODULES}
   module list
 
   # Launch the original command
