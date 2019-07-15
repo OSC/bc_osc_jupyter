@@ -18,7 +18,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/3.6 #{cuda}"
+        MODULES: "xalt/latest python/3.6 #{cuda}"
       }
     },
     python35: {
@@ -33,7 +33,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/3.5 #{cuda}"
+        MODULES: "xalt/latest python/3.5 #{cuda}"
       }
     },
     python27: {
@@ -48,7 +48,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/2.7 #{cuda}"
+        MODULES: "xalt/latest python/2.7 #{cuda}"
       }
     },
     python27conda: {
@@ -63,7 +63,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "python/2.7-conda5.2 #{cuda}"
+        MODULES: "xalt/latest python/2.7-conda5.2 #{cuda}"
       }
     },
     julia051: {
@@ -79,7 +79,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "julia/0.5.1 #{cuda}"
+        MODULES: "xalt/latest julia/0.5.1 #{cuda}"
       }
     },
     julia064: {
@@ -95,7 +95,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "julia/0.6.4 #{cuda}"
+        MODULES: "xalt/latest julia/0.6.4 #{cuda}"
       }
     },
     julia100: {
@@ -111,7 +111,7 @@
         "{connection_file}"
       ],
       env: {
-        MODULES: "julia/1.0.0 #{cuda}"
+        MODULES: "xalt/latest julia/1.0.0 #{cuda}"
       }
     },
   }
@@ -197,7 +197,7 @@ cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
 module use $MODULEPATH_ROOT/project/ondemand
-module load <%= context.version %>
+module load xalt/latest <%= context.version %>
 module list
 echo "TTT - $(date)"
 
