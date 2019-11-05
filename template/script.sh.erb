@@ -174,22 +174,6 @@
         MODULES: "xalt/latest julia/0.6.4 #{cuda}"
       },
     },
-    julia100: {
-      display_name: "Julia 1.0.0 [julia/1.0.0 #{cuda}]",
-      language: "julia",
-      argv: [
-        wrapper,
-        "julia",
-        "-i",
-        "--startup-file=yes",
-        "--color=yes",
-        "/usr/local/julia/1.0.0/site/packages/IJulia/fRegO/src/kernel.jl",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest julia/1.0.0 #{cuda}"
-      }
-    },
   }.tap do |hsh|
     # Any existing Julia kernelspec may be clobbered if the user has their own version of that kernel installed
     lmod_julia_versions = Hash[get_lmod_julia_versions]
