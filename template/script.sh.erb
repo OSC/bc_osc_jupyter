@@ -17,7 +17,7 @@
 
   # @returns [[major_minor_version, kernel_version], ["1.0", "1.20.0"]]
   def get_active_user_ijulia_kernel_versions
-      user_julia_envs = Pathname.new("~zyou/.julia/environments/").expand_path
+      user_julia_envs = Pathname.new("~/.julia/environments/").expand_path
 
       if ! user_julia_envs.exist?
           []
@@ -40,7 +40,7 @@
 
   # @returns [[kernel_version, path_to_kernel], ["1.19.0", #<Pathname:/users/PZS0710/zyou/.julia/packages/IJulia/cwvsj/src/kernel.jl>]]
   def get_installed_user_ijulia_kernels
-      ijulia_installation_root = Pathname.new("~zyou/.julia/packages/IJulia").expand_path
+      ijulia_installation_root = Pathname.new("~/.julia/packages/IJulia").expand_path
 
       if ! ijulia_installation_root.exist?
           []
