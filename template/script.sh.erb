@@ -3,16 +3,15 @@
 <%-
   require 'pathname'
 
+  # The list of Julia installations that LMod knows about
   # @returns [[major_minor_version, "lmod_load_string"], ["0.6", "julia/0.6.4"]]
   def get_lmod_julia_versions
-      `ssh -o BatchMode=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no owens.osc.edu 'bash --login -c "module spider julia"' 2>&1`.scan(
-          /julia\/(?:(?<maj>\d+)\.(?<min>\d+)\.(?<pat>\d+))/
-      ).uniq.map do |mtch|
-          [
-              "#{mtch[0]}.#{mtch[1]}",
-              "#{mtch.join('.')}"
-          ]
-      end
+      [
+        ["0.5", "0.5.1"],
+        ["0.6", "0.6.4"],
+        ["1.0", "1.0.0"],
+        ["1.1", "1.1.1"]
+      ]
   end
 
   # @returns [[major_minor_version, kernel_version], ["1.0", "1.20.0"]]
