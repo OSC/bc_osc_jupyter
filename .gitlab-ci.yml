@@ -1,3 +1,7 @@
+variables:
+  # older versions of git have issues fetching. 
+  GIT_STRATEGY: clone
+
 before_script:
   - docker info
   - '[ -d tmp ] || mkdir tmp'
