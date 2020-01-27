@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.12.1] - 2020-01-27
+### Fixed
+- CI now clones instead of fetches due to errors like 'fatal: git fetch-pack: expected shallow list'
+
 ## [0.12.0] - 2020-01-24
 ### Changed
 - Updated IJulia kernel 1.0 (1.0.5), and added 1.3 (1.3.1).
@@ -155,7 +159,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.12.0...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.12.1...HEAD
+[0.12.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.11.1...v0.12.0
 [0.11.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.11.0...v0.11.1
