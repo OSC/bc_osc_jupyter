@@ -274,8 +274,7 @@ echo "TTT - $(date)"
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
-module use $MODULEPATH_ROOT/project/ondemand
-module load xalt/latest <%= context.version %>
+module load ondemand/project xalt/latest <%= context.version %>
 module list
 echo "TTT - $(date)"
 
