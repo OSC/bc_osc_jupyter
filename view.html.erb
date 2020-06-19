@@ -1,4 +1,13 @@
-<form action="/node/<%= host %>/<%= port %>/login" method="post" target="_blank">
+
+<%-
+  base_url      = "/node/#{host}/#{port}"
+  workspace_url = "#{base_url}/lab/workspaces/lab"
+  login_url     = "#{base_url}/login"
+
+  full_url="#{login_url}?next=#{URI.encode(workspace_url)}"
+%>
+
+<form action="<%= full_url %>" method="post" target="_blank">
   <input type="hidden" name="password" value="<%= password %>">
   <button class="btn btn-primary" type="submit">
     <i class="fa fa-cogs"></i> Connect to Jupyter
