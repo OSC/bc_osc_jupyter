@@ -86,7 +86,7 @@ attributes:
         ]
   version:
     widget: "select"
-    label: "Jupyter Version"
+    label: "JupyterLab Version"
     options:
       - [ "2.1",  "app_jupyter/2.1.4" ]
       - [ "1.2",  "app_jupyter/1.2.16" ]
