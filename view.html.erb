@@ -1,7 +1,7 @@
 
 <%-
   base_url      = "/node/#{host}/#{port}"
-  workspace_url = "#{base_url}/lab/workspaces/lab"
+  workspace_url = "#{base_url}/lab"
   login_url     = "#{base_url}/login"
 
   full_url="#{login_url}?next=#{URI.encode(workspace_url)}"
