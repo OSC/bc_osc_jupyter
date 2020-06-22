@@ -33,3 +33,25 @@ c.NotebookApp.notebook_dir = '${NOTEBOOK_ROOT}'
 c.NotebookApp.disable_check_xsrf = True
 EOL
 )
+
+# Safari users hit this error https://github.com/jupyterlab/jupyterlab/issues/5486
+# so let's make a new workspace dir that's this job's PWD and copy the defult /lab
+# workspace over there so folks can update it.
+WORKSPACE_DIR="$HOME/.jupyter/lab/workspaces"
+FILES=$(ls $WORKSPACE_DIR)
+
+for FILE in ${FILES[@]}
+do
+  ID=$(jq -r '.metadata.id' $WORKSPACE_DIR/$FILE)
+
+  if [[ $ID == "/lab" ]]; then
+    WORKSPACE_FILE="$WORKSPACE_DIR/$FILE"
+    break
+  fi
+done
+
+if [[ ${WORKSPACE_FILE+x} ]]; then
+  cp $WORKSPACE_FILE .
+fi
+
+export JUPYTERLAB_WORKSPACES_DIR=$PWD

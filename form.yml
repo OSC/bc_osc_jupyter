@@ -84,4 +84,10 @@ attributes:
           data-max-ppn: 28,
           data-can-show-cuda: false
         ]
-  version: "jupyter/python3.5" 
+  version:
+    widget: "select"
+    label: "JupyterLab Version"
+    options:
+      - [ "2.1",  "app_jupyter/2.1.4" ]
+      - [ "1.2",  "app_jupyter/1.2.16" ]
+      - [ "0.35", "app_jupyter/0.35.6" ]
