@@ -12,6 +12,8 @@
 ---
 batch_connect:
   template: "basic"
+  conn_params:
+    - jupyter_api
 script:
   <%- if node_type == "debug" -%>
   queue_name: "debug"

@@ -1,10 +1,10 @@
 
 <%-
-  base_url      = "/node/#{host}/#{port}"
-  workspace_url = "#{base_url}/lab"
-  login_url     = "#{base_url}/login"
+  base_url  = "/node/#{host}/#{port}"
+  login_url = "#{base_url}/login"
+  next_url  = "#{base_url}/#{jupyter_api}"
 
-  full_url="#{login_url}?next=#{URI.encode(workspace_url)}"
+  full_url="#{login_url}?next=#{URI.encode(next_url)}"
 %>
 
 <form action="<%= full_url %>" method="post" target="_blank">
