@@ -55,3 +55,4 @@ if [[ ${WORKSPACE_FILE+x} ]]; then
 fi
 
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
+export jupyter_api=<%= context.jupyterlab_switch == "1" ? "lab" : "tree" %>
