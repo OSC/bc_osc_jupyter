@@ -15,7 +15,8 @@ function clamp(min, max, val) {
  * Fix num cores, allowing blanks to remain
  */
 function fix_num_cores() {
-  let node_type_input = $('#batch_connect_session_context_node_type');
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  let node_type_input = $('#batch_connect_session_context_' + cluster + '_node_type');
   let num_cores_input = $('#batch_connect_session_context_num_cores');
 
   if(num_cores_input.val() === '') {
@@ -67,7 +68,8 @@ function toggle_visibilty_of_form_group(form_id, show) {
  * Looking for the value of data-can-show-cuda
  */
 function toggle_cuda_version_visibility() {
-  let node_type_input = $('#batch_connect_session_context_node_type');
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  let node_type_input = $('#batch_connect_session_context_' + cluster + '_node_type');
 
   // Allow for cuda_version control not existing
   if ( ! ($('#batch_connect_session_context_cuda_version').length > 0) ) {
@@ -84,7 +86,8 @@ function toggle_cuda_version_visibility() {
  * Sets the change handler for the node_type select.
  */
 function set_node_type_change_handler() {
-  let node_type_input = $('#batch_connect_session_context_node_type');
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  let node_type_input = $('#batch_connect_session_context_' + cluster + '_node_type');
   node_type_input.change(node_type_change_hander);
 }
 
@@ -97,12 +100,49 @@ function node_type_change_hander() {
 }
 
 /**
+ * Sets the change handler for the cluster
+ */
+function set_cluster_change_handler(){
+  let cluster_input = $('#batch_connect_session_context_cluster');
+  cluster_input.change(cluster_change_handler);
+}
+
+/**
+ * Update UI when cluster changes; node_type_change_handler must be called again for each cluster
+ */
+function cluster_change_handler(){
+  toggle_node_type_visibility();
+  set_node_type_change_handler();
+}
+
+/**
+ * Toggle node_type on for the respective cluster.
+ */
+function toggle_node_type_visibility(){
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  $('#batch_connect_session_context_cluster').children().each(function() {
+    let cluster_name = $(this).html();
+    toggle_visibilty_of_form_group(
+      '#batch_connect_session_context_' + cluster_name + '_node_type',
+      false
+    );
+  });
+
+  toggle_visibilty_of_form_group(
+    '#batch_connect_session_context_' + cluster + '_node_type',
+    true
+  );
+}
+
+/**
  * Main
  */
 
 // Set controls to align with the values of the last session context
 fix_num_cores();
 toggle_cuda_version_visibility();
+toggle_node_type_visibility();
 
 // Install event handlers
 set_node_type_change_handler();
+set_cluster_change_handler();

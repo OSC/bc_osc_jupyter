@@ -1,10 +1,13 @@
 ---
-cluster: "owens"
+cluster: 
+  - "owens"
+  - "pitzer"
 form:
   - bc_account
   - jupyterlab_switch
   - bc_num_hours
-  - node_type
+  - owens_node_type
+  - pitzer_node_type
   - cuda_version
   - num_cores
   - version
@@ -41,7 +44,7 @@ attributes:
       - [ "cuda/9.1.85",    "cuda/9.1.85"   ]
       - [ "cuda/9.2.88",    "cuda/9.2.88"   ]
       - [ "cuda/10.0.130",  "cuda/10.0.130" ]
-  node_type:
+  owens_node_type:
     widget: select
     label: "Node type"
     help: |
@@ -82,6 +85,50 @@ attributes:
           "debug",   "debug",
           data-min-ppn: 0,
           data-max-ppn: 28,
+          data-can-show-cuda: false
+        ]
+  pitzer_node_type:
+    widget: select
+    label: "Node type"
+    help: |
+      - **any** - (*1-40 cores*) Chooses anyone of the available Pitzer nodes.
+        This reduces the wait time as you have no requirements. Standard Pitzer
+        nodes have 192GB of memory.
+      - **gpu** - (*1-40 cores*) This node includes two [NVIDIA Tesla V100 GPUs]
+        and loads the [CUDA] 9.2.88 module. This node has 384GB of memory.
+        There are currently only 32 of these nodes on Pitzer.
+      - **hugemem** - (*80 cores*) This Pitzer node has 3TB of memory as
+        well as 80 cores. There are only 4 of these nodes on Pitzer. A
+        reservation may be required to use this node.
+      - **debug** - (*1-40 cores*) For short sessions (= 1 hour) the debug queue
+        will have the shortest wait time. This is only accessible during 8AM -
+        6PM, Monday - Friday. There are 6 of these nodes on Pitzer.
+        
+      [NVIDIA Tesla V100 GPUs]: http://www.nvidia.com/object/tesla-p100.html
+      [CUDA]: https://developer.nvidia.com/cuda-zone
+    options:
+      - [
+          "any",     "any",
+          data-min-ppn: 0,
+          data-max-ppn: 40,
+          data-can-show-cuda: false
+        ]
+      - [
+          "gpu",     "gpu",
+          data-min-ppn: 0,
+          data-max-ppn: 40,
+          data-can-show-cuda: true
+        ]
+      - [
+          "hugemem", "hugemem",
+          data-min-ppn: 80,
+          data-max-ppn: 80,
+          data-can-show-cuda: false
+        ]
+      - [
+          "debug",   "debug",
+          data-min-ppn: 0,
+          data-max-ppn: 40,
           data-can-show-cuda: false
         ]
   version:
