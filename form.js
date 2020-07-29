@@ -97,12 +97,47 @@ function node_type_change_hander() {
 }
 
 /**
+ * Sets the change handler for the cluster select
+ */
+function set_cluster_handler(){
+  let cluster_input = $('#batch_connect_session_context_cluster');
+  cluster_input.change(toggle_node_type)
+}
+
+/**
+ * Toggles visibility depending on the cluster
+ */
+function toggle_node_type(){
+  jQuery("option[data-cluster]").toggleOption(false);
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  jQuery("option[data-cluster=" + cluster + "]").toggleOption(true);
+}
+
+/**
+ * Used to toggle the option
+ * 
+ * @param {bool} show - show the option or not
+ */
+jQuery.fn.toggleOption = function( show ) {
+  jQuery( this ).toggle( show );
+  if( show ) {
+      if( jQuery( this ).parent( 'span.toggleOption' ).length )
+          jQuery( this ).unwrap( );
+  } else {
+      if( jQuery( this ).parent( 'span.toggleOption' ).length == 0 )
+          jQuery( this ).wrap( '<span class="toggleOption" style="display: none;" />' );
+  }
+};
+
+/**
  * Main
  */
 
 // Set controls to align with the values of the last session context
 fix_num_cores();
 toggle_cuda_version_visibility();
+toggle_node_type();
 
 // Install event handlers
 set_node_type_change_handler();
+set_cluster_handler();
