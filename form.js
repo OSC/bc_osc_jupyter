@@ -32,14 +32,20 @@ function fix_num_cores() {
  * @param      {element}  num_cores_input  The number cores input
  */
 function set_ppn_by_node_type(node_type_input, num_cores_input) {
-  let data = node_type_input.find(':selected').data();
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  cluster = cluster.charAt(0).toUpperCase() + cluster.slice(1);
 
-  num_cores_input.attr('max', data.maxPpn);
-  num_cores_input.attr('min', data.minPpn);
+  let data = node_type_input.find(':selected').data();
+  let max = node_type_input.find(':selected').data('maxPpn' + cluster);
+  let min = node_type_input.find(':selected').data('minPpn' + cluster);
+  console.log(min + ' ' + max);
+
+  num_cores_input.attr('max', max);
+  num_cores_input.attr('min', min);
 
   // Clamp value between min and max
   num_cores_input.val(
-    clamp(data.minPpn, data.maxPpn, num_cores_input.val())
+    clamp(min, max, num_cores_input.val())
   );
 }
 
@@ -67,6 +73,8 @@ function toggle_visibilty_of_form_group(form_id, show) {
  * Looking for the value of data-can-show-cuda
  */
 function toggle_cuda_version_visibility() {
+  let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
+  cluster = cluster.charAt(0).toUpperCase() + cluster.slice(1);
   let node_type_input = $('#batch_connect_session_context_node_type');
 
   // Allow for cuda_version control not existing
@@ -76,7 +84,7 @@ function toggle_cuda_version_visibility() {
 
   toggle_visibilty_of_form_group(
     '#batch_connect_session_context_cuda_version',
-    node_type_input.find(':selected').data('can-show-cuda')
+    node_type_input.find(':selected').data('can-show-cuda' + cluster)
   );
 }
 

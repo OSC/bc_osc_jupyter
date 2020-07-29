@@ -1,5 +1,7 @@
 ---
-cluster: "owens"
+cluster: 
+  - "owens"
+  - "pitzer"
 form:
   - bc_account
   - jupyterlab_switch
@@ -62,27 +64,39 @@ attributes:
     options:
       - [
           "any",     "any",
-          data-min-ppn: 0,
-          data-max-ppn: 28,
-          data-can-show-cuda: false
+          data-min-ppn-owens: 0,
+          data-max-ppn-owens: 28,
+          data-can-show-cuda-owens: false,
+          data-min-ppn-pitzer: 0,
+          data-max-ppn-pitzer: 40,
+          data-can-show-cuda-pitzer: false
         ]
       - [
           "gpu",     "gpu",
-          data-min-ppn: 0,
-          data-max-ppn: 28,
-          data-can-show-cuda: true
+          data-min-ppn-owens: 0,
+          data-max-ppn-owens: 28,
+          data-can-show-cuda-owens: true,
+          data-min-ppn-pitzer: 0,
+          data-max-ppn-pitzer: 40,
+          data-can-show-cuda-pitzer: true,
         ]
       - [
           "hugemem", "hugemem",
-          data-min-ppn: 48,
-          data-max-ppn: 48,
-          data-can-show-cuda: false
+          data-min-ppn-owens: 48,
+          data-max-ppn-owens: 48,
+          data-can-show-cuda-owens: false,
+          data-min-ppn-pitzer: 80,
+          data-max-ppn-pitzer: 80,
+          data-can-show-cuda-pitzer: false
         ]
       - [
           "debug",   "debug",
-          data-min-ppn: 0,
-          data-max-ppn: 28,
-          data-can-show-cuda: false
+          data-min-ppn-owens: 0,
+          data-max-ppn-owens: 28,
+          data-can-show-cuda-owens: false,
+          data-min-ppn-pitzer: 0,
+          data-max-ppn-pitzer: 40,
+          data-can-show-cuda-pitzer: false
         ]
   version:
     widget: "select"
