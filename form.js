@@ -108,26 +108,12 @@ function set_cluster_handler(){
  * Toggles visibility depending on the cluster
  */
 function toggle_node_type(){
-  jQuery("option[data-cluster]").toggleOption(false);
+  let all_options = $("#batch_connect_session_context_node_type option");
+  all_options.hide();
   let cluster = $('#batch_connect_session_context_cluster').find(':selected').html();
-  jQuery("option[data-cluster=" + cluster + "]").toggleOption(true);
+  let cluster_options = $("#batch_connect_session_context_node_type option[data-cluster=" + cluster + "]");
+  cluster_options.show();
 }
-
-/**
- * Used to toggle the option
- * 
- * @param {bool} show - show the option or not
- */
-jQuery.fn.toggleOption = function( show ) {
-  jQuery( this ).toggle( show );
-  if( show ) {
-      if( jQuery( this ).parent( 'span.toggleOption' ).length )
-          jQuery( this ).unwrap( );
-  } else {
-      if( jQuery( this ).parent( 'span.toggleOption' ).length == 0 )
-          jQuery( this ).wrap( '<span class="toggleOption" style="display: none;" />' );
-  }
-};
 
 /**
  * Main
