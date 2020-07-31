@@ -49,7 +49,7 @@ function set_ppn_by_node_type(node_type_input, num_cores_input) {
  * @param      {string}    form_id  The form identifier
  * @param      {boolean}   show     Whether to show or hide
  */
-function toggle_visibilty_of_form_group(form_id, show) {
+function toggle_visibility_of_form_group(form_id, show) {
   let form_element = $(form_id);
   let parent = form_element.parent();
 
@@ -74,7 +74,7 @@ function toggle_cuda_version_visibility() {
     return;
   }
 
-  toggle_visibilty_of_form_group(
+  toggle_visibility_of_form_group(
     '#batch_connect_session_context_cuda_version',
     node_type_input.find(':selected').data('can-show-cuda')
   );
@@ -85,13 +85,13 @@ function toggle_cuda_version_visibility() {
  */
 function set_node_type_change_handler() {
   let node_type_input = $('#batch_connect_session_context_node_type');
-  node_type_input.change(node_type_change_hander);
+  node_type_input.change(node_type_change_handler);
 }
 
 /**
  * Update UI when node_type changes
  */
-function node_type_change_hander() {
+function node_type_change_handler() {
   fix_num_cores();
   toggle_cuda_version_visibility();
 }
