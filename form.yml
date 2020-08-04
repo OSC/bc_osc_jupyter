@@ -63,26 +63,22 @@ attributes:
       - [
           "any",     "any",
           data-min-ppn: 0,
-          data-max-ppn: 28,
-          data-can-show-cuda: false
+          data-max-ppn: 28
         ]
       - [
           "gpu",     "gpu",
           data-min-ppn: 0,
-          data-max-ppn: 28,
-          data-can-show-cuda: true
+          data-max-ppn: 28
         ]
       - [
           "hugemem", "hugemem",
           data-min-ppn: 48,
-          data-max-ppn: 48,
-          data-can-show-cuda: false
+          data-max-ppn: 48
         ]
       - [
           "debug",   "debug",
           data-min-ppn: 0,
-          data-max-ppn: 28,
-          data-can-show-cuda: false
+          data-max-ppn: 28
         ]
   version:
     widget: "select"

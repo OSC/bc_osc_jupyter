@@ -44,7 +44,7 @@ function set_ppn_by_node_type(node_type_input, num_cores_input) {
 }
 
 /**
- * Toggle the visibilty of a form group
+ * Toggle the visibility of a form group
  *
  * @param      {string}    form_id  The form identifier
  * @param      {boolean}   show     Whether to show or hide
@@ -52,6 +52,11 @@ function set_ppn_by_node_type(node_type_input, num_cores_input) {
 function toggle_visibility_of_form_group(form_id, show) {
   let form_element = $(form_id);
   let parent = form_element.parent();
+
+  // kick out if you didn't find what you're looking for
+  if(parent.size() <= 0) {
+    return;
+  }
 
   if(show) {
     parent.show();
@@ -62,22 +67,12 @@ function toggle_visibility_of_form_group(form_id, show) {
 }
 
 /**
- * Toggle the visibilty of the CUDA select
- *
- * Looking for the value of data-can-show-cuda
+ * Toggle the visibility of the CUDA select when the selected
+ * node_type changes
  */
-function toggle_cuda_version_visibility() {
-  let node_type_input = $('#batch_connect_session_context_node_type');
-
-  // Allow for cuda_version control not existing
-  if ( ! ($('#batch_connect_session_context_cuda_version').length > 0) ) {
-    return;
-  }
-
-  toggle_visibility_of_form_group(
-    '#batch_connect_session_context_cuda_version',
-    node_type_input.find(':selected').data('can-show-cuda')
-  );
+function toggle_cuda_version_visibility(selected_node_type) {
+  const cuda_element = $('#batch_connect_session_context_cuda_version');
+  toggle_visibility_of_form_group(cuda_element, selected_node_type == 'gpu');
 }
 
 /**
@@ -85,15 +80,15 @@ function toggle_cuda_version_visibility() {
  */
 function set_node_type_change_handler() {
   let node_type_input = $('#batch_connect_session_context_node_type');
-  node_type_input.change(node_type_change_handler);
+  node_type_input.change((event) => node_type_change_handler(event));
 }
 
 /**
  * Update UI when node_type changes
  */
-function node_type_change_handler() {
+function node_type_change_handler(event) {
   fix_num_cores();
-  toggle_cuda_version_visibility();
+  toggle_cuda_version_visibility(event.target.value);
 }
 
 /**
@@ -102,7 +97,9 @@ function node_type_change_handler() {
 
 // Set controls to align with the values of the last session context
 fix_num_cores();
-toggle_cuda_version_visibility();
+toggle_cuda_version_visibility(
+  $('#batch_connect_session_context_node_type option:selected').val()
+);
 
 // Install event handlers
 set_node_type_change_handler();
