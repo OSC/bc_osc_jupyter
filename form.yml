@@ -9,6 +9,7 @@ form:
   - num_cores
   - version
   - bc_email_on_started
+  - classroom
 attributes:
   jupyterlab_switch:
     widget: "check_box"
@@ -91,3 +92,4 @@ attributes:
       - [ "2.1",  "app_jupyter/2.1.4" ]
       - [ "1.2",  "app_jupyter/1.2.16" ]
       - [ "0.35", "app_jupyter/0.35.6" ]
+  classroom: 0

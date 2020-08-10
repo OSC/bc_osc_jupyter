@@ -54,5 +54,26 @@ if [[ ${WORKSPACE_FILE+x} ]]; then
   cp $WORKSPACE_FILE .
 fi
 
+JUPYTER_API="<%= context.jupyterlab_switch == "1" ? "lab" : "tree" %>"
+
+<%- if context.classroom == "1" -%>
+module purge
+module load <%= context.version %>
+
+if [[ -n "${OSC_CLASS_FILES+x}" ]]; then
+  # Copy over classroom materials
+  set -x
+  rsync -avz "$OSC_CLASS_FILES" "$HOME/osc_classes/$OSC_CLASS_ID"
+  { set +x; } 2>/dev/null
+
+  if [[ -n "${OSC_CLASS_FILE+x}" ]]; then
+    LAST_FOLDER=$(echo "$OSC_CLASS_FILES" | awk -F"/" '{print $NF}')
+    JUPYTER_API="notebooks/osc_classes/$OSC_CLASS_ID/$LAST_FOLDER/$OSC_CLASS_FILE"
+  fi
+fi
+
+module purge
+<%- end -%>
+
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
-export jupyter_api=<%= context.jupyterlab_switch == "1" ? "lab" : "tree" %>
+export jupyter_api="$JUPYTER_API"
