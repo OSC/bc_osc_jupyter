@@ -62,8 +62,6 @@ module load <%= context.version %>
 
 # Prepare the class environment if the module has set the appropriate variables set.
 # OSC_CLASS_FILES is the instructor's project directory we need to copy from.
-# OSC_CLASS_FILE is the notebook file (extension .ipynb) we want to load on startup.
-#
 # OSC_CLASS_ID is the name of the class (eg. BIOCHEM5721).
 #
 if [[ -n "$OSC_CLASS_FILES" ]]; then
@@ -72,10 +70,7 @@ if [[ -n "$OSC_CLASS_FILES" ]]; then
   rsync -avz "$OSC_CLASS_FILES" "$HOME/osc_classes/$OSC_CLASS_ID"
   { set +x; } 2>/dev/null
 
-  if [[ -n "OSC_CLASS_FILE" ]]; then
-    LAST_FOLDER=$(echo "$OSC_CLASS_FILES" | awk -F"/" '{print $NF}')
-    JUPYTER_API="notebooks/osc_classes/$OSC_CLASS_ID/$LAST_FOLDER/$OSC_CLASS_FILE"
-  fi
+  JUPYTER_API="tree/osc_classes/$OSC_CLASS_ID"
 fi
 
 module purge
