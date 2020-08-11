@@ -67,7 +67,7 @@ module load <%= context.version %>
 if [[ -n "$OSC_CLASS_FILES" ]]; then
   # Copy over classroom materials
   set -x
-  rsync -avz "$OSC_CLASS_FILES" "$HOME/osc_classes/$OSC_CLASS_ID"
+  rsync -avz --ignore-existing "$OSC_CLASS_FILES" "$HOME/osc_classes/$OSC_CLASS_ID"
   { set +x; } 2>/dev/null
 
   JUPYTER_API="tree/osc_classes/$OSC_CLASS_ID"
