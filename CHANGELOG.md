@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.14.0] - 2020-08-12
+### Added
+- classroom flag. When enabled we copy files from the environment variable 
+  $OSC_CLASS_FILES to ~/osc_classes/$OSC_CLASS_ID to initialize the classroom
+  envrionment [#44](https://github.com/OSC/bc_osc_jupyter/pull/44).
+
+### Changed
+- Simplified the way we toggle the visibility of GPU node choice and the
+  text field choice for CUDA version [#43](https://github.com/OSC/bc_osc_jupyter/pull/43).
+
 ## [0.13.3] - 2020-06-26
 ### Fixed
 - Notebooks use the corret /tree API and Lab uses /lab
@@ -180,7 +190,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.3...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.0...HEAD
+[0.14.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.3...v0.14.0
 [0.13.3]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.2...v0.13.3
 [0.13.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.1...v0.13.2
 [0.13.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.0...v0.13.1
