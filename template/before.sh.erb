@@ -54,5 +54,27 @@ if [[ ${WORKSPACE_FILE+x} ]]; then
   cp $WORKSPACE_FILE .
 fi
 
+JUPYTER_API="<%= context.jupyterlab_switch == "1" ? "lab" : "tree" %>"
+
+<%- if context.classroom == "1" -%>
+module purge
+module load <%= context.version %>
+
+# Prepare the class environment if the module has set the appropriate variables set.
+# OSC_CLASS_FILES is the instructor's project directory we need to copy from.
+# OSC_CLASS_ID is the name of the class (eg. BIOCHEM5721).
+#
+if [[ -n "$OSC_CLASS_FILES" ]]; then
+  # Copy over classroom materials
+  set -x
+  rsync -avz --ignore-existing "$OSC_CLASS_FILES" "$HOME/osc_classes/$OSC_CLASS_ID"
+  { set +x; } 2>/dev/null
+
+  JUPYTER_API="tree/osc_classes/$OSC_CLASS_ID"
+fi
+
+module purge
+<%- end -%>
+
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
-export jupyter_api=<%= context.jupyterlab_switch == "1" ? "lab" : "tree" %>
+export jupyter_api="$JUPYTER_API"

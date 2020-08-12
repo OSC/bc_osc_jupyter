@@ -228,6 +228,8 @@ EOL
 chmod 700 "<%= wrapper %>"
 echo "TTT - $(date)"
 
+
+<%- unless context.classroom == "1" -%>
 # Create custom Jupyter kernels
 echo "Creating custom Jupyter kernels..."
 export JUPYTER_PATH="${PWD}/share/jupyter"
@@ -241,6 +243,7 @@ cat > "<%= path %>/kernel.json" << EOL
 <%= JSON.pretty_generate kernel %>
 EOL
 )
+<%- end -%>
 <%- end -%>
 echo "TTT - $(date)"
 
