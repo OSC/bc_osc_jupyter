@@ -68,7 +68,6 @@ export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
 (
 umask 077
 cat > "${CONFIG_FILE}" << EOL
-c.JupyterApp.config_file_name = 'ondemand_config'
 c.KernelSpecManager.ensure_native_kernel = False
 c.NotebookApp.ip = '*'
 c.NotebookApp.port = ${port}
