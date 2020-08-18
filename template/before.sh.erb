@@ -9,30 +9,9 @@ SALT="$(create_passwd 16)"
 password="$(create_passwd 16)"
 PASSWORD_SHA1="$(echo -n "${password}${SALT}" | openssl dgst -sha1 | awk '{print $NF}')"
 
-# Notebook root directory
-export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
-
 # The `$CONFIG_FILE` environment variable is exported as it is used in the main
 # `script.sh.erb` file when launching the Jupyter server.
 export CONFIG_FILE="${PWD}/config.py"
-
-# Generate Jupyter configuration file with secure file permissions
-(
-umask 077
-cat > "${CONFIG_FILE}" << EOL
-c.JupyterApp.config_file_name = 'ondemand_config'
-c.KernelSpecManager.ensure_native_kernel = False
-c.NotebookApp.ip = '*'
-c.NotebookApp.port = ${port}
-c.NotebookApp.port_retries = 0
-c.NotebookApp.password = u'sha1:${SALT}:${PASSWORD_SHA1}'
-c.NotebookApp.base_url = '/node/${host}/${port}/'
-c.NotebookApp.open_browser = False
-c.NotebookApp.allow_origin = '*'
-c.NotebookApp.notebook_dir = '${NOTEBOOK_ROOT}'
-c.NotebookApp.disable_check_xsrf = True
-EOL
-)
 
 # Safari users hit this error https://github.com/jupyterlab/jupyterlab/issues/5486
 # so let's make a new workspace dir that's this job's PWD and copy the defult /lab
@@ -67,6 +46,7 @@ module load <%= context.version %>
 # Note we make the directory even if there's nothing to copy
 mkdir -p "$HOME/osc_classes/$OSC_CLASS_ID"
 JUPYTER_API="tree/osc_classes/$OSC_CLASS_ID"
+NOTEBOOK_ROOT="$HOME/osc_classes/$OSC_CLASS_ID"
 
 if [[ -n "$OSC_CLASS_FILES" ]]; then
   # Copy over classroom materials
@@ -80,3 +60,24 @@ module purge
 
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
 export jupyter_api="$JUPYTER_API"
+
+# Notebook root directory
+export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
+
+# Generate Jupyter configuration file with secure file permissions
+(
+umask 077
+cat > "${CONFIG_FILE}" << EOL
+c.JupyterApp.config_file_name = 'ondemand_config'
+c.KernelSpecManager.ensure_native_kernel = False
+c.NotebookApp.ip = '*'
+c.NotebookApp.port = ${port}
+c.NotebookApp.port_retries = 0
+c.NotebookApp.password = u'sha1:${SALT}:${PASSWORD_SHA1}'
+c.NotebookApp.base_url = '/node/${host}/${port}/'
+c.NotebookApp.open_browser = False
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.notebook_dir = '${NOTEBOOK_ROOT}'
+c.NotebookApp.disable_check_xsrf = True
+EOL
+)
