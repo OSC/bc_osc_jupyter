@@ -5,6 +5,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.14.1] - 2020-08-19
+### Changed
+- removed the "c.JupyterApp.config_file_name = 'ondemand_config'" configuration
+  because it can conflict with extensions (notably nbgrader)
+- make the class directory even if there's nothing to copy to it
+- touch a MD file in the classroom root directory for reference and note taking
+- classrooms specify NOTEBOOK_ROOT to start in that directory and encapsulate the
+  classroom environment instead of relying on the JUPYTER_API redirecting to the
+  directory
+
+### Added
+- classrooms create a MD file in the root directory for reference and to keep
+  notes.
+
 ## [0.14.0] - 2020-08-12
 ### Added
 - classroom flag. When enabled we copy files from the environment variable 
