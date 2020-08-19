@@ -45,6 +45,7 @@ module load <%= context.version %>
 #
 # Note we make the directory even if there's nothing to copy
 mkdir -p "$HOME/osc_classes/$OSC_CLASS_ID"
+touch "$HOME/osc_classes/$OSC_CLASS_ID/0_${OSC_CLASS_ID:-osc_class}.md"
 NOTEBOOK_ROOT="$HOME/osc_classes/$OSC_CLASS_ID"
 
 if [[ -n "$OSC_CLASS_FILES" ]]; then
