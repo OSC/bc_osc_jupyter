@@ -45,7 +45,6 @@ module load <%= context.version %>
 #
 # Note we make the directory even if there's nothing to copy
 mkdir -p "$HOME/osc_classes/$OSC_CLASS_ID"
-JUPYTER_API="tree/osc_classes/$OSC_CLASS_ID"
 NOTEBOOK_ROOT="$HOME/osc_classes/$OSC_CLASS_ID"
 
 if [[ -n "$OSC_CLASS_FILES" ]]; then
