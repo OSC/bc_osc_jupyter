@@ -38,12 +38,46 @@ attributes:
       CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
       is required to make use of this functionality.
     options:
-      - [ "cuda/8.0.44",    "cuda/8.0.44"   ]
-      - [ "cuda/8.0.61",    "cuda/8.0.61"   ]
-      - [ "cuda/9.0.176",   "cuda/9.0.176"  ]
-      - [ "cuda/9.1.85",    "cuda/9.1.85"   ]
-      - [ "cuda/9.2.88",    "cuda/9.2.88"   ]
-      - [ "cuda/10.0.130",  "cuda/10.0.130" ]
+      - [ 
+          "cuda/8.0.44",    "cuda/8.0.44",
+          data-version-for-owens: true,
+          data-version-for-pitzer: false
+        ]
+      - [ 
+          "cuda/8.0.61",    "cuda/8.0.61",
+          data-version-for-owens: true,
+          data-version-for-pitzer: false
+        ]
+      - [ 
+          "cuda/9.0.176",   "cuda/9.0.176",
+          data-version-for-owens: true,
+          data-version-for-pitzer: true
+        ]
+      - [ 
+          "cuda/9.1.85",    "cuda/9.1.85",
+          data-version-for-owens: true,
+          data-version-for-pitzer: true 
+        ]
+      - [ 
+          "cuda/9.2.88",    "cuda/9.2.88",
+          data-version-for-owens: true,
+          data-version-for-pitzer: true
+        ]
+      - [ 
+          "cuda/10.0.130",  "cuda/10.0.130",
+          data-version-for-owens: true,
+          data-version-for-pitzer: true
+        ]
+      - [ 
+          "cuda/10.1.168",  "cuda/10.1.168",
+          data-version-for-owens: true,
+          data-version-for-pitzer: true
+        ]
+      - [
+          "cuda/10.2.89",   "cuda/10.2.89",
+          data-version-for-owens: true,
+          data-version-for-pitzer: true
+        ]
   node_type:
     widget: select
     label: "Node type"
