@@ -7,8 +7,6 @@
   # @returns [[major_minor_version, "lmod_load_string"], ["0.6", "julia/0.6.4"]]
   def get_lmod_julia_versions
       [
-        ["0.5", "0.5.1"],
-        ["0.6", "0.6.4"],
         ["1.0", "1.0.5"],
         ["1.1", "1.1.1"],
         ["1.3", "1.3.1"]
@@ -77,12 +75,11 @@
       }
   end
 
-  cuda = (context.node_type == "gpu") ? " #{context.cuda_version}" : ""
+  cuda = (context.node_type == "gpu") ? " cuda/9.2.88" : ""
   wrapper = session.staged_root.join("launch_wrapper.sh")
   wrapper_log = session.staged_root.join("launch_wrapper.log")
 
-  # kernels common to all clusters. it just happens that pitzer is common to both
-  common_kernels = {
+  kernels = {
     python36conda: {
       display_name: "Python 3.6 (Conda 5.2) [python/3.6-conda5.2#{cuda}]",
       language: "python",
@@ -112,128 +109,8 @@
       env: {
         MODULES: "xalt/latest python/2.7-conda5.2#{cuda}"
       }
-    },
-    python37_2019_10: {
-      display_name: "Python 3.7-2019.10 [python/3.7-2019.10#{cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest python/3.7-2019.10#{cuda}"
-      }
-    }
-  }
-
-  owens_kernels = {
-    python36: {
-      display_name: "Python 3.6 [python/3.6#{cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel_launcher",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest python/3.6#{cuda}"
-      }
-    },
-    python35: {
-      display_name: "Python 3.5 [python/3.5#{cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest python/3.5#{cuda}"
-      }
-    },
-    python27: {
-      display_name: "Python 2.7 [python/2.7#{cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest python/2.7 #{cuda}"
-      }
-    },
-    python27conda: {
-      display_name: "Python 2.7 (Conda 5.2) [python/2.7#{cuda}]",
-      language: "python",
-      argv: [
-        wrapper,
-        "python",
-        "-m",
-        "ipykernel",
-        "-f",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest python/2.7-conda5.2#{cuda}"
-      }
-    },
-    julia051: {
-      display_name: "Julia 0.5.1 [julia/0.5.1#{cuda}]",
-      language: "julia",
-      argv: [
-        wrapper,
-        "julia",
-        "-i",
-        "--startup-file=yes",
-        "--color=yes",
-        "/usr/local/julia/0.5.1/share/julia/site/v0.5/IJulia/src/kernel.jl",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest julia/0.5.1#{cuda}"
-      }
-    },
-    julia064: {
-      display_name: "Julia 0.6.4 [julia/0.6.4#{cuda}]",
-      language: "julia",
-      argv: [
-        wrapper,
-        "julia",
-        "-i",
-        "--startup-file=yes",
-        "--color=yes",
-        "/usr/local/julia/0.6.4/site/v0.6/IJulia/src/kernel.jl",
-        "{connection_file}"
-      ],
-      env: {
-        MODULES: "xalt/latest julia/0.6.4 #{cuda}"
-      },
-    },
-  }
-
-  kernels = if context.cluster.eql? 'owens'
-              owens_kernels.merge common_kernels
-            elsif context.cluster.eql? 'pitzer'
-              common_kernels
-            else
-              {}
-            end
-
-  kernels.tap do |hsh|
+    }, 
+  }.tap do |hsh|
     # Any existing Julia kernelspec may be clobbered if the user has their own version of that kernel installed
     lmod_julia_versions = Hash[get_lmod_julia_versions]
     installed_user_ijulia_kernels = Hash[get_installed_user_ijulia_kernels]
@@ -287,8 +164,6 @@ EOL
 chmod 700 "<%= wrapper %>"
 echo "TTT - $(date)"
 
-
-<%- unless context.classroom == "1" -%>
 # Create custom Jupyter kernels
 echo "Creating custom Jupyter kernels..."
 export JUPYTER_PATH="${PWD}/share/jupyter"
@@ -302,7 +177,6 @@ cat > "<%= path %>/kernel.json" << EOL
 <%= JSON.pretty_generate kernel %>
 EOL
 )
-<%- end -%>
 <%- end -%>
 echo "TTT - $(date)"
 
@@ -336,7 +210,8 @@ echo "TTT - $(date)"
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
-module load ondemand/project xalt/latest <%= context.version %>
+module use /apps/lmodfiles/project/ondemand
+module load xalt/latest jupyter/python3.6
 module list
 echo "TTT - $(date)"
 
@@ -347,5 +222,6 @@ jupyter kernelspec list
 echo "TTT - $(date)"
 
 # Launch the Jupyter server
+echo "which jupyter? $(which jupyter)"
 set -x
 jupyter <%= context.jupyterlab_switch == "1" ? "lab" : "notebook" %> --config="${CONFIG_FILE}"
