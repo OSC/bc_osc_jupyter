@@ -1,5 +1,7 @@
 ---
-cluster: "owens"
+cluster:
+  - "owens"
+  - "pitzer"
 form:
   - bc_account
   - jupyterlab_switch
@@ -63,23 +65,31 @@ attributes:
     options:
       - [
           "any",     "any",
-          data-min-ppn: 0,
-          data-max-ppn: 28
+          data-min-ppn-owens: 0,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 0,
+          data-max-ppn-pitzer: 40
         ]
       - [
           "gpu",     "gpu",
-          data-min-ppn: 0,
-          data-max-ppn: 28
+          data-min-ppn-owens: 0,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 0,
+          data-max-ppn-pitzer: 40
         ]
       - [
           "hugemem", "hugemem",
-          data-min-ppn: 48,
-          data-max-ppn: 48
+          data-min-ppn-owens: 48,
+          data-max-ppn-owens: 48,
+          data-min-ppn-pitzer: 80,
+          data-max-ppn-pitzer: 80
         ]
       - [
           "debug",   "debug",
-          data-min-ppn: 0,
-          data-max-ppn: 28
+          data-min-ppn-owens: 0,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 0,
+          data-max-ppn-pitzer: 28
         ]
   version:
     widget: "select"

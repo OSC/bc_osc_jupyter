@@ -32,14 +32,24 @@ function fix_num_cores() {
  * @param      {element}  num_cores_input  The number cores input
  */
 function set_ppn_by_node_type(node_type_input, num_cores_input) {
-  let data = node_type_input.find(':selected').data();
+  const data = node_type_input.find(':selected').data();
+  var cluster = $('#batch_connect_session_context_cluster').val();
+  cluster = cluster.charAt(0).toUpperCase() + cluster.slice(1);
 
-  num_cores_input.attr('max', data.maxPpn);
-  num_cores_input.attr('min', data.minPpn);
+  // classroom deployments don't have node_type_input
+  if(!data){
+    return;
+  }
+
+  const min = data["minPpn" + cluster];
+  const max = data["maxPpn" + cluster];
+
+  num_cores_input.attr('max', max);
+  num_cores_input.attr('min', min);
 
   // Clamp value between min and max
   num_cores_input.val(
-    clamp(data.minPpn, data.maxPpn, num_cores_input.val())
+    clamp(min, max, num_cores_input.val())
   );
 }
 
@@ -84,9 +94,25 @@ function set_node_type_change_handler() {
 }
 
 /**
+ * Sets the change handler for the node_type select.
+ */
+function set_cluster_change_handler() {
+  let cluster_input = $('#batch_connect_session_context_cluster');
+  cluster_input.change((event) => cluster_change_handler(event));
+}
+
+/**
  * Update UI when node_type changes
  */
 function node_type_change_handler(event) {
+  fix_num_cores();
+  toggle_cuda_version_visibility(event.target.value);
+}
+
+/**
+ * Update UI when node_type changes
+ */
+function cluster_change_handler(event) {
   fix_num_cores();
   toggle_cuda_version_visibility(event.target.value);
 }
@@ -103,3 +129,4 @@ toggle_cuda_version_visibility(
 
 // Install event handlers
 set_node_type_change_handler();
+set_cluster_change_handler();
