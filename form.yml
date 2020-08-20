@@ -91,7 +91,7 @@ attributes:
           data-min-ppn-owens: 0,
           data-max-ppn-owens: 28,
           data-min-ppn-pitzer: 0,
-          data-max-ppn-pitzer: 28
+          data-max-ppn-pitzer: 40
         ]
   version:
     widget: "select"
