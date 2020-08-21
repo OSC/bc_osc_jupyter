@@ -108,6 +108,23 @@ function update_cuda_options() {
 }
 
 /**
+ * If submits a blank value for num_cores fill in the max for
+ * that cluster & node-type combination
+ */
+function submit_blank_cores() {
+  let node_type_input = $('#batch_connect_session_context_node_type');
+  let num_cores_input = $('#batch_connect_session_context_num_cores');
+
+  if(num_cores_input.val() !== '') {
+    return;
+  } else {
+    const data = node_type_input.find(':selected').data();
+    const max = data["maxPpn" + current_cluster_capitalized()];
+    num_cores_input.val(max);
+  }
+}
+
+/**
  * Toggle the visibility of the CUDA select when the selected
  * node_type changes
  */
@@ -166,3 +183,8 @@ toggle_cuda_version_visibility(
 // Install event handlers
 set_node_type_change_handler();
 set_cluster_change_handler();
+
+// when users launch, set num_cores if it's a blank value
+$(document).on("submit", function() {
+  submit_blank_cores();
+});
