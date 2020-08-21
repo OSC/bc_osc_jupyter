@@ -85,31 +85,39 @@ function toggle_visibility_of_form_group(form_id, show) {
 }
 
 /**
- * Update the cuda select options because not all options are available
- * on all clusters. So hide/show them as appropriate.
+ * Hide or show options of an element based on which cluster is
+ * currently selected and the data-option-for-CLUSTER attributes
+ * for each option
+ *
+ * @param      {string}  element_name  The name of the element with options to toggle
  */
-function update_cuda_options() {
+function toggle_options(element_name) {
   const cluster = current_cluster_capitalized();
-  const cuda_options = $('#batch_connect_session_context_cuda_version option');
+  const search = "#" + element_name + " option"
+  const options = $(search);
 
-  cuda_options.each(function(_i, option) {
+  options.each(function(_i, option) {
     // the variable 'option' is just a data structure. it has no attr, data, show
     // or hide methods so we have to query for it again
-    let option_element = $("#batch_connect_session_context_cuda_version option[value='" + option.value + "']");
+    let option_element = $(search + "[value='" + option.value + "']");
     let data = option_element.data();
-    let show = data["versionFor" + cluster];
+    let show = data["optionFor" + cluster];
 
     if(show) {
       option_element.show();
     } else {
       option_element.hide();
+
+      if(option_element.prop('selected')) {
+        option_element.prop('selected', 'false');
+      }
     }
   });
 }
 
 /**
- * If submits a blank value for num_cores fill in the max for
- * that cluster & node-type combination
+ * If the user submits a blank value for num_cores, fill in the maximum 
+ * value for that cluster & node-type combination
  */
 function submit_blank_cores() {
   let node_type_input = $('#batch_connect_session_context_node_type');
@@ -134,7 +142,7 @@ function toggle_cuda_version_visibility(selected_node_type) {
 
   toggle_visibility_of_form_group(cuda_element, choose_gpu);
   if(choose_gpu){
-    update_cuda_options();
+    toggle_options("batch_connect_session_context_cuda_version");
   }
 }
 
@@ -163,11 +171,11 @@ function node_type_change_handler(event) {
 }
 
 /**
- * Update UI when node_type changes
+ * Update UI when the cluster changes
  */
 function cluster_change_handler(event) {
   fix_num_cores();
-  update_cuda_options();
+  toggle_options("batch_connect_session_context_cuda_version");
 }
 
 /**
