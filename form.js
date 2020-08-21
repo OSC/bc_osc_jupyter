@@ -127,7 +127,14 @@ function toggle_options(element_name) {
       option_element.hide();
 
       if(option_element.prop('selected')) {
-        option_element.prop('selected', 'false');
+        option_element.prop('selected', false);
+
+        // when de-selecting something, the default is to fallback to the very first
+        // option. But there's an edge case where you want to hide the very first option,
+        // and deselecting it does nothing.
+        if(option_element.next()){
+          option_element.next().prop('selected', true);
+        }
       }
     }
   });
@@ -195,7 +202,7 @@ function set_node_type_change_handler() {
 }
 
 /**
- * Sets the change handler for the node_type select.
+ * Sets the change handler for the cluster select.
  */
 function set_cluster_change_handler() {
   let cluster_input = $('#batch_connect_session_context_cluster');
