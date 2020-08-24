@@ -1,6 +1,25 @@
 <%-
-  ppn   = num_cores.to_i
-  props = node_type == "gpu" ? ":ppn=#{ppn}:gpus=1" : ":ppn=#{ppn}"
+  ppn             = num_cores.to_i
+  base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{ppn}"]
+
+  slurm_args = case node_type
+              when "gpu"
+                base_slurm_args += ["--gpus-per-node", "1"]
+              when "largemem"
+                base_slurm_args += ["--mem", "740G"]
+              else
+                base_slurm_args
+              end
+
+  torque_args = case node_type
+              when "gpu"
+                ":ppn=#{ppn}:gpus=1"
+              when "hugemem"
+                ppn == 80 ? ":ppn=#{ppn},mem=2989GB" : ":ppn=#{ppn}"
+              else
+                ":ppn=#{ppn}"
+              end
+
 -%>
 ---
 batch_connect:
@@ -12,5 +31,11 @@ script:
   queue_name: "debug"
   <%- end -%>
   native:
+    <%- unless cluster == 'pitzer-exp' %>
     resources:
-      nodes: "1<%= props %>"
+      nodes: "1<%= torque_args %>"
+    <%- else %>
+    <%- slurm_args.each do |arg| %>
+    - "<%= arg %>"
+    <%- end %>
+    <%- end %>

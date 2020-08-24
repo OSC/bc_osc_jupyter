@@ -229,6 +229,8 @@
               owens_kernels.merge common_kernels
             elsif context.cluster.eql? 'pitzer'
               common_kernels
+            elsif context.cluster.eql? 'pitzer-exp'
+              common_kernels
             else
               {}
             end
@@ -295,7 +297,7 @@ export JUPYTER_PATH="${PWD}/share/jupyter"
 <%- kernels.each do |name, kernel| -%>
 <%- path = "${JUPYTER_PATH}/kernels/sys_#{name}" -%>
 mkdir -p "<%= path %>"
-cp "${PWD}/assets/<%= name.to_s.gsub(/\d/, "") %>"/* "<%= path %>/."
+cp "${PWD}/assets/<%= name.to_s.gsub(/\d|_/, "") %>"/* "<%= path %>/."
 (
 umask 077
 cat > "<%= path %>/kernel.json" << EOL
