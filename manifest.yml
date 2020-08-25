@@ -1,12 +1,13 @@
 ---
-name: Jupyter
+name: Jupyter (Owens and Pitzer)
 category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [Jupyter] server using [Python] on the [Owens
-  cluster].
+  This app will launch a [Jupyter] server using [Python] on the [Owens] or
+  [Pitzer] clusters.
 
   [Jupyter]: https://jupyter.org/
   [Python]: https://www.python.org/
-  [Owens cluster]: https://www.osc.edu/resources/technical_support/supercomputers/owens
+  [Owens]: https://www.osc.edu/resources/technical_support/supercomputers/owens
+  [Pitzer]: https://www.osc.edu/resources/technical_support/supercomputers/pitzer
