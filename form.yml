@@ -86,7 +86,8 @@ attributes:
       - [
           "cuda/10.2.89",   "cuda/10.2.89",
           data-option-for-owens: true,
-          data-option-for-pitzer: true
+          data-option-for-pitzer: true,
+          data-option-for-pitzer-exp: true
         ]
   node_type:
     widget: select
