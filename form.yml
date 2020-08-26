@@ -16,6 +16,7 @@ attributes:
     options:
       - "owens"
       - "pitzer"
+      - "pitzer-exp"
   jupyterlab_switch:
     widget: "check_box"
     label: "Use JupyterLab instead of Jupyter Notebook?"
