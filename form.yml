@@ -1,6 +1,6 @@
 ---
-cluster: "owens"
 form:
+  - cluster
   - bc_account
   - jupyterlab_switch
   - bc_num_hours
@@ -11,6 +11,11 @@ form:
   - bc_email_on_started
   - classroom
 attributes:
+  cluster:
+    widget: "select"
+    options:
+      - "owens"
+      - "pitzer"
   jupyterlab_switch:
     widget: "check_box"
     label: "Use JupyterLab instead of Jupyter Notebook?"
@@ -36,50 +41,94 @@ attributes:
       CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
       is required to make use of this functionality.
     options:
-      - [ "cuda/8.0.44",    "cuda/8.0.44"   ]
-      - [ "cuda/8.0.61",    "cuda/8.0.61"   ]
-      - [ "cuda/9.0.176",   "cuda/9.0.176"  ]
-      - [ "cuda/9.1.85",    "cuda/9.1.85"   ]
-      - [ "cuda/9.2.88",    "cuda/9.2.88"   ]
-      - [ "cuda/10.0.130",  "cuda/10.0.130" ]
+      - [ 
+          "cuda/8.0.44",    "cuda/8.0.44",
+          data-option-for-owens: true,
+          data-option-for-pitzer: false
+        ]
+      - [ 
+          "cuda/8.0.61",    "cuda/8.0.61",
+          data-option-for-owens: true,
+          data-option-for-pitzer: false
+        ]
+      - [ 
+          "cuda/9.0.176",   "cuda/9.0.176",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
+      - [ 
+          "cuda/9.1.85",    "cuda/9.1.85",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
+      - [ 
+          "cuda/9.2.88",    "cuda/9.2.88",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
+      - [ 
+          "cuda/10.0.130",  "cuda/10.0.130",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
+      - [ 
+          "cuda/10.1.168",  "cuda/10.1.168",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
+      - [
+          "cuda/10.2.89",   "cuda/10.2.89",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
   node_type:
     widget: select
     label: "Node type"
     help: |
-      - **any** - (*1-28 cores*) Use any available Owens node. This reduces the
-        wait time as there are no node requirements.
-      - **gpu** - (*1-28 cores*) Use an Owens node that has an [NVIDIA Tesla P100
-        GPU] and loads the requested [CUDA] module. There are 160 of these nodes
-        on Owens.
-      - **hugemem** - (*48 cores*) Use an Owens node that has 1.5TB of
-        available RAM as well as 48 cores. There are 16 of these nodes on
-        Owens.
-      - **debug** - (*1-28 cores*) For short sessions (= 1 hour) the debug queue
+      Owens nodes have up to 28 cores available and Pitzer nodes have up to 40.
+
+      - **any** - Use any available node. This reduces the wait time as there are no node requirements.
+      - **gpu** - Use a node that has a GPU and loads the requested [CUDA] module.
+        - Owens has 160 of these nodes with a [NVIDIA Tesla P100 GPU].
+        - Pitzer has 32 of these nodes with two [NVIDIA Tensor Core V100 GPU]s.
+      - **hugemem** - Use a node that has a large amounts of RAM cores.
+        - Owens has 16 of these nodes with 1.5TB of RAM and 40 cores.
+        - Pitzer has 4 of these nodes with 3TB of RAM and 80 cores.
+      - **debug** - For short sessions (= 1 hour) the debug queue
         will have the shortest wait time. This is only accessible during 8AM -
-        6PM, Monday - Friday. There are 6 of these nodes on Owens.
+        6PM, Monday - Friday. There are 6 of these nodes on both Owens and Pitzer.
 
       [NVIDIA Tesla P100 GPU]: http://www.nvidia.com/object/tesla-p100.html
+      [NVIDIA Tensor Core V100 GPU]: https://www.nvidia.com/en-us/data-center/v100/
       [CUDA]: https://developer.nvidia.com/cuda-zone
     options:
       - [
           "any",     "any",
-          data-min-ppn: 0,
-          data-max-ppn: 28
+          data-min-ppn-owens: 1,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 1,
+          data-max-ppn-pitzer: 40
         ]
       - [
           "gpu",     "gpu",
-          data-min-ppn: 0,
-          data-max-ppn: 28
+          data-min-ppn-owens: 1,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 1,
+          data-max-ppn-pitzer: 40
         ]
       - [
           "hugemem", "hugemem",
-          data-min-ppn: 48,
-          data-max-ppn: 48
+          data-min-ppn-owens: 48,
+          data-max-ppn-owens: 48,
+          data-min-ppn-pitzer: 80,
+          data-max-ppn-pitzer: 80
         ]
       - [
           "debug",   "debug",
-          data-min-ppn: 0,
-          data-max-ppn: 28
+          data-min-ppn-owens: 1,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 1,
+          data-max-ppn-pitzer: 40
         ]
   version:
     widget: "select"
