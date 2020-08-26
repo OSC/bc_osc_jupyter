@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.14.2] - 2020-08-26
+### Added
+- classrooms set FACLs so that instructors and teaching assistants can access
+  the users' files to grade them.
+
 ## [0.14.1] - 2020-08-19
 ### Changed
 - removed the "c.JupyterApp.config_file_name = 'ondemand_config'" configuration
