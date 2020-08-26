@@ -55,6 +55,20 @@ if [[ -n "$OSC_CLASS_FILES" ]]; then
   { set +x; } 2>/dev/null
 fi
 
+# Now set FACLs so that instructors & teaching assistants can copy the
+# students' directories and grade their notebooks.
+# But first remove any old FACLS we may have set previously if applicable.
+RM_ACL_FILE="/users/PZS0645/support/classes/$OSC_CLASS_ID/class.acl.remove"
+if [[ -r "$RM_ACL_FILE" ]]; then
+  nfs4_setfacl -X - "$HOME" "$HOME/osc_classes" "$HOME/osc_classes/$OSC_CLASS_ID" < "$RM_ACL_FILE"
+fi
+
+ACL_FILE="/users/PZS0645/support/classes/$OSC_CLASS_ID/class.acl"
+if [[ -r $ACL_FILE ]]; then
+  echo 'setting facl'
+  nfs4_setfacl -A - "$HOME" "$HOME/osc_classes" "$HOME/osc_classes/$OSC_CLASS_ID" < "$ACL_FILE"
+fi
+
 module purge
 <%- end -%>
 
