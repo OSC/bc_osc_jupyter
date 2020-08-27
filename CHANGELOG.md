@@ -5,6 +5,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.15.0] - 2020-08-27
+### Added
+- support for owens, pitzer and pitzer expansion clusters
+  - Added javascript to toggle the select options (node_type and cuda_version
+    availability are different across clusters).
+  - PR [46](https://github.com/OSC/bc_osc_jupyter/pull/46) merged
+    this app with pitzer
+  - PR [48](https://github.com/OSC/bc_osc_jupyter/pull/48) added
+    the pitzer expansion cluster
+
+### Changed
+- javascript now populates the num_cores if it's blank (instead of populating
+  in the submit.yml.erb).
+- min cores is 1 instead of 0.
+- A hash of common_kernels were added to the script.sh.erb that exist on any
+  cluster. Owens specific kernels merge with this hash.
+- many form items now have data attributes for js to read and manipulate.
+
 ## [0.14.2] - 2020-08-26
 ### Added
 - classrooms set FACLs so that instructors and teaching assistants can access
@@ -209,7 +227,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.0...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.15.0...HEAD
+[0.15.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.2...v0.15.0
+[0.14.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.1...v0.14.2
+[0.14.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.0...v0.14.1
 [0.14.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.3...v0.14.0
 [0.13.3]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.2...v0.13.3
 [0.13.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.13.1...v0.13.2
