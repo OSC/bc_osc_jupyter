@@ -146,14 +146,6 @@ attributes:
           data-option-for-pitzer-exp: false
         ]
       - [
-          "largemem", "largemem",
-          data-min-ppn-pitzer-exp: 48,
-          data-max-ppn-pitzer-exp: 48,
-          data-option-for-owens: false,
-          data-option-for-pitzer: false,
-          data-option-for-pitzer-exp: true
-        ]
-      - [
           "debug",   "debug",
           data-min-ppn-owens: 1,
           data-max-ppn-owens: 28,

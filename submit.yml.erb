@@ -5,8 +5,6 @@
   slurm_args = case node_type
               when "gpu"
                 base_slurm_args += ["--gpus-per-node", "1"]
-              when "largemem"
-                base_slurm_args += ["--mem", "740G"]
               else
                 base_slurm_args
               end
