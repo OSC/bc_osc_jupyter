@@ -17,16 +17,34 @@ function clamp(min, max, val) {
  */
 function current_cluster_capitalized(){
   var cluster = $('#batch_connect_session_context_cluster').val();
-  return capitalize(cluster);
+  return capitalize_words(cluster);
 }
 
 /**
- * Capitalize a string.
+ * Capitalize the words in a string and remove and '-'.  In the simplest case
+ * it simple capitalizes.  It assumes 'words' are hyphenated.
  *
- * @param      {string}  str     The string to capitalize
+ * @param      {string}  str     The word string to capitalize
+ *
+ * @example  given 'foo' this returns 'Foo'
+ * @example  given 'foo-bar' this returns 'FooBar'
  */
-function capitalize(str) {
-  return str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+function capitalize_words(str) {
+  var camel_case = "";
+  var capitalize = true;
+
+  str.split('').forEach((c) => {
+    if (capitalize) {
+      camel_case += c.toUpperCase();
+      capitalize = false;
+    } else if(c == '-') {
+      capitalize = true;
+    } else {
+      camel_case += c;
+    }
+  });
+
+  return camel_case;
 }
 
 /**
@@ -165,7 +183,7 @@ function submit_blank_cores() {
  */
 function max_cores_for_cluster(cluster_name) {
   if(cluster_name.charAt(0).toUpperCase != cluster_name.charAt(0)){
-    cluster_name = capitalize(cluster_name);
+    cluster_name = capitalize_words(cluster_name);
   }
 
   const node_type_input = $('#batch_connect_session_context_node_type');
@@ -223,6 +241,7 @@ function node_type_change_handler(event) {
 function cluster_change_handler(event) {
   fix_num_cores(event);
   toggle_options("batch_connect_session_context_cuda_version");
+  toggle_options("batch_connect_session_context_node_type");
 }
 
 /**
@@ -234,6 +253,8 @@ fix_num_cores({ target: document.querySelector('#batch_connect_session_node_type
 toggle_cuda_version_visibility(
   $('#batch_connect_session_context_node_type option:selected').val()
 );
+toggle_options("batch_connect_session_context_cuda_version");
+toggle_options("batch_connect_session_context_node_type");
 
 // Install event handlers
 set_node_type_change_handler();
