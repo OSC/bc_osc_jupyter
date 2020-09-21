@@ -152,8 +152,8 @@ attributes:
         ]
       - [
           "largemem", "largemem",
-          data-min-ppn-owens: 48,
-          data-max-ppn-owens: 48,
+          data-min-ppn-pitzer: 48,
+          data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
           data-option-for-pitzer: true
         ]
