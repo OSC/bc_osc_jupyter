@@ -159,23 +159,6 @@ function toggle_options(element_name) {
 }
 
 /**
- * If the user submits a blank value for num_cores, fill in the maximum 
- * value for that cluster & node-type combination
- */
-function submit_blank_cores() {
-  let node_type_input = $('#batch_connect_session_context_node_type');
-  let num_cores_input = $('#batch_connect_session_context_num_cores');
-
-  if(num_cores_input.val() !== '') {
-    return;
-  } else {
-    const data = node_type_input.find(':selected').data();
-    const max = data["maxPpn" + current_cluster_capitalized()];
-    num_cores_input.val(max);
-  }
-}
-
-/**
  * Find the max cores for the cluster given node type
  * that's currently selected
  *
@@ -259,8 +242,3 @@ toggle_options("batch_connect_session_context_node_type");
 // Install event handlers
 set_node_type_change_handler();
 set_cluster_change_handler();
-
-// when users launch, set num_cores if it's a blank value
-$(document).on("submit", function() {
-  submit_blank_cores();
-});
