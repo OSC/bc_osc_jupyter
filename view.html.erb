@@ -5,9 +5,19 @@
   next_url  = "#{base_url}/#{jupyter_api}"
 
   full_url="#{login_url}?next=#{URI.encode(next_url)}"
+  form_id = "juypyter_form#{login_url.gsub('/', '_')}"
 %>
 
-<form action="<%= full_url %>" method="post" target="_blank">
+<script type="text/javascript">
+  function changeTarget() {
+    var agent = navigator.userAgent;
+    if (/Macintosh/.test(agent)) {
+      document.getElementById("<%= form_id %>").target = "_self";
+    }
+  }
+</script>
+
+<form id="<%= form_id %>" action="<%= full_url %>" method="post" target="_blank" onsubmit="changeTarget()" >
   <input type="hidden" name="password" value="<%= password %>">
   <button class="btn btn-primary" type="submit">
     <i class="fa fa-cogs"></i> Connect to Jupyter
