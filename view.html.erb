@@ -1,4 +1,3 @@
-
 <%-
   base_url  = "/node/#{host}/#{port}"
   login_url = "#{base_url}/login"
@@ -8,10 +7,11 @@
   form_id = "juypyter_form#{login_url.gsub('/', '_')}"
 %>
 
+<!-- Zoom on iPad doesn't like opening in a new tab. It won't foward the form parameters. -->
 <script type="text/javascript">
   function changeTarget() {
-    var agent = navigator.userAgent;
-    if (/Macintosh/.test(agent)) {
+    const agent = navigator.userAgent;
+    if (/Mozilla\/5.0 \(Macintosh; Intel Mac OS X \d+_\d+_\d+\) AppleWebKit\/\d+.\d+.\d+ \(KHTML, like Gecko\)/.test(agent)) {
       document.getElementById("<%= form_id %>").target = "_self";
     }
   }
