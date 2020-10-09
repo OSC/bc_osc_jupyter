@@ -11,7 +11,7 @@
 <script type="text/javascript">
   function changeTarget() {
     const agent = navigator.userAgent;
-    if (/Mozilla\/5.0 \(Macintosh; Intel Mac OS X \d+_\d+_\d+\) AppleWebKit\/\d+.\d+.\d+ \(KHTML, like Gecko\)/.test(agent)) {
+    if (/Mozilla\/5\.0 \(Macintosh; Intel Mac OS X \d+_\d+_\d+\) AppleWebKit\/\d+\.\d+\.\d+ \(KHTML, like Gecko\)/.test(agent)) {
       document.getElementById("<%= form_id %>").target = "_self";
     }
   }
