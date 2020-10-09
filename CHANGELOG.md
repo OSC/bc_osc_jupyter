@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.16.2] - 2020-10-09
+### Fixed
+- When using Zoom on an iPad and 'sharing content' through a url, we do not
+  pass form parameters to the login API in a new tab. So, we don't open a new
+  tab if the user agent is Zoom in an iPad. [54](https://github.com/OSC/bc_osc_jupyter/pull/54).
+
 ## [0.16.1] - 2020-09-21
 ### Fixed
 - PR [52](https://github.com/OSC/bc_osc_jupyter/pull/52) 0.16.0 bug fixes
@@ -243,8 +249,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.16.1...HEAD
-[0.16.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.16.0...v0.16.1
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.16.2...HEAD
+[0.16.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.16.1...v0.16.2
+[0.16.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.16.0...v0.16.1
 [0.16.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.15.0...v0.16.0
 [0.15.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.2...v0.15.0
 [0.14.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.14.1...v0.14.2
