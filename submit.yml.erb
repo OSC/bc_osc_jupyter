@@ -29,8 +29,7 @@
               when "largemem"
                 base_slurm_args + ["--partition", "largemem", "--exclusive"]
               when "debug"
-                # partition handled in the script.queue_name below. Need to change when Owens switches to Slurm
-                base_slurm_args + ["--exclusive"]
+                base_slurm_args += ["--partition", "debug", "--exclusive"]
               else
                 base_slurm_args
               end
@@ -45,6 +44,8 @@
                 ":ppn=#{cores}"
               end
 
+  torque_cluster = OodAppkit.clusters[cluster].job_config[:adapter] == 'torque'
+
 -%>
 ---
 batch_connect:
@@ -52,11 +53,12 @@ batch_connect:
   conn_params:
     - jupyter_api
 script:
-  <%- if node_type == "debug" -%>
+  # need to unify --partition args above and queue_name below when owens is fully Slurm
+  <%- if node_type == "debug" && torque_cluster -%>
   queue_name: "debug"
   <%- end -%>
   native:
-    <%- if cluster == 'owens' %>
+    <%- if torque_cluster %>
     resources:
       nodes: "1<%= torque_args %>"
     <%- else %>
