@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.17.0] - 2020-11-18
+### Added
+- Add the owens-slurm cluster to begin migrating Owens from Torque to Slurm.
+  [#55](https://github.com/OSC/bc_osc_jupyter/pull/55).
+
 ## [0.16.2] - 2020-10-09
 ### Fixed
 - When using Zoom on an iPad and 'sharing content' through a url, we do not
