@@ -15,6 +15,7 @@ attributes:
     widget: "select"
     options:
       - "owens"
+      - "owens-slurm"
       - "pitzer"
   jupyterlab_switch:
     widget: "check_box"
@@ -44,41 +45,49 @@ attributes:
       - [ 
           "cuda/8.0.44",    "cuda/8.0.44",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: false
         ]
       - [ 
           "cuda/8.0.61",    "cuda/8.0.61",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: false
         ]
       - [ 
           "cuda/9.0.176",   "cuda/9.0.176",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [ 
           "cuda/9.1.85",    "cuda/9.1.85",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [ 
           "cuda/9.2.88",    "cuda/9.2.88",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [ 
           "cuda/10.0.130",  "cuda/10.0.130",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [ 
           "cuda/10.1.168",  "cuda/10.1.168",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [
           "cuda/10.2.89",   "cuda/10.2.89",
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
   node_type:
@@ -108,9 +117,12 @@ attributes:
           "any",     "any",
           data-min-ppn-owens: 1,
           data-max-ppn-owens: 28,
+          data-min-ppn-owens-slurm: 1,
+          data-max-ppn-owens-slurm: 28,
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 48,
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [
@@ -118,6 +130,7 @@ attributes:
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 40,
           data-option-for-owens: false,
+          data-option-for-owens-slurm: false,
           data-option-for-pitzer: true
         ]
       - [
@@ -125,15 +138,19 @@ attributes:
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
+          data-option-for-owens-slurm: false,
           data-option-for-pitzer: true
         ]
       - [
           "any gpu",     "gpu",
           data-min-ppn-owens: 1,
           data-max-ppn-owens: 28,
+          data-min-ppn-owens-slurm: 1,
+          data-max-ppn-owens-slurm: 28,
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 48,
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [
@@ -141,6 +158,7 @@ attributes:
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 40,
           data-option-for-owens: false,
+          data-option-for-owens-slurm: false,
           data-option-for-pitzer: true
         ]
       - [
@@ -148,6 +166,7 @@ attributes:
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
+          data-option-for-owens-slurm: false,
           data-option-for-pitzer: true
         ]
       - [
@@ -155,24 +174,31 @@ attributes:
           data-min-ppn-pitzer: 48,
           data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
+          data-option-for-owens-slurm: false,
           data-option-for-pitzer: true
         ]
       - [
           "hugemem", "hugemem",
           data-min-ppn-owens: 48,
           data-max-ppn-owens: 48,
+          data-min-ppn-owens-slurm: 48,
+          data-max-ppn-owens-slurm: 48,
           data-min-ppn-pitzer: 80,
           data-max-ppn-pitzer: 80,
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
       - [
           "debug",   "debug",
           data-min-ppn-owens: 1,
           data-max-ppn-owens: 28,
+          data-min-ppn-owens-slurm: 1,
+          data-max-ppn-owens-slurm: 28,
           data-min-ppn-pitzer: 1,
           data-max-ppn-pitzer: 48,
           data-option-for-owens: true,
+          data-option-for-owens-slurm: true,
           data-option-for-pitzer: true
         ]
   version:
