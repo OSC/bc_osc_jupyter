@@ -34,18 +34,6 @@
                 base_slurm_args
               end
 
-  torque_args = case node_type
-              when "gpu"
-                ":ppn=#{cores}:gpus=1"
-              when "hugemem"
-                # disregard what num_cores was submitted (0 or 48 are the only valid options)
-                ":ppn=48"
-              else
-                ":ppn=#{cores}"
-              end
-
-  torque_cluster = OodAppkit.clusters[cluster].job_config[:adapter] == 'torque'
-
 -%>
 ---
 batch_connect:
@@ -53,16 +41,7 @@ batch_connect:
   conn_params:
     - jupyter_api
 script:
-  # need to unify --partition args above and queue_name below when owens is fully Slurm
-  <%- if node_type == "debug" && torque_cluster -%>
-  queue_name: "debug"
-  <%- end -%>
   native:
-    <%- if torque_cluster %>
-    resources:
-      nodes: "1<%= torque_args %>"
-    <%- else %>
     <%- slurm_args.each do |arg| %>
     - "<%= arg %>"
-    <%- end %>
     <%- end %>
