@@ -1,6 +1,8 @@
 ---
+cluster:
+  - "owens"
+  - "pitzer"
 form:
-  - cluster
   - bc_account
   - jupyterlab_switch
   - bc_num_hours
@@ -11,12 +13,6 @@ form:
   - bc_email_on_started
   - classroom
 attributes:
-  cluster:
-    widget: "select"
-    options:
-      - "owens"
-      - "owens-slurm"
-      - "pitzer"
   jupyterlab_switch:
     widget: "check_box"
     label: "Use JupyterLab instead of Jupyter Notebook?"
