@@ -1,9 +1,14 @@
+<%-
+  groups = OodSupport::User.new.groups.sort_by(&:id).tap { |groups|
+    groups.unshift(groups.delete(OodSupport::Process.group))
+  }.map(&:name).grep(/^P./)
+-%>
 ---
 cluster:
   - "owens"
   - "pitzer"
 form:
-  - bc_account
+  - account
   - jupyterlab_switch
   - bc_num_hours
   - node_type
@@ -28,9 +33,13 @@ attributes:
     min: 1
     max: 28
     step: 1
-  bc_account:
+  account:
     label: "Project"
-    help: "You can leave this blank if **not** in multiple projects."
+    widget: select
+    options:
+      <%- groups.each do |group| %>
+      - "<%= group %>"
+      <%- end %>
   cuda_version:
     widget: "select"
     label: "CUDA Version"
