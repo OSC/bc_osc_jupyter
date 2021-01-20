@@ -41,6 +41,7 @@ batch_connect:
   conn_params:
     - jupyter_api
 script:
+  accounting_id: "<%= account %>"
   native:
     <%- slurm_args.each do |arg| %>
     - "<%= arg %>"
