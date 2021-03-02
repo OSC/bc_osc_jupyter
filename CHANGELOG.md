@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.19.1] - 2021-03-02
+### Added
+- [59](https://github.com/OSC/bc_osc_jupyter/pull/59) added the julia/1.5.3 module
+  as well as some documentation on how to use julia 1.0+ modules.
+
 ## [0.19.0] - 2021-01-20
 ### Changed
 - Account is now a select widget with only valid groups as options in
@@ -265,7 +270,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.0...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.1...HEAD
+[0.19.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.0...v0.19.1
 [0.19.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.18.0...v0.19.0
 [0.18.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.17.0...v0.18.0
 [0.17.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.16.2...v0.17.0
