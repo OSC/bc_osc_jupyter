@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+<% if context.cluster == 'kubernetes' -%>
+exec &> >(tee -a "pod.log")
+<% end -%>
 
 <%-
   require 'pathname'
@@ -78,7 +81,7 @@
       }
   end
 
-  cuda = (context.node_type == "gpu") ? " #{context.cuda_version}" : ""
+  cuda = (context.node_type =~ /gpu/) ? " #{context.cuda_version}" : ""
   wrapper = session.staged_root.join("launch_wrapper.sh")
   wrapper_log = session.staged_root.join("launch_wrapper.log")
 
@@ -226,11 +229,9 @@
     },
   }
 
-  kernels = if context.cluster.eql? 'owens'
+  kernels = if context.cluster.eql? 'owens' || (context.cluster.eql?('kubernetes') && context.node_type =~ /owens/)
               owens_kernels.merge common_kernels
-            elsif context.cluster.eql? 'pitzer'
-              common_kernels
-            elsif context.cluster.eql? 'pitzer-exp'
+            elsif context.cluster.eql? 'pitzer' || (context.cluster.eql?('kubernetes') && context.node_type =~ /pitzer/)
               common_kernels
             else
               {}
