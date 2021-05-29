@@ -55,6 +55,12 @@ script:
      compute_cluster = "pitzer"
      apps_path = "/apps"
    end
+   mounts = {
+     'home'    => OodSupport::User.new.home,
+     'project' => '/fs/project',
+     'scratch' => '/fs/scratch',
+     'ess'     => '/fs/ess',
+   }
 -%>
 ---
 script:
@@ -80,11 +86,13 @@ script:
       cpu: "<%= num_cores %>"
       memory: "<%= num_cores.to_i * 4 %>Gi"
     mounts:
+    <%- mounts.each_pair do |name, mount| -%>
       - type: host
-        name: home
+        name: <%= name %>
         host_type: Directory
-        path: <%= OodSupport::User.new.home %>
-        destination_path: <%= OodSupport::User.new.home %>
+        path: <%= mount %>
+        destination_path: <%= mount %>
+    <%- end -%>
       - type: host
         name: munge-socket
         host_type: Socket
