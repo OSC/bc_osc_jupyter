@@ -72,8 +72,8 @@ script:
   native:
     container:
       name: "jupyter"
-      image: "docker-registry.osc.edu/ondemand/ondemand-base-rhel7:0.0.3"
-      image_pull_policy: "Always"
+      image: "docker-registry.osc.edu/ondemand/ondemand-base-rhel7:0.1.0"
+      image_pull_policy: "IfNotPresent"
       command: ["/bin/bash","-l","<%= staged_root %>/job_script_content.sh"]
       restart_policy: 'OnFailure'
       env:
