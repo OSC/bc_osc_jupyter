@@ -216,6 +216,16 @@ function toggle_cuda_version_visibility(selected_node_type) {
 }
 
 /**
+ * Toggle the visibility of the email on started field
+ */
+function toggle_email_on_started(selected_cluster) {
+  const element = $('#batch_connect_session_context_bc_email_on_started');
+  const supported = selected_cluster != 'kubernetes';;
+
+  toggle_visibility_of_form_group(element, supported);
+}
+
+/**
  * Sets the change handler for the node_type select.
  */
 function set_node_type_change_handler() {
@@ -246,6 +256,7 @@ function cluster_change_handler(event) {
   fix_num_cores(event);
   toggle_options("batch_connect_session_context_node_type");
   toggle_cuda_version_visibility(event.target.value);
+  toggle_email_on_started(event.target.value);
 }
 
 /**
@@ -256,6 +267,9 @@ function cluster_change_handler(event) {
 fix_num_cores({ target: document.querySelector('#batch_connect_session_node_type') });
 toggle_cuda_version_visibility(
   $('#batch_connect_session_context_node_type option:selected').val()
+);
+toggle_email_on_started(
+  $('#batch_connect_session_context_cluster option:selected').val()
 );
 toggle_options("batch_connect_session_context_cuda_version");
 toggle_options("batch_connect_session_context_node_type");
