@@ -7,7 +7,7 @@
 cluster:
   - "owens"
   - "pitzer"
-<% if OodAppkit.clusters["kubernetes"].allow? -%>
+<% if !OodAppkit.clusters["kubernetes"].nil? && OodAppkit.clusters["kubernetes"].allow? -%>
   - "kubernetes"
 <% end -%>
 form:
