@@ -7,9 +7,7 @@
 cluster:
   - "owens"
   - "pitzer"
-<% if !OodAppkit.clusters["kubernetes"].nil? && OodAppkit.clusters["kubernetes"].allow? -%>
   - "kubernetes"
-<% end -%>
 form:
   - account
   - jupyterlab_switch
