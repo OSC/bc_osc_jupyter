@@ -47,7 +47,7 @@ script:
     <%- slurm_args.each do |arg| %>
     - "<%= arg %>"
     <%- end %>
-<% elsif cluster == 'kubernetes'
+<% elsif cluster =~ /kubernetes/
    if node_type =~ /owens/
      compute_cluster = "owens"
      apps_path = "/usr/local"

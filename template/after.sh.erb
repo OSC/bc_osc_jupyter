@@ -1,4 +1,4 @@
-<% if context.cluster != 'kubernetes' -%>
+<% if context.cluster !~ /kubernetes/ -%>
 # Wait for the Jupyter server to start
 echo "Waiting for Jupyter server to open port ${port}..."
 if wait_until_port_used "${host}:${port}" 600; then

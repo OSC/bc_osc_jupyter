@@ -1,5 +1,5 @@
 # Export the module function if it exists
-<% if context.cluster == 'kubernetes' -%>
+<% if context.cluster =~ /kubernetes/ -%>
 exec &> >(tee -a "pod.log")
 
 source /etc/profile.d/lmod.sh
@@ -94,7 +94,7 @@ umask 077
 cat > "${CONFIG_FILE}" << EOL
 c.KernelSpecManager.ensure_native_kernel = False
 c.NotebookApp.ip = '*'
-<% if context.cluster == 'kubernetes' -%>
+<% if context.cluster =~ /kubernetes/ -%>
 c.NotebookApp.port = 8080
 c.NotebookApp.base_url = '/node/${HOST_CFG}/${PORT_CFG}/'
 c.NotebookApp.terminado_settings = {'shell_command': ['/bin/bash', '--login', '-i']}
