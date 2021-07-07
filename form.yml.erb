@@ -54,49 +54,65 @@ attributes:
           "cuda/8.0.44",    "cuda/8.0.44",
           data-option-for-owens: true,
           data-option-for-pitzer: false,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false  
         ]
       - [ 
           "cuda/8.0.61",    "cuda/8.0.61",
           data-option-for-owens: true,
           data-option-for-pitzer: false,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [ 
           "cuda/9.0.176",   "cuda/9.0.176",
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [ 
           "cuda/9.1.85",    "cuda/9.1.85",
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [ 
           "cuda/9.2.88",    "cuda/9.2.88",
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [ 
           "cuda/10.0.130",  "cuda/10.0.130",
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [ 
           "cuda/10.1.168",  "cuda/10.1.168",
           data-option-for-owens: true,
           data-option-for-pitzer: true,
           data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [
           "cuda/10.2.89",   "cuda/10.2.89",
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
   node_type:
     widget: select
@@ -129,7 +145,9 @@ attributes:
           data-max-ppn-pitzer: 48,
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "40 core",     "any-40core",
@@ -137,7 +155,9 @@ attributes:
           data-max-ppn-pitzer: 40,
           data-option-for-owens: false,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "48 core",     "any-48core",
@@ -145,7 +165,9 @@ attributes:
           data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "any gpu",     "gpu",
@@ -155,7 +177,9 @@ attributes:
           data-max-ppn-pitzer: 48,
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "40 core gpu",     "gpu-40core",
@@ -163,7 +187,9 @@ attributes:
           data-max-ppn-pitzer: 40,
           data-option-for-owens: false,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "48 core gpu",     "gpu-48core",
@@ -171,7 +197,9 @@ attributes:
           data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "largemem", "largemem",
@@ -179,7 +207,9 @@ attributes:
           data-max-ppn-pitzer: 48,
           data-option-for-owens: false,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "hugemem", "hugemem",
@@ -189,7 +219,9 @@ attributes:
           data-max-ppn-pitzer: 80,
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "debug",   "debug",
@@ -199,31 +231,41 @@ attributes:
           data-max-ppn-pitzer: 48,
           data-option-for-owens: true,
           data-option-for-pitzer: true,
-          data-option-for-kubernetes: false
+          data-option-for-kubernetes: false,
+          data-option-for-kubernetes-test: false,
+          data-option-for-kubernetes-dev: false
         ]
       - [
           "pitzer",   "pitzer",
           data-option-for-owens: false,
           data-option-for-pitzer: false,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [
           "owens",   "owens",
           data-option-for-owens: false,
           data-option-for-pitzer: false,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [
           "pitzer gpu",   "pitzer-gpu",
           data-option-for-owens: false,
           data-option-for-pitzer: false,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
       - [
           "owens gpu",   "owens-gpu",
           data-option-for-owens: false,
           data-option-for-pitzer: false,
-          data-option-for-kubernetes: true
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
         ]
   version:
     widget: "select"
