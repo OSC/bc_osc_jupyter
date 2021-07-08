@@ -57,6 +57,7 @@ script:
    end
    mounts = {
      'home'    => OodSupport::User.new.home,
+     'support' => OodSupport::User.new('support').home,
      'project' => '/fs/project',
      'scratch' => '/fs/scratch',
      'ess'     => '/fs/ess',
