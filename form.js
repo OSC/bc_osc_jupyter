@@ -232,9 +232,9 @@ function node_type_change_handler(event) {
  * Update UI when the cluster changes
  */
 function cluster_change_handler(event) {
-  fix_num_cores(event);
   toggle_options("batch_connect_session_context_cuda_version");
   toggle_options("batch_connect_session_context_node_type");
+  fix_num_cores(event);
   toggle_email_on_started(event.target.value);
 }
 
