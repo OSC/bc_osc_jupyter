@@ -3,6 +3,13 @@
 <%-
   require 'pathname'
 
+  # Check if we can enable JupyterLab extension
+  jupyterlab_extension_enabled = false
+  jupyterlab_version = context.version.split('/').last
+  if context.jupyterlab_switch == "1" and context.jupyterlab_use_extension == "1" and jupyterlab_version.split('.').first.to_i > 0
+    jupyterlab_extension_enabled = true
+  end
+
   # The list of Julia installations that LMod knows about
   # @returns [[major_minor_version, "lmod_load_string"], ["0.6", "julia/0.6.4"]]
   def get_lmod_julia_versions
@@ -348,6 +355,15 @@ set -x
 jupyter kernelspec list
 { set +x; } 2>/dev/null
 echo "TTT - $(date)"
+
+# Setup custom Application directory so user can manage extensions
+<%- if jupyterlab_extension_enabled -%>
+export JUPYTERLAB_DIR=$HOME/.jupyter/lab/<%= context.version.split('/').last.split('.')[0..1].join('.') %>
+if [ ! -d $JUPYTERLAB_DIR ] || [ -z "$(ls -A $JUPYTERLAB_DIR)" ] ; then
+  mkdir -p $JUPYTERLAB_DIR
+  cp -r ${OSC_APP_JUPYTER_DIR}/share/jupyter/lab/*  ${JUPYTERLAB_DIR}/
+fi
+<%- end -%>
 
 # Launch the Jupyter server
 set -x
