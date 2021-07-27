@@ -4,10 +4,10 @@
   require 'pathname'
 
   # Check if we can enable JupyterLab extension
-  jupyterlab_extension_enabled = false
-  jupyterlab_version = context.version.split('/').last
-  if context.jupyterlab_switch == "1" and context.jupyterlab_use_extension == "1" and jupyterlab_version.split('.').first.to_i > 0
-    jupyterlab_extension_enabled = true
+  extension_enabled = false
+  version = context.version.split('/').last
+  if context.jupyterlab_switch == "1" and context.jupyterlab_use_extension == "1" and version.split('.').first.to_i > 0
+    extension_enabled = true
   end
 
   # The list of Julia installations that LMod knows about
@@ -357,7 +357,7 @@ jupyter kernelspec list
 echo "TTT - $(date)"
 
 # Setup custom Application directory so user can manage extensions
-<%- if jupyterlab_extension_enabled -%>
+<%- if extension_enabled -%>
 export JUPYTERLAB_DIR=$HOME/.jupyter/lab/<%= context.version.split('/').last.split('.')[0..1].join('.') %>
 if [ ! -d $JUPYTERLAB_DIR ] || [ -z "$(ls -A $JUPYTERLAB_DIR)" ] ; then
   mkdir -p $JUPYTERLAB_DIR

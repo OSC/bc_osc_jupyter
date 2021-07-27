@@ -1,18 +1,23 @@
 <%
-  jupyterlab_version = JSON.parse(user_defined_context_file.read)['version'].split('/').last
-  jupyterlab_switch = JSON.parse(user_defined_context_file.read)['jupyterlab_switch']
-  jupyterlab_use_extension = JSON.parse(user_defined_context_file.read)['jupyterlab_use_extension']
-  jupyterlab_extension_enabled = false
-  if jupyterlab_switch == "1" and jupyterlab_use_extension == "1" and jupyterlab_version.split('.').first.to_i > 0
-    jupyterlab_extension_enabled = true
+  begin
+    data = JSON.parse(user_defined_context_file.read)
+  rescue
+    data = {}
+  end
+  version = data['version'].split('/').last
+  switch = data['jupyterlab_switch'].to_s
+  use_extension = data['jupyterlab_use_extension'].to_s
+  extension_enabled = false
+  if switch == "1" and use_extension == "1" and version.split('.').first.to_i > 0
+    extension_enabled = true
   end
 %>
 **Information:**
 
-- JupyterLab version: <%= jupyterlab_version %>
-- Use JupyterLab: <%= jupyterlab_switch == "1" ? "Yes" : "No" %>
-- JupyterLab extensions enabled: <%=  jupyterlab_extension_enabled ? "Yes" : "No" %>
-<%- if jupyterlab_extension_enabled -%>
-- JupyterLab application directory: $HOME/.jupyter/lab/<%= jupyterlab_version.split('/').last.split('.')[0..1].join('.') %>
+- JupyterLab version: <%= version %>
+- Use JupyterLab: <%= switch == "1" ? "Yes" : "No" %>
+- JupyterLab extensions enabled: <%= extension_enabled ? "Yes" : "No" %>
+<%- if extension_enabled -%>
+- JupyterLab application directory: <%= ENV['HOME'] %>/.jupyter/lab/<%= version.split('/').last.split('.')[0..1].join('.') %>
 <%- end -%>
 
