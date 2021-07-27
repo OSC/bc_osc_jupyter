@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-<% if context.cluster =~ /kubernetes/ -%>
-exec &> >(tee -a "pod.log")
-<% end -%>
-
 <%-
   require 'pathname'
 
