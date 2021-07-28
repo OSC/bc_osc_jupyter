@@ -10,7 +10,7 @@ cluster:
 form:
   - account
   - jupyterlab_switch
-  - jupyterlab_use_extension
+  - use_extension
   - bc_num_hours
   - node_type
   - cuda_version
@@ -25,11 +25,11 @@ attributes:
     help: |
       JupyterLab is the next generation of Jupyter, and is completely compatible with existing Jupyter Notebooks.
 
-  jupyterlab_use_extension:
+  use_extension:
     widget: "check_box"
     label: "Use JupyterLab extensions?"
     help: |
-      Set application directory to home directory. (See [HOWTO] for more detail)
+      Use home directory for JupyterLab application directory. (See [HOWTO] for more detail)
 
       [HOWTO]: https://www.osc.edu/resources/getting_started/howto/howto_use_extensions_with_jupyterlab
 

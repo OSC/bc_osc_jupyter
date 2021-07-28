@@ -3,11 +3,17 @@
 <%-
   require 'pathname'
 
-  # Check if we can enable JupyterLab extension
-  extension_enabled = false
-  version = context.version.split('/').last
-  if context.jupyterlab_switch == "1" and context.jupyterlab_use_extension == "1" and version.split('.').first.to_i > 0
-    extension_enabled = true
+  # @returns $HOME/.jupyter/lab/major_minor_version
+  def jupyterlab_dir
+    base = "#{OodSupport::User.new.dir}/.juypter/lab"
+    match = context.version.match('app_jupyter/(?<majmin>\d+\.\d+)')
+    majmin = if !match.nil? && match.named_captures.key?('majmin')
+               match[:majmin]
+             else
+               'unknown'
+             end
+
+    "#{base}/#{majmin}"
   end
 
   # The list of Julia installations that LMod knows about
@@ -357,8 +363,8 @@ jupyter kernelspec list
 echo "TTT - $(date)"
 
 # Setup custom Application directory so user can manage extensions
-<%- if extension_enabled -%>
-export JUPYTERLAB_DIR=$HOME/.jupyter/lab/<%= context.version.split('/').last.split('.')[0..1].join('.') %>
+<%- if context.use_extension == "1" and context.classroom != "1" -%>
+export JUPYTERLAB_DIR=<%= jupyterlab_dir %>
 if [ ! -d $JUPYTERLAB_DIR ] || [ -z "$(ls -A $JUPYTERLAB_DIR)" ] ; then
   mkdir -p $JUPYTERLAB_DIR
   cp -r ${OSC_APP_JUPYTER_DIR}/share/jupyter/lab/*  ${JUPYTERLAB_DIR}/

@@ -4,20 +4,32 @@
   rescue
     data = {}
   end
-  version = data['version'].split('/').last
+
+  version = data['version'].to_s
   switch = data['jupyterlab_switch'].to_s
-  use_extension = data['jupyterlab_use_extension'].to_s
-  extension_enabled = false
-  if switch == "1" and use_extension == "1" and version.split('.').first.to_i > 0
-    extension_enabled = true
+  use_extension = data['use_extension'].to_s
+  classroom = data['classroom'].to_s
+
+  def jupyterlab_dir
+    base = "#{OodSupport::User.new.dir}/.juypter/lab"
+    match = JSON.parse(user_defined_context_file.read)['version'].to_s.match('app_jupyter/(?<majmin>\d+\.\d+)')
+    majmin = if !match.nil? && match.named_captures.key?('majmin')
+               match[:majmin]
+             else
+               'unknown'
+             end
+
+    "#{base}/#{majmin}"
   end
 %>
 **Information:**
 
-- JupyterLab version: <%= version %>
+- JupyterLab version: <%= version.split('/').last %>
 - Use JupyterLab: <%= switch == "1" ? "Yes" : "No" %>
-- JupyterLab extensions enabled: <%= extension_enabled ? "Yes" : "No" %>
-<%- if extension_enabled -%>
-- JupyterLab application directory: <%= ENV['HOME'] %>/.jupyter/lab/<%= version.split('/').last.split('.')[0..1].join('.') %>
+<%- if classroom != "1" -%>
+- JupyterLab extensions enabled: <%= use_extension == "1" ? "Yes" : "No" %>
+<% if use_extension == "1" -%>
+- JupyterLab application directory: <%= jupyterlab_dir %>
+<%- end -%>
 <%- end -%>
 
