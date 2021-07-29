@@ -10,16 +10,16 @@
   use_extension = data['use_extension'].to_s
   classroom = data['classroom'].to_s
 
-  def jupyterlab_dir
+  def jupyterlab_dir(version)
     base = "#{OodSupport::User.new.dir}/.juypter/lab"
-    match = JSON.parse(user_defined_context_file.read)['version'].to_s.match('app_jupyter/(?<majmin>\d+\.\d+)')
-    majmin = if !match.nil? && match.named_captures.key?('majmin')
-               match[:majmin]
-             else
-               'unknown'
-             end
+    match = version.match('app_jupyter/(?<maj_min_version>\d+\.\d+)')
+    maj_min_version = if !match.nil? && match.named_captures.key?('maj_min_version')
+                        match[:maj_min_version]
+                      else
+                        'unknown'
+                      end
 
-    "#{base}/#{majmin}"
+    "#{base}/#{maj_min_version}"
   end
 %>
 **Information:**
@@ -29,7 +29,7 @@
 <%- if classroom != "1" -%>
 - JupyterLab extensions enabled: <%= use_extension == "1" ? "Yes" : "No" %>
 <% if use_extension == "1" -%>
-- JupyterLab application directory: <%= jupyterlab_dir %>
+- JupyterLab application directory: <%= jupyterlab_dir(version) %>
 <%- end -%>
 <%- end -%>
 

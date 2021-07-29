@@ -6,14 +6,14 @@
   # @returns $HOME/.jupyter/lab/major_minor_version
   def jupyterlab_dir
     base = "#{OodSupport::User.new.dir}/.juypter/lab"
-    match = context.version.match('app_jupyter/(?<majmin>\d+\.\d+)')
-    majmin = if !match.nil? && match.named_captures.key?('majmin')
-               match[:majmin]
-             else
-               'unknown'
-             end
+    match = context.version.match('app_jupyter/(?<maj_min_version>\d+\.\d+)')
+    maj_min_version = if !match.nil? && match.named_captures.key?('maj_min_version')
+                        match[:maj_min_version]
+		      else
+		        'unknown'
+		      end
 
-    "#{base}/#{majmin}"
+    "#{base}/#{maj_min_version}"
   end
 
   # The list of Julia installations that LMod knows about
