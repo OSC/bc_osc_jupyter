@@ -363,11 +363,13 @@ jupyter kernelspec list
 echo "TTT - $(date)"
 
 # Setup custom Application directory so user can manage extensions
-<%- if context.use_extension == "1" and context.classroom != "1" -%>
-export JUPYTERLAB_DIR=<%= jupyterlab_dir %>
-if [ ! -d $JUPYTERLAB_DIR ] || [ -z "$(ls -A $JUPYTERLAB_DIR)" ] ; then
-  mkdir -p $JUPYTERLAB_DIR
-  cp -r ${OSC_APP_JUPYTER_DIR}/share/jupyter/lab/*  ${JUPYTERLAB_DIR}/
+<%- if context.classroom != "1" -%>
+if [ -z "$JUPYTERLAB_DIR" ] ; then
+  export JUPYTERLAB_DIR=<%= jupyterlab_dir %>
+  if [ ! -d $JUPYTERLAB_DIR ] || [ -z "$(ls -A $JUPYTERLAB_DIR)" ] ; then
+    mkdir -p $JUPYTERLAB_DIR
+    cp -r ${OSC_APP_JUPYTER_DIR}/share/jupyter/lab/*  ${JUPYTERLAB_DIR}/
+  fi
 fi
 <%- end -%>
 

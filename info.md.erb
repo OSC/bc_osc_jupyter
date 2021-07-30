@@ -7,7 +7,6 @@
 
   version = data['version'].to_s
   switch = data['jupyterlab_switch'].to_s
-  use_extension = data['use_extension'].to_s
   classroom = data['classroom'].to_s
 
   def jupyterlab_dir(version)
@@ -25,11 +24,7 @@
 **Information:**
 
 - JupyterLab version: <%= version.split('/').last %>
-- Use JupyterLab: <%= switch == "1" ? "Yes" : "No" %>
-<%- if classroom != "1" -%>
-- JupyterLab extensions enabled: <%= use_extension == "1" ? "Yes" : "No" %>
-<% if use_extension == "1" -%>
+- Use Jupyter Notebook: <%= switch == "1" ? "No" : "Yes" %>
+<%- if switch == "1" and classroom != "1" -%>
 - JupyterLab application directory: <%= jupyterlab_dir(version) %>
 <%- end -%>
-<%- end -%>
-
