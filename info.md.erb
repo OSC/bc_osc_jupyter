@@ -11,7 +11,7 @@
   classroom = data['classroom'].to_s
 
   def jupyterlab_dir(version)
-    base = "#{OodSupport::User.new.dir}/.juypter/lab"
+    base = "#{OodSupport::User.new.dir}/.jupyter/lab"
     match = version.match('app_jupyter/(?<maj_min_version>\d+\.\d+)')
     maj_min_version = if !match.nil? && match.named_captures.key?('maj_min_version')
                         match[:maj_min_version]
