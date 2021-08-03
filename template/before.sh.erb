@@ -1,4 +1,13 @@
 # Export the module function if it exists
+<% if context.cluster.match?(/kubernetes/) -%>
+exec &> >(tee -a "pod.log")
+
+source /etc/profile.d/lmod.sh
+
+source /bin/find_host_port
+source /bin/save_passwd_as_secret
+source /bin/create_salt_and_sha1
+<% else -%>
 [[ $(type -t module) == "function" ]] && export -f module
 
 # Find available port to run server on
@@ -8,6 +17,7 @@ port=$(find_port ${host})
 SALT="$(create_passwd 16)"
 password="$(create_passwd 16)"
 PASSWORD_SHA1="$(echo -n "${password}${SALT}" | openssl dgst -sha1 | awk '{print $NF}')"
+<% end -%>
 
 # The `$CONFIG_FILE` environment variable is exported as it is used in the main
 # `script.sh.erb` file when launching the Jupyter server.
@@ -84,10 +94,16 @@ umask 077
 cat > "${CONFIG_FILE}" << EOL
 c.KernelSpecManager.ensure_native_kernel = False
 c.NotebookApp.ip = '*'
+<% if context.cluster.match?(/kubernetes/) -%>
+c.NotebookApp.port = 8080
+c.NotebookApp.base_url = '/node/${HOST_CFG}/${PORT_CFG}/'
+c.NotebookApp.terminado_settings = {'shell_command': ['/bin/bash', '--login', '-i']}
+<% else -%>
 c.NotebookApp.port = ${port}
+c.NotebookApp.base_url = '/node/${host}/${port}/'
+<% end -%>
 c.NotebookApp.port_retries = 0
 c.NotebookApp.password = u'sha1:${SALT}:${PASSWORD_SHA1}'
-c.NotebookApp.base_url = '/node/${host}/${port}/'
 c.NotebookApp.open_browser = False
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.notebook_dir = '${NOTEBOOK_ROOT}'

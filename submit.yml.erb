@@ -35,6 +35,7 @@
               end
 
 -%>
+<% if cluster =~ /owens|pitzer/ -%>
 ---
 batch_connect:
   template: "basic"
@@ -46,3 +47,93 @@ script:
     <%- slurm_args.each do |arg| %>
     - "<%= arg %>"
     <%- end %>
+<% elsif cluster =~ /kubernetes/
+   if node_type =~ /owens/
+     compute_cluster = "owens"
+     apps_path = "/usr/local"
+   elsif node_type =~ /pitzer/
+     compute_cluster = "pitzer"
+     apps_path = "/apps"
+   end
+   mounts = {
+     'home'    => OodSupport::User.new.home,
+     'support' => OodSupport::User.new('support').home,
+     'project' => '/fs/project',
+     'scratch' => '/fs/scratch',
+     'ess'     => '/fs/ess',
+   }
+-%>
+---
+script:
+  accounting_id: "<%= account %>"
+  wall_time: "<%= bc_num_hours.to_i * 3600 %>"
+  <%- if node_type =~ /gpu/ -%>
+  gpus_per_node: 1
+  <%- end -%>
+  native:
+    container:
+      name: "jupyter"
+      image: "docker-registry.osc.edu/ondemand/ondemand-base-rhel7:0.2.0"
+      image_pull_policy: "IfNotPresent"
+      command: ["/bin/bash","-l","<%= staged_root %>/job_script_content.sh"]
+      restart_policy: 'OnFailure'
+      env:
+        NB_UID: "<%= Etc.getpwnam(ENV['USER']).uid %>"
+        NB_USER: "<%= ENV['USER'] %>"
+        NB_GID: "<%= Etc.getpwnam(ENV['USER']).gid %>"
+        CLUSTER: "<%= compute_cluster %>"
+        KUBECONFIG: "/dev/null"
+      port: "8080"
+      cpu: "<%= num_cores %>"
+      memory: "<%= num_cores.to_i * 4 %>Gi"
+    mounts:
+    <%- mounts.each_pair do |name, mount| -%>
+      - type: host
+        name: <%= name %>
+        host_type: Directory
+        path: <%= mount %>
+        destination_path: <%= mount %>
+    <%- end -%>
+      - type: host
+        name: munge-socket
+        host_type: Socket
+        path: /var/run/munge/munge.socket.2
+        destination_path: /var/run/munge/munge.socket.2
+      - type: host
+        name: slurm-conf
+        host_type: Directory
+        path: /etc/slurm
+        destination_path: /etc/slurm
+      - type: host
+        name: sssd-pipes
+        host_type: Directory
+        path: /var/lib/sss/pipes
+        destination_path: /var/lib/sss/pipes
+      - type: host
+        name: sssd-conf
+        host_type: Directory
+        path: /etc/sssd
+        destination_path: /etc/sssd
+      - type: host
+        name: nsswitch
+        host_type: File
+        path: /etc/nsswitch.conf
+        destination_path: /etc/nsswitch.conf
+      - type: host
+        name: lmod-init
+        host_type: File
+        path: /apps/<%= compute_cluster %>/lmod/lmod.sh
+        destination_path: /etc/profile.d/lmod.sh
+      - type: host
+        name: intel
+        host_type: Directory
+        path: /nfsroot/<%= compute_cluster %>/opt/intel
+        destination_path: /opt/intel
+      - type: host
+        name: apps
+        host_type: Directory
+        path: /apps/<%= compute_cluster %>
+        destination_path: <%= apps_path %>
+    node_selector:
+      osc.edu/cluster: <%= compute_cluster %>
+<% end -%>

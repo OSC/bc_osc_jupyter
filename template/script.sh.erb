@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 <%-
   require 'pathname'
 
@@ -78,7 +77,7 @@
       }
   end
 
-  cuda = (context.node_type == "gpu") ? " #{context.cuda_version}" : ""
+  cuda = (context.node_type =~ /gpu/) ? " #{context.cuda_version}" : ""
   wrapper = session.staged_root.join("launch_wrapper.sh")
   wrapper_log = session.staged_root.join("launch_wrapper.log")
 
@@ -226,11 +225,13 @@
     },
   }
 
-  kernels = if context.cluster.eql? 'owens'
+  kernels = if context.cluster.eql? 'owens' || ()
+              owens_kernels.merge common_kernels
+            elsif context.cluster.match?(/kubernetes/) && context.node_type.match?(/owens/)
               owens_kernels.merge common_kernels
             elsif context.cluster.eql? 'pitzer'
               common_kernels
-            elsif context.cluster.eql? 'pitzer-exp'
+            elsif context.cluster.match?(/kubernetes/) && context.node_type.match?(/pitzer/)
               common_kernels
             else
               {}
