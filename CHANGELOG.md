@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.20.0] - 2021-08-05
+
+### Added
+
+- [61](https://github.com/OSC/bc_osc_jupyter/pull/61) added the kubernetes clusters.
+
 ## [0.19.2] - 2021-08-03
 ### Added
 - [65](https://github.com/OSC/bc_osc_jupyter/pull/65) added jupyterlab 3.0.16.
