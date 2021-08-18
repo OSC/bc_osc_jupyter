@@ -198,6 +198,9 @@ function toggle_cuda_version_visibility(selected_node_type) {
  * Toggle the visibility of the email on started field
  */
 function toggle_email_on_started(selected_cluster) {
+  if(selected_cluster === undefined) {
+    return;
+  }
   const element = $('#batch_connect_session_context_bc_email_on_started');
   const supported = !selected_cluster.includes('kubernetes');
 
