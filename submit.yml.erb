@@ -51,9 +51,11 @@ script:
    if node_type =~ /owens/
      compute_cluster = "owens"
      apps_path = "/usr/local"
+     memory_mb = num_cores.to_i * 2200
    elsif node_type =~ /pitzer/
      compute_cluster = "pitzer"
      apps_path = "/apps"
+     memory_mb = num_cores.to_i * 4000
    end
    mounts = {
      'home'    => OodSupport::User.new.home,
@@ -85,7 +87,7 @@ script:
         KUBECONFIG: "/dev/null"
       port: "8080"
       cpu: "<%= num_cores %>"
-      memory: "<%= num_cores.to_i * 4 %>Gi"
+      memory: "<%= memory_mb %>Mi"
     mounts:
     <%- mounts.each_pair do |name, mount| -%>
       - type: host
