@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.21.1] - 2021-08-18
+
+### Fixed
+
+- [69](https://github.com/OSC/bc_osc_jupyter/pull/69) fixed a bug with classrooms not finding the current cluster.
+
 ## [0.21.0] - 2021-08-13
 
 ### Changed
@@ -286,7 +292,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.2...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.1...HEAD
+[0.21.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.0...v0.21.1
+[0.21.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.20.0...v0.21.0
+[0.20.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.2...v0.20.0
 [0.19.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.1...v0.19.2
 [0.19.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.19.0...v0.19.1
 [0.19.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.18.0...v0.19.0
