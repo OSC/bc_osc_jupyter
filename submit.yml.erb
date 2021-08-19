@@ -51,10 +51,12 @@ script:
    if node_type =~ /owens/
      compute_cluster = "owens"
      apps_path = "/usr/local"
+     # Memory per core with hyperthreading enabled
      memory_mb = num_cores.to_i * 2200
    elsif node_type =~ /pitzer/
      compute_cluster = "pitzer"
      apps_path = "/apps"
+     # Memory per core with hyperthreading enabled
      memory_mb = num_cores.to_i * 4000
    end
    mounts = {
