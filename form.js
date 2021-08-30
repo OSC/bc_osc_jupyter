@@ -139,9 +139,7 @@ function toggle_options(element_name) {
     let data = option_element.data();
     let show = data["optionFor" + cluster];
 
-    if(show) {
-      option_element.show();
-    } else {
+    if(show == false) {
       option_element.hide();
 
       if(option_element.prop('selected')) {
@@ -154,6 +152,8 @@ function toggle_options(element_name) {
           option_element.next().prop('selected', true);
         }
       }
+    } else {
+      option_element.show();
     }
   });
 }
