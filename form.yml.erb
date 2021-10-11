@@ -108,18 +108,15 @@ attributes:
     options:
       - [
           "any",     "any",
-          data-min-ppn-owens: 1,
-          data-max-ppn-owens: 28,
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
+          data-max-num-cores-for-cluster-owens: 28,
+          data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
         ]
       - [
           "40 core",     "any-40core",
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 40,
+          data-max-num-cores-for-cluster-pitzer: 40,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -127,8 +124,7 @@ attributes:
         ]
       - [
           "48 core",     "any-48core",
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
+          data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -136,18 +132,15 @@ attributes:
         ]
       - [
           "any gpu",     "gpu",
-          data-min-ppn-owens: 1,
-          data-max-ppn-owens: 28,
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
+          data-max-num-cores-for-cluster-owens: 28,
+          data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
         ]
       - [
           "40 core gpu",     "gpu-40core",
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 40,
+          data-max-num-cores-for-cluster-pitzer: 40,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -155,8 +148,7 @@ attributes:
         ]
       - [
           "48 core gpu",     "gpu-48core",
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
+          data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -164,8 +156,7 @@ attributes:
         ]
       - [
           "largemem", "largemem",
-          data-min-ppn-pitzer: 48,
-          data-max-ppn-pitzer: 48,
+          data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -173,65 +164,49 @@ attributes:
         ]
       - [
           "hugemem", "hugemem",
-          data-min-ppn-owens: 48,
-          data-max-ppn-owens: 48,
-          data-min-ppn-pitzer: 80,
-          data-max-ppn-pitzer: 80,
+          data-max-num-cores-for-cluster-pitzer: 48,
+          data-max-num-cores-for-cluster-pitzer: 80,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
         ]
       - [
           "debug",   "debug",
-          data-min-ppn-owens: 1,
-          data-max-ppn-owens: 28,
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
+          data-max-num-cores-for-cluster-pitzer: 28,
+          data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
         ]
       - [
           "pitzer",   "pitzer",
-          data-min-ppn-kubernetes: 1,
-          data-max-ppn-kubernetes: 10,
-          data-min-ppn-kubernetes-test: 1,
-          data-max-ppn-kubernetes-test: 10,
-          data-min-ppn-kubernetes-dev: 1,
-          data-max-ppn-kubernetes-dev: 6,
+          data-max-num-cores-for-cluster-kubernetes: 10,
+          data-max-num-cores-for-cluster-kubernetes-test: 10,
+          data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
         ]
       - [
           "owens",   "owens",
-          data-min-ppn-kubernetes: 1,
-          data-max-ppn-kubernetes: 10,
-          data-min-ppn-kubernetes-test: 1,
-          data-max-ppn-kubernetes-test: 10,
-          data-min-ppn-kubernetes-dev: 1,
-          data-max-ppn-kubernetes-dev: 6,
+          data-max-num-cores-for-cluster-kubernetes: 10,
+          data-max-num-cores-for-cluster-kubernetes-test: 10,
+          data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
         ]
       - [
           "pitzer gpu",   "pitzer-gpu",
-          data-min-ppn-kubernetes: 1,
-          data-max-ppn-kubernetes: 10,
-          data-min-ppn-kubernetes-test: 1,
-          data-max-ppn-kubernetes-test: 10,
-          data-min-ppn-kubernetes-dev: 1,
-          data-max-ppn-kubernetes-dev: 6,
+          data-max-num-cores-for-cluster-kubernetes: 10,
+          data-max-num-cores-for-cluster-kubernetes-test: 10,
+          data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
         ]
       - [
           "owens gpu",   "owens-gpu",
-          data-min-ppn-kubernetes: 1,
-          data-max-ppn-kubernetes: 10,
-          data-min-ppn-kubernetes-test: 1,
-          data-max-ppn-kubernetes-test: 10,
-          data-min-ppn-kubernetes-dev: 1,
-          data-max-ppn-kubernetes-dev: 6,
+          data-max-num-cores-for-cluster-kubernetes: 10,
+          data-max-num-cores-for-cluster-kubernetes-test: 10,
+          data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
         ]
