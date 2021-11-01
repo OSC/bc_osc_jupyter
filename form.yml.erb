@@ -4,13 +4,8 @@
   }.map(&:name).grep(/^P./)
 -%>
 ---
-cluster:
-  - "owens"
-  - "pitzer"
-  - "kubernetes"
-  - "kubernetes-test"
-  - "kubernetes-dev"
 form:
+  - cluster
   - account
   - mode
   - bc_num_hours
@@ -27,6 +22,14 @@ attributes:
     options:
       - ["1","Jupyter Lab"]
       - ["0", "Jupyter Notebook"]
+  cluster:
+    widget: 'select'
+    options:
+      - "owens"
+      - "pitzer"
+      - [ "kubernetes", data-hide-bc-email-on-started: true ]
+      - [ "kubernetes-test", data-hide-bc-email-on-started: true ]
+      - [ "kubernetes-dev", data-hide-bc-email-on-started: true ]
   num_cores:
     widget: "number_field"
     label: "Number of cores"
@@ -110,6 +113,7 @@ attributes:
           "any",     "any",
           data-max-num-cores-for-cluster-owens: 28,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-hide-cuda-version: true,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
@@ -117,6 +121,7 @@ attributes:
       - [
           "40 core",     "any-40core",
           data-max-num-cores-for-cluster-pitzer: 40,
+          data-hide-cuda-version: true,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -125,6 +130,7 @@ attributes:
       - [
           "48 core",     "any-48core",
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-hide-cuda-version: true,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -158,6 +164,7 @@ attributes:
           "largemem", "largemem",
           data-min-num-cores-for-cluster-pitzer: 48,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-hide-cuda-version: true,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
@@ -169,6 +176,7 @@ attributes:
           data-max-num-cores-for-cluster-owens: 48,
           data-min-num-cores-for-cluster-pitzer: 80,
           data-max-num-cores-for-cluster-pitzer: 80,
+          data-hide-cuda-version: true,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
@@ -177,6 +185,7 @@ attributes:
           "debug",   "debug",
           data-max-num-cores-for-cluster-pitzer: 28,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-hide-cuda-version: true,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
@@ -187,6 +196,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-test: 10,
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
+          data-hide-cuda-version: true,
           data-option-for-cluster-pitzer: false,
         ]
       - [
@@ -194,6 +204,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes: 10,
           data-max-num-cores-for-cluster-kubernetes-test: 10,
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
+          data-hide-cuda-version: true,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
         ]
