@@ -14,12 +14,10 @@
   end
 
   slurm_args = case node_type
-              when "gpu"
-                base_slurm_args + ["--gpus-per-node", "1"]
               when "gpu-40core"
-                base_slurm_args + ["--gpus-per-node", "1", "--constraint", "40core"]
+                base_slurm_args + ["--constraint", "40core"]
               when "gpu-48core"
-                base_slurm_args + ["--gpus-per-node", "1", "--constraint", "48core"]
+                base_slurm_args + ["--constraint", "48core"]
               when "any-40core"
                 base_slurm_args + ["--constraint", "40core"]
               when "any-48core"
@@ -43,6 +41,9 @@ batch_connect:
     - jupyter_api
 script:
   accounting_id: "<%= account %>"
+<% if node_type =~ /gpu/ -%>
+  gpus_per_node: 1
+<% end -%>
   native:
     <%- slurm_args.each do |arg| %>
     - "<%= arg %>"
