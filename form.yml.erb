@@ -23,13 +23,13 @@ form:
 attributes:
   jupyterlab_switch:
     widget: "radio"
-    checked: "JupyterLab"
-    label: "This is the Label"
+    label: ""
+    value: "jupyterLab"
     help: |
       JupyterLab is the next generation of Jupyter, and is completely compatible with existing Jupyter Notebooks.
     options:
-      - ["JupyterLab", true]
-      - ["Jupyter Notebook", false]
+      - ["jupyterLab","Jupyter Lab"]
+      - ["jupyterNotebook", "Jupyter Notebook"]
   num_cores:
     widget: "number_field"
     label: "Number of cores"
