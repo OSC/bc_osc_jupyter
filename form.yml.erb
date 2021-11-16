@@ -12,7 +12,7 @@ cluster:
   - "kubernetes-dev"
 form:
   - account
-  - jupyterlab_switch
+  - mode
   - bc_num_hours
   - node_type
   - cuda_version
@@ -21,15 +21,12 @@ form:
   - bc_email_on_started
   - classroom
 attributes:
-  jupyterlab_switch:
+  mode:
     widget: "radio"
-    label: ""
-    value: "1"
-    help: |
-      JupyterLab is the next generation of Jupyter, and is completely compatible with existing Jupyter Notebooks.
+    value: "lab"
     options:
-      - ["1","Jupyter Lab"]
-      - ["0", "Jupyter Notebook"]
+      - ["lab","Jupyter Lab"]
+      - ["notebook", "Jupyter Notebook"]
   num_cores:
     widget: "number_field"
     label: "Number of cores"

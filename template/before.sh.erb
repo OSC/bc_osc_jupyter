@@ -43,7 +43,7 @@ if [[ ${WORKSPACE_FILE+x} ]]; then
   cp $WORKSPACE_FILE .
 fi
 
-JUPYTER_API="<%= context.jupyterlab_switch == "1" ? "lab" : "tree" %>"
+JUPYTER_API="<%= context.mode == "1" ? "lab" : "tree" %>"
 
 <%- if context.classroom == "1" -%>
 module purge
