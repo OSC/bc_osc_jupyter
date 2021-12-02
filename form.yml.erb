@@ -25,8 +25,8 @@ attributes:
     widget: "radio"
     value: "1"
     options:
-      - ["1","Jupyter Lab"]
-      - ["0", "Jupyter Notebook"]
+      - ["Jupyter Lab", "1"]
+      - ["Jupyter Notebook", "2"]
   num_cores:
     widget: "number_field"
     label: "Number of cores"
@@ -115,6 +115,33 @@ attributes:
           data-option-for-kubernetes-test: true,
           data-option-for-kubernetes-dev: true
         ]
+      - [
+          "cuda/11.0.3",   "cuda/11.0.3",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true,
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
+        ]
+      - [
+          "cuda/11.1.1",   "cuda/11.1.1",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true,
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
+        ]
+      - [
+          "cuda/11.2.2",   "cuda/11.2.2",
+          data-option-for-owens: true,
+          data-option-for-pitzer: true,
+          data-option-for-kubernetes: true,
+          data-option-for-kubernetes-test: true,
+          data-option-for-kubernetes-dev: true
+        ]
+  node_type:
+  node_type:
+  node_type:
   node_type:
     widget: select
     label: "Node type"
