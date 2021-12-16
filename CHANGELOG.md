@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.22.0] - 2021-12-16
+
+**v0.22.0 was released out of a release branch `release-v22` not `master`**.
+
+`release-v22` is essentially master at the time of writing with #91 and #90.
+
+### Changed
+
+- Removed `form.js`. All dynamic behaviour is handled in core OnDemand in [91](https://github.com/OSC/bc_osc_jupyter/pull/91).
+- Update the container to v0.4.0 in [82](https://github.com/OSC/bc_osc_jupyter/pull/85).
+- Changed choice of Jupyter Lab & Notebook to a radio button in [86](https://github.com/OSC/bc_osc_jupyter/pull/85) and
+  [85](https://github.com/OSC/bc_osc_jupyter/pull/85).
+
 ## [0.21.3] - 2021-08-27
 
 ### Added
@@ -306,7 +319,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.3...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.22.0...HEAD
+[0.22.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.3...v0.22.0
 [0.21.3]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.2...v0.21.3
 [0.21.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.1...v0.21.2
 [0.21.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.0...v0.21.1
