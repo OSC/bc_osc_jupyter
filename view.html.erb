@@ -3,7 +3,7 @@
   login_url = "#{base_url}/login"
   next_url  = "#{base_url}/#{jupyter_api}"
 
-  full_url="#{login_url}?next=#{URI.encode(next_url)}"
+  full_url="#{login_url}?next=#{ERB::Util.url_encode(next_url)}"
   form_id = "juypyter_form#{login_url.gsub('/', '_')}"
 %>
 
