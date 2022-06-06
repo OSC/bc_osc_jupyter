@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.23.1] - 2022=-06-06
+
+### Fixed
+
+- Do not use deprecated URI#escape in [97](https://github.com/OSC/bc_osc_jupyter/pull/97).
+
+## [0.23.0] - 2022-02-28
+
+### Changed
+
+- Removed all the system defined kernels in [77](https://github.com/OSC/bc_osc_jupyter/pull/77).
+- This app now runs on any K8s node in [75](https://github.com/OSC/bc_osc_jupyter/pull/75).
+
+
 ## [0.22.0] - 2021-12-16
 
 **v0.22.0 was released out of a release branch `release-v22` not `master`**.
@@ -319,7 +333,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.22.0...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.23.1...HEAD
+[0.23.1]: https://github.com/OSC/bc_osc_jupyter/compare/v0.23.0...v0.23.1
+[0.23.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.22.0...v0.23.0
 [0.22.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.3...v0.22.0
 [0.21.3]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.2...v0.21.3
 [0.21.2]: https://github.com/OSC/bc_osc_jupyter/compare/v0.21.1...v0.21.2
