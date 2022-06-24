@@ -142,5 +142,5 @@ script:
         path: /apps/<%= compute_cluster %>
         destination_path: <%= apps_path %>
     node_selector:
-      osc.edu/role: ondemand
+      node-role.kubernetes.io/ondemand: ''
 <% end -%>
