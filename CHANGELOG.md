@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.23.2] - 2022=-08-30
+
+### Changed
+
+- Removed "updates since last downtime" message in `info.md.erb` in [100](https://github.com/OSC/bc_osc_jupyter/pull/100)
+
 ## [0.23.1] - 2022=-06-06
 
 ### Fixed
