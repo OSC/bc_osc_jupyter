@@ -18,9 +18,16 @@ module load xalt/latest <%= context.cuda_version %>
 
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
+echo "MODULE LOAD VERSION"
+echo "<%= context.version %>"
 
 # Setup Jupyter environment
-module load project/ondemand <%= context.version %>
+# If we choose ascend, we only want to load the app_jupyter module, instead of app_jupyter/$VERSION$ module
+<% if context.cluster.match?(/ascend/) -%>
+  module load project/ondemand app_jupyter
+<% else %>
+  module load project/ondemand <%= context.version %>
+<% end %>
 module list
 export JUPYTER_PATH="${PWD}/share/jupyter:${OSC_JUPYTER_PATH}"
 
@@ -31,6 +38,8 @@ set -x
 jupyter kernelspec list
 { set +x; } 2>/dev/null
 echo "TTT - $(date)"
+echo "CONFIG FILE"
+echo "${CONFIG_FILE}"
 
 # Launch the Jupyter server
 set -x
