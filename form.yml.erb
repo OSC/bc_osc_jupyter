@@ -147,6 +147,8 @@ attributes:
           data-max-num-cores-for-cluster-owens: 28,
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 84,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
@@ -159,7 +161,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "48 core",     "any-48core",
@@ -169,7 +172,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "any gpu",     "gpu",
@@ -179,7 +183,9 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 88,
         ]
       - [
           "40 core gpu",     "gpu-40core",
@@ -188,7 +194,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "48 core gpu",     "gpu-48core",
@@ -197,7 +204,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "largemem", "largemem",
@@ -207,7 +215,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "hugemem", "hugemem",
@@ -218,7 +227,8 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 80,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "debug",   "debug",
@@ -229,7 +239,8 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "pitzer",   "pitzer",
@@ -242,6 +253,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "owens",   "owens",
@@ -254,6 +266,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "pitzer gpu",   "pitzer-gpu",
@@ -265,6 +278,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "owens gpu",   "owens-gpu",
@@ -276,6 +290,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
   version:
     widget: "select"
