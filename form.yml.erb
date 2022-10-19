@@ -257,8 +257,24 @@ attributes:
     widget: "select"
     label: "JupyterLab Version"
     options:
-      - [ "3.0",  "app_jupyter/3.0.17" ]
-      - [ "2.3",  "app_jupyter/2.3.2" ]
-      - [ "2.2",  "app_jupyter/2.2.10" ]
-      - [ "1.2",  "app_jupyter/1.2.21" ]
+      - [ 
+          "3.1",  "app_jupyter/3.1.18",
+          data-option-for-cluster-owens: false, 
+        ]
+      - [ 
+          "3.0",  "app_jupyter/3.0.17", 
+          data-option-for-cluster-ascend: false,
+        ]
+      - [ 
+          "2.3",  "app_jupyter/2.3.2", 
+          data-option-for-cluster-ascend: false,
+        ]
+      - [ 
+          "2.2",  "app_jupyter/2.2.10",
+          data-option-for-cluster-ascend: false,
+        ]
+      - [ 
+          "1.2",  "app_jupyter/1.2.21", 
+          data-option-for-cluster-ascend: false,
+        ]
   classroom: 0
