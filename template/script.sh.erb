@@ -21,6 +21,7 @@ cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
 module load project/ondemand <%= context.version %>
+
 module list
 export JUPYTER_PATH="${PWD}/share/jupyter:${OSC_JUPYTER_PATH}"
 

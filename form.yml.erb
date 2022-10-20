@@ -5,6 +5,7 @@
 -%>
 ---
 cluster:
+  - "ascend"
   - "owens"
   - "pitzer"
   - "kubernetes"
@@ -56,41 +57,65 @@ attributes:
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false  
+          data-option-for-cluster-kubernetes-dev: false,  
+          data-option-for-cluster-ascend: false,
         ]
       - [ 
           "cuda/8.0.61",    "cuda/8.0.61",
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [ 
           "cuda/9.0.176",   "cuda/9.0.176",
+          data-option-for-cluster-ascend: false,
         ]
       - [ 
           "cuda/9.1.85",    "cuda/9.1.85",
+          data-option-for-cluster-ascend: false,
         ]
       - [ 
           "cuda/9.2.88",    "cuda/9.2.88",
+          data-option-for-cluster-ascend: false,
         ]
       - [ 
           "cuda/10.0.130",  "cuda/10.0.130",
+          data-option-for-cluster-ascend: false,
         ]
       - [ 
           "cuda/10.1.168",  "cuda/10.1.168",
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "cuda/10.2.89",   "cuda/10.2.89",
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "cuda/11.0.3",   "cuda/11.0.3",
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "cuda/11.1.1",   "cuda/11.1.1",
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "cuda/11.2.2",   "cuda/11.2.2",
+          data-option-for-cluster-ascend: false,
+        ]
+      - [
+          "cuda/11.6.1",   "cuda/11.6.1",
+        ]
+      - [
+          "cuda/11.6.2",   "cuda/11.6.2",
+          data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-owens: false,
+        ]
+      - [
+          "cuda/11.7.1",   "cuda/11.7.1",
+          data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-owens: false,
         ]
   node_type:
     widget: select
@@ -122,6 +147,8 @@ attributes:
           data-max-num-cores-for-cluster-owens: 28,
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 84,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false
@@ -134,7 +161,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "48 core",     "any-48core",
@@ -144,7 +172,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "any gpu",     "gpu",
@@ -154,7 +183,9 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 88,
         ]
       - [
           "40 core gpu",     "gpu-40core",
@@ -163,7 +194,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "48 core gpu",     "gpu-48core",
@@ -172,7 +204,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "largemem", "largemem",
@@ -182,7 +215,8 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "hugemem", "hugemem",
@@ -193,7 +227,8 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 80,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "debug",   "debug",
@@ -204,7 +239,8 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "pitzer",   "pitzer",
@@ -217,6 +253,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "owens",   "owens",
@@ -229,6 +266,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "pitzer gpu",   "pitzer-gpu",
@@ -240,6 +278,7 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "owens gpu",   "owens-gpu",
@@ -251,13 +290,30 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-ascend: false,
         ]
   version:
     widget: "select"
     label: "JupyterLab Version"
     options:
-      - [ "3.0",  "app_jupyter/3.0.17" ]
-      - [ "2.3",  "app_jupyter/2.3.2" ]
-      - [ "2.2",  "app_jupyter/2.2.10" ]
-      - [ "1.2",  "app_jupyter/1.2.21" ]
+      - [ 
+          "3.1",  "app_jupyter/3.1.18",
+          data-option-for-cluster-owens: false, 
+        ]
+      - [ 
+          "3.0",  "app_jupyter/3.0.17", 
+          data-option-for-cluster-ascend: false,
+        ]
+      - [ 
+          "2.3",  "app_jupyter/2.3.2", 
+          data-option-for-cluster-ascend: false,
+        ]
+      - [ 
+          "2.2",  "app_jupyter/2.2.10",
+          data-option-for-cluster-ascend: false,
+        ]
+      - [ 
+          "1.2",  "app_jupyter/1.2.21", 
+          data-option-for-cluster-ascend: false,
+        ]
   classroom: 0
