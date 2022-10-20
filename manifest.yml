@@ -4,7 +4,7 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [Jupyter] server using [Python] on the [Owens] or
+  This app will launch a [Jupyter] server using [Python] on the [Ascend], [Owens] or
   [Pitzer] clusters.
 
   [Jupyter]: https://jupyter.org/
