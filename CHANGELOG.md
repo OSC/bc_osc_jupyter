@@ -6,13 +6,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.23.2] - 2022=-08-30
+## [0.24.0] - 2023-01-09
+
+- Added c18 options back in [106](https://github.com/OSC/bc_osc_jupyter/pull/106).
+- Support for partial huge & large mem nodes in [107](https://github.com/OSC/bc_osc_jupyter/pull/107).
+
+## [0.23.4] - 2022-12-08
+
+- Removed c18 options in [105](https://github.com/OSC/bc_osc_jupyter/pull/105).
+
+## [0.23.3] - 2022-10-20
+
+- Added the Ascend cluster in [103](https://github.com/OSC/bc_osc_jupyter/pull/103).
+- Updated manifest for ascend in [104](https://github.com/OSC/bc_osc_jupyter/pull/104).
+
+## [0.23.2] - 2022-08-30
 
 ### Changed
 
-- Removed "updates since last downtime" message in `info.md.erb` in [100](https://github.com/OSC/bc_osc_jupyter/pull/100)
+- Removed "updates since last downtime" message in `info.md.erb` in [100](https://github.com/OSC/bc_osc_jupyter/pull/100).
 
-## [0.23.1] - 2022=-06-06
+## [0.23.1] - 2022-06-06
 
 ### Fixed
 
