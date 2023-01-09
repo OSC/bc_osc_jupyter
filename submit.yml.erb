@@ -23,11 +23,11 @@
               when "any-48core"
                 base_slurm_args + ["--constraint", "48core"]
               when "hugemem"
-                base_slurm_args + ["--partition", "hugemem", "--exclusive"]
+                base_slurm_args + ["--partition", "hugemem"]
               when "largemem"
-                base_slurm_args + ["--partition", "largemem", "--exclusive"]
+                base_slurm_args + ["--partition", "largemem"]
               when "debug"
-                base_slurm_args += ["--partition", "debug", "--exclusive"]
+                base_slurm_args += ["--partition", "debug"]
               else
                 base_slurm_args
               end
