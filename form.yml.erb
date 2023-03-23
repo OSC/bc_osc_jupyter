@@ -50,8 +50,10 @@ attributes:
     label: "CUDA Version"
     help: |
       CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
-      is required to make use of this functionality.
+      is required to make use of this functionality.  **Load from custom kernel**
+      means you have loaded the appropriate module in your own user defined kernel.
     options:
+      - [ 'Load from custom kernel', 'none' ]
       - [ 
           "cuda/8.0.44",    "cuda/8.0.44",
           data-option-for-cluster-pitzer: false,
