@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.25.0] - 2023-03-23
+
+- Added an option to disable loading cuda modules in [108](https://github.com/OSC/bc_osc_jupyter/pull/108).
+
 ## [0.24.0] - 2023-01-09
 
 - Added c18 options back in [106](https://github.com/OSC/bc_osc_jupyter/pull/106).
@@ -353,7 +357,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial release!
 
-[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.24.0...HEAD
+[Unreleased]: https://github.com/OSC/bc_osc_jupyter/compare/v0.25.0...HEAD
+[0.25.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.25.0...v0.24.0
 [0.24.0]: https://github.com/OSC/bc_osc_jupyter/compare/v0.24.0...v0.23.3
 [0.23.4]: https://github.com/OSC/bc_osc_jupyter/compare/v0.23.3...v0.23.4
 [0.23.3]: https://github.com/OSC/bc_osc_jupyter/compare/v0.23.2...v0.23.3
