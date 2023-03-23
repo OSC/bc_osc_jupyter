@@ -50,8 +50,10 @@ attributes:
     label: "CUDA Version"
     help: |
       CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
-      is required to make use of this functionality.
+      is required to make use of this functionality.  **Load from custom kernel**
+      means you have loaded the appropriate module in your own user defined kernel.
     options:
+      - [ 'Load from custom kernel', 'none' ]
       - [ 
           "cuda/8.0.44",    "cuda/8.0.44",
           data-option-for-cluster-pitzer: false,
@@ -143,6 +145,7 @@ attributes:
       - [
           "any",     "any",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-owens: 1,
           data-max-num-cores-for-cluster-owens: 28,
           data-min-num-cores-for-cluster-pitzer: 1,
@@ -156,6 +159,7 @@ attributes:
       - [
           "40 core",     "any-40core",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 40,
           data-option-for-cluster-owens: false,
@@ -167,6 +171,7 @@ attributes:
       - [
           "48 core",     "any-48core",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-owens: false,
@@ -210,6 +215,7 @@ attributes:
       - [
           "largemem", "largemem",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-pitzer: 24,
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-owens: false,
@@ -221,6 +227,7 @@ attributes:
       - [
           "hugemem", "hugemem",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-owens: 4,
           data-max-num-cores-for-cluster-owens: 48,
           data-min-num-cores-for-cluster-pitzer: 20,
@@ -233,6 +240,7 @@ attributes:
       - [
           "debug",   "debug",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-owens: 1,
           data-max-num-cores-for-cluster-owens: 28,
           data-min-num-cores-for-cluster-pitzer: 1,
@@ -245,6 +253,7 @@ attributes:
       - [
           "pitzer",   "pitzer",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-kubernetes: 1,
           data-max-num-cores-for-cluster-kubernetes: 10,
           data-min-num-cores-for-cluster-kubernetes-test: 1,
@@ -258,6 +267,7 @@ attributes:
       - [
           "owens",   "owens",
           data-hide-cuda-version: true,
+          data-set-cuda-version: '',
           data-min-num-cores-for-cluster-kubernetes: 1,
           data-max-num-cores-for-cluster-kubernetes: 10,
           data-min-num-cores-for-cluster-kubernetes-test: 1,
