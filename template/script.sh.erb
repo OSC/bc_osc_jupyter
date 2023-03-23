@@ -16,7 +16,7 @@ module purge
 # Required modules
 module load xalt/latest
 <%- unless context.cuda_version.empty? || context.cuda_version == 'none' -%>
-<%= context.cuda_version %>
+module load <%= context.cuda_version %>
 <%- end -%>
 
 # Set working directory to notebook root directory
