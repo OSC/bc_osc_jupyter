@@ -11,6 +11,7 @@ cluster:
   - "kubernetes"
   - "kubernetes-test"
   - "kubernetes-dev"
+  - "cardinal"
 form:
   - account
   - mode
@@ -18,7 +19,7 @@ form:
   - node_type
   - cuda_version
   - num_cores
-  - version
+  - auto_modules_app_jupyter
   - bc_email_on_started
   - classroom
 attributes:
@@ -303,30 +304,6 @@ attributes:
           data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-        ]
-  version:
-    widget: "select"
-    label: "JupyterLab Version"
-    options:
-      - [ 
-          "3.1",  "app_jupyter/3.1.18",
-          data-option-for-cluster-owens: false, 
-        ]
-      - [ 
-          "3.0",  "app_jupyter/3.0.17", 
-          data-option-for-cluster-ascend: false,
-        ]
-      - [ 
-          "2.3",  "app_jupyter/2.3.2", 
-          data-option-for-cluster-ascend: false,
-        ]
-      - [ 
-          "2.2",  "app_jupyter/2.2.10",
-          data-option-for-cluster-ascend: false,
-        ]
-      - [ 
-          "1.2",  "app_jupyter/1.2.21", 
           data-option-for-cluster-ascend: false,
         ]
   classroom: 0
