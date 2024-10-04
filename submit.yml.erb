@@ -40,7 +40,6 @@ batch_connect:
   conn_params:
     - jupyter_api
 script:
-  accounting_id: "<%= account %>"
 <% if node_type =~ /gpu/ -%>
   gpus_per_node: 1
 <% end -%>
@@ -70,7 +69,6 @@ script:
 -%>
 ---
 script:
-  accounting_id: "<%= account %>"
   wall_time: "<%= bc_num_hours.to_i * 3600 %>"
   <%- if node_type =~ /gpu/ -%>
   gpus_per_node: 1
