@@ -166,6 +166,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "48 core",     "any-48core",
@@ -178,6 +179,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "any gpu",     "gpu",
@@ -200,6 +202,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "48 core gpu",     "gpu-48core",
@@ -210,6 +213,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "largemem", "largemem",
@@ -222,6 +226,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "hugemem", "hugemem",
@@ -235,6 +240,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "debug",   "debug",
@@ -248,6 +254,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "pitzer",   "pitzer",
@@ -262,6 +269,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "owens",   "owens",
@@ -276,6 +284,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "pitzer gpu",   "pitzer-gpu",
@@ -288,6 +297,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
       - [
           "owens gpu",   "owens-gpu",
@@ -300,5 +310,6 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-cardinal: false,
         ]
   classroom: 0
