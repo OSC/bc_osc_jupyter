@@ -18,6 +18,8 @@ form:
   - bc_email_on_started
   - classroom
 attributes:
+  auto_modules_app_jupyter:
+    default: false
   mode:
     widget: "radio"
     value: "1"

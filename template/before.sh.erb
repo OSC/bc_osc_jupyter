@@ -43,7 +43,15 @@ if [[ ${WORKSPACE_FILE+x} ]]; then
   cp $WORKSPACE_FILE .
 fi
 
-JUPYTER_API="<%= context.mode == "1" ? "lab" : "tree" %>"
+<%-
+api = if context.auto_modules_app_jupyter.split('/')[1].to_s > '4.0' || context.mode == "1"
+        'lab'
+      else
+        'tree'
+      end
+-%>
+
+JUPYTER_API="<%= api %>"
 
 <%- if context.classroom == "1" -%>
 module purge

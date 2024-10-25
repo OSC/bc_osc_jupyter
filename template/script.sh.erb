@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 <%-
   require 'pathname'
+
+  subcommand =  if context.auto_modules_app_jupyter.split('/')[1].to_s > '4.0' || context.mode == "1"
+                  'lab'
+                else
+                  'notebook'
+                end
 -%>
 
 echo "Starting main script..."
@@ -38,4 +44,4 @@ echo "TTT - $(date)"
 
 # Launch the Jupyter server
 set -x
-jupyter <%= context.mode == "1" ? "lab" : "notebook" %> --config="${CONFIG_FILE}"
+jupyter <%= subcommand %> --config="${CONFIG_FILE}"
