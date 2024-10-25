@@ -34,13 +34,6 @@ attributes:
     min: 1
     max: 28
     step: 1
-  account:
-    label: "Project"
-    widget: select
-    options:
-      <%- groups.each do |group| %>
-      - "<%= group %>"
-      <%- end %>
   cuda_version:
     widget: "select"
     label: "CUDA Version"
