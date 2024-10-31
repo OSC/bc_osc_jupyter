@@ -93,6 +93,12 @@ module purge
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
 export jupyter_api="$JUPYTER_API"
 
+<%- if context.root_dir != "" -%>
+if [[ -r <%= context.root_dir %> ]]; then
+  NOTEBOOK_ROOT=<%= context.root_dir %>
+fi
+<%- end -%>
+
 # Notebook root directory
 export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
 

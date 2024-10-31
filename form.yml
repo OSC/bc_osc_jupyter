@@ -9,6 +9,7 @@ cluster:
   - "cardinal"
 form:
   - auto_accounts
+  - root_dir
   - mode
   - bc_num_hours
   - node_type
@@ -20,6 +21,12 @@ form:
 attributes:
   auto_modules_app_jupyter:
     default: false
+  root_dir:
+    widget: "path_selector"
+    label: "Root Directory"
+    help: |
+      If no root directory is provided, 
+      or the directory is invalid, Jupyter will start in `$HOME`
   mode:
     widget: "radio"
     value: "1"
