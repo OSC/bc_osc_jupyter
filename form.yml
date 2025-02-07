@@ -1,6 +1,7 @@
 ---
 cluster:
   - "ascend"
+  - "ascend-nextgen"
   - "owens"
   - "pitzer"
   - "kubernetes"
@@ -53,6 +54,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,  
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [ 
@@ -62,36 +64,43 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [ 
           "cuda/9.0.176",   "cuda/9.0.176",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [ 
           "cuda/9.1.85",    "cuda/9.1.85",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [ 
           "cuda/9.2.88",    "cuda/9.2.88",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [ 
           "cuda/10.0.130",  "cuda/10.0.130",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [ 
           "cuda/10.1.168",  "cuda/10.1.168",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
           "cuda/10.2.89",   "cuda/10.2.89",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -107,6 +116,7 @@ attributes:
       - [
           "cuda/11.2.2",   "cuda/11.2.2",
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -190,6 +200,8 @@ attributes:
           data-max-num-cores-for-cluster-pitzer: 48,
           data-min-num-cores-for-cluster-ascend: 1,
           data-max-num-cores-for-cluster-ascend: 84,
+          data-min-num-cores-for-cluster-ascend-nextgen: 1,
+          data-max-num-cores-for-cluster-ascend-nextgen: 120,
           data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96,
           data-option-for-cluster-kubernetes: false,
@@ -208,6 +220,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -222,6 +235,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -237,6 +251,8 @@ attributes:
           data-max-num-cores-for-cluster-ascend: 88,
           data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96,
+          data-min-num-cores-for-cluster-ascend-nextgen: 1,
+          data-max-num-cores-for-cluster-ascend-nextgen: 120,
         ]
       - [
           "40 core gpu",     "gpu-40core",
@@ -247,6 +263,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -258,6 +275,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -272,6 +290,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -287,6 +306,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -302,6 +322,7 @@ attributes:
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -318,6 +339,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -334,6 +356,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -347,6 +370,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
       - [
@@ -360,6 +384,7 @@ attributes:
           data-option-for-cluster-owens: false,
           data-option-for-cluster-pitzer: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-ascend-nextgen: false,
           data-option-for-cluster-cardinal: false,
         ]
   gpus:
