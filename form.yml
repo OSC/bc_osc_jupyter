@@ -201,7 +201,7 @@ attributes:
           data-min-num-cores-for-cluster-ascend: 1,
           data-max-num-cores-for-cluster-ascend: 84,
           data-min-num-cores-for-cluster-ascend-nextgen: 1,
-          data-max-num-cores-for-cluster-ascend-nextgen: 120,
+          data-max-num-cores-for-cluster-ascend-nextgen: 118,
           data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96,
           data-option-for-cluster-kubernetes: false,
@@ -252,7 +252,7 @@ attributes:
           data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96,
           data-min-num-cores-for-cluster-ascend-nextgen: 1,
-          data-max-num-cores-for-cluster-ascend-nextgen: 120,
+          data-max-num-cores-for-cluster-ascend-nextgen: 118,
         ]
       - [
           "40 core gpu",     "gpu-40core",
