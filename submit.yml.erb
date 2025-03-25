@@ -1,17 +1,6 @@
 <%-
-  cores = num_cores.to_i
 
-  if cores == 0 && cluster == "pitzer"
-    # little optimization for pitzer nodes. They want the whole node, if they chose 'any',
-    # it can be scheduled on p18 or p20 nodes. If not, they'll get the constraint below.
-    base_slurm_args = ["--nodes", "1", "--exclusive"]
-  elsif cores == 0
-    # full node on owens
-    cores = 28
-    base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "28"]
-  else
-    base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{cores}"]
-  end
+  base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{num_cores.to_i}"]
 
   slurm_args = case node_type
               when "gpu-40core"
