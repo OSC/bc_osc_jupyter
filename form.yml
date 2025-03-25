@@ -17,7 +17,6 @@ form:
   - num_cores
   - auto_modules_app_jupyter
   - bc_email_on_started
-  - classroom
 attributes:
   auto_modules_app_jupyter:
     default: false
@@ -368,4 +367,3 @@ attributes:
     widget: number_field
     min: 0
     max: 4
-  classroom: 0
