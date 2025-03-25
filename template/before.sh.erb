@@ -53,43 +53,6 @@ api = if context.auto_modules_app_jupyter.split('/')[1].to_s > '4.0' || context.
 
 JUPYTER_API="<%= api %>"
 
-<%- if context.classroom == "1" -%>
-module purge
-module load <%= context.version %>
-
-# Prepare the class environment if the module has set the appropriate variables set.
-# OSC_CLASS_FILES is the instructor's project directory we need to copy from.
-# OSC_CLASS_ID is the name of the class (eg. BIOCHEM5721).
-#
-# Note we make the directory even if there's nothing to copy
-mkdir -p "$HOME/osc_classes/$OSC_CLASS_ID"
-touch "$HOME/osc_classes/$OSC_CLASS_ID/0_${OSC_CLASS_ID:-osc_class}.md"
-NOTEBOOK_ROOT="$HOME/osc_classes/$OSC_CLASS_ID"
-
-if [[ -n "$OSC_CLASS_FILES" ]]; then
-  # Copy over classroom materials
-  set -x
-  rsync -avz --ignore-existing "$OSC_CLASS_FILES" "$HOME/osc_classes/$OSC_CLASS_ID"
-  { set +x; } 2>/dev/null
-fi
-
-# Now set FACLs so that instructors & teaching assistants can copy the
-# students' directories and grade their notebooks.
-# But first remove any old FACLS we may have set previously if applicable.
-RM_ACL_FILE="/users/PZS0645/support/classes/$OSC_CLASS_ID/class.acl.remove"
-if [[ -r "$RM_ACL_FILE" ]]; then
-  nfs4_setfacl -X - "$HOME" "$HOME/osc_classes" "$HOME/osc_classes/$OSC_CLASS_ID" < "$RM_ACL_FILE"
-fi
-
-ACL_FILE="/users/PZS0645/support/classes/$OSC_CLASS_ID/class.acl"
-if [[ -r $ACL_FILE ]]; then
-  echo 'setting facl'
-  nfs4_setfacl -A - "$HOME" "$HOME/osc_classes" "$HOME/osc_classes/$OSC_CLASS_ID" < "$ACL_FILE"
-fi
-
-module purge
-<%- end -%>
-
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
 export jupyter_api="$JUPYTER_API"
 
