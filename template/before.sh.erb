@@ -43,15 +43,7 @@ if [[ ${WORKSPACE_FILE+x} ]]; then
   cp $WORKSPACE_FILE .
 fi
 
-<%-
-api = if context.auto_modules_app_jupyter.split('/')[1].to_s > '4.0' || context.mode == "1"
-        'lab'
-      else
-        'tree'
-      end
--%>
-
-JUPYTER_API="<%= api %>"
+JUPYTER_API="<%= context.mode == "1" ? 'lab' : 'tree' %>"
 
 export JUPYTERLAB_WORKSPACES_DIR=$PWD
 export jupyter_api="$JUPYTER_API"
