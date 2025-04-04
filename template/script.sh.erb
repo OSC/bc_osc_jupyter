@@ -11,7 +11,6 @@ echo "TTT - $(date)"
 module purge
 
 # Required modules
-module load xalt/latest
 <%- unless context.cuda_version.empty? || context.cuda_version == 'none' -%>
 module load <%= context.cuda_version %>
 <%- end -%>
