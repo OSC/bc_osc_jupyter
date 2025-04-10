@@ -339,7 +339,7 @@ attributes:
           data-option-for-cluster-cardinal: false,
         ]
       - [
-          "80 GB GPU",   "quad-gpu",
+          "80 GB gpu",   "quad-gpu",
           data-option-for-cluster-kubernetes: false,
           data-option-for-cluster-kubernetes-test: false,
           data-option-for-cluster-kubernetes-dev: false,
