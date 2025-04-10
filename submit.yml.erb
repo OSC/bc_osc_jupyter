@@ -17,6 +17,8 @@
                 base_slurm_args + ["--partition", "largemem"]
               when "debug"
                 base_slurm_args += ["--partition", "debug"]
+              when "quad-gpu"
+                base_slurm_args + ["--partition", "quad"]
               else
                 base_slurm_args
               end

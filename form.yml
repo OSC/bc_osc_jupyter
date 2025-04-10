@@ -338,6 +338,16 @@ attributes:
           data-option-for-cluster-ascend: false,
           data-option-for-cluster-cardinal: false,
         ]
+      - [
+          "80 GB GPU",   "quad-gpu",
+          data-option-for-cluster-kubernetes: false,
+          data-option-for-cluster-kubernetes-test: false,
+          data-option-for-cluster-kubernetes-dev: false,
+          data-option-for-cluster-pitzer: false,
+          data-option-for-cluster-cardinal: false,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 118,
+        ]
   gpus:
     widget: number_field
     min: 0
