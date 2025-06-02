@@ -2,6 +2,7 @@
 cluster:
   - "ascend"
   - "pitzer"
+  - "pitzer-rhel9"
   - "kubernetes"
   - "kubernetes-test"
   - "kubernetes-dev"
