@@ -19,7 +19,7 @@ module load <%= context.cuda_version %>
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
-module load project/ondemand <%= context.auto_modules_app_jupyter %>
+module load project/ondemand app_jupyter/<%= context.jupyter_version %>
 
 module list
 export JUPYTER_PATH="${PWD}/share/jupyter:${OSC_JUPYTER_PATH}"
