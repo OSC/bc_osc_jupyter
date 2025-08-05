@@ -8,6 +8,7 @@ source /bin/find_host_port
 source /bin/save_passwd_as_secret
 source /bin/create_salt_and_sha1
 <% else -%>
+
 [[ $(type -t module) == "function" ]] && export -f module
 
 # Find available port to run server on
@@ -49,7 +50,7 @@ export JUPYTERLAB_WORKSPACES_DIR=$PWD
 export jupyter_api="$JUPYTER_API"
 
 # Notebook root directory
-export NOTEBOOK_ROOT="${NOTEBOOK_ROOT:-${HOME}}"
+export NOTEBOOK_ROOT="<%= Pathname.new(context.working_dir) %>"
 
 # Generate Jupyter configuration file with secure file permissions
 (
