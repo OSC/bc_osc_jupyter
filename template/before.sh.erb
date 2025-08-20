@@ -50,7 +50,8 @@ export JUPYTERLAB_WORKSPACES_DIR=$PWD
 export jupyter_api="$JUPYTER_API"
 
 # Notebook root directory
-export NOTEBOOK_ROOT="<%= Pathname.new(context.working_dir) %>"
+USER_SELECT_ROOT="<%= Pathname.new(context.working_dir) %>"
+export NOTEBOOK_ROOT="${USER_SELECT_ROOT:-$HOME}"
 
 # Generate Jupyter configuration file with secure file permissions
 (
