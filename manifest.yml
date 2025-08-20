@@ -4,11 +4,12 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [Jupyter] server using [Python] on the [Ascend], [Owens] or
-  [Pitzer] clusters.
+  Launch a [Jupyter] server with [Python] on [Cardinal], [Ascend], or [Pitzer].
+  Check the [Changelog] for the recent updates.
 
   [Jupyter]: https://jupyter.org/
   [Python]: https://www.python.org/
-  [Owens]: https://www.osc.edu/resources/technical_support/supercomputers/owens
+  [Cardinal]: https://www.osc.edu/resources/technical_support/supercomputers/cardinal
+  [Ascend]: https://www.osc.edu/resources/technical_support/supercomputers/ascend
   [Pitzer]: https://www.osc.edu/resources/technical_support/supercomputers/pitzer
-  [Ascend]: https://www.osc.edu/vocabulary/systems/ascend
+  [Changelog]: https://www.osc.edu/resources/technical_support/hpc_changelog?keys=jupyter
