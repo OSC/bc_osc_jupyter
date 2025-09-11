@@ -39,12 +39,10 @@ script:
     - "<%= arg %>"
     <%- end %>
 <% elsif cluster =~ /kubernetes/
-   if node_type =~ /pitzer/
-     compute_cluster = "pitzer"
-     apps_path = "/apps"
-     # Memory per core with hyperthreading enabled
-     memory_mb = num_cores.to_i * 4000
-   end
+   compute_cluster = node_type.split.first
+   apps_path = "/apps"
+   # Memory per core with hyperthreading enabled
+   memory_mb = num_cores.to_i * 4000
    mounts = {
      'home'    => OodSupport::User.new.home,
      'support' => OodSupport::User.new('support').home,
