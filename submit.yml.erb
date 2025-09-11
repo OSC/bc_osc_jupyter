@@ -24,7 +24,7 @@
               end
 
 -%>
-<% if cluster =~ /owens|pitzer|ascend|cardinal/ -%>
+<% if cluster =~ /pitzer|ascend|cardinal/ -%>
 ---
 batch_connect:
   template: "basic"
@@ -39,12 +39,7 @@ script:
     - "<%= arg %>"
     <%- end %>
 <% elsif cluster =~ /kubernetes/
-   if node_type =~ /owens/
-     compute_cluster = "owens"
-     apps_path = "/usr/local"
-     # Memory per core with hyperthreading enabled
-     memory_mb = num_cores.to_i * 2200
-   elsif node_type =~ /pitzer/
+   if node_type =~ /pitzer/
      compute_cluster = "pitzer"
      apps_path = "/apps"
      # Memory per core with hyperthreading enabled
@@ -67,7 +62,7 @@ script:
   native:
     container:
       name: "jupyter"
-      image: "docker-registry.osc.edu/ondemand/ondemand-base-rhel7:0.10.0"
+      image: "docker-registry.osc.edu/ondemand/ondemand-base-rhel9:0.13.0"
       image_pull_policy: "IfNotPresent"
       command: ["/bin/bash","-l","<%= staged_root %>/job_script_content.sh"]
       restart_policy: 'OnFailure'
@@ -120,11 +115,6 @@ script:
         host_type: File
         path: /apps/<%= compute_cluster %>/lmod/lmod.sh
         destination_path: /etc/profile.d/lmod.sh
-      - type: host
-        name: intel
-        host_type: Directory
-        path: /nfsroot/<%= compute_cluster %>/opt/intel
-        destination_path: /opt/intel
       - type: host
         name: apps
         host_type: Directory
