@@ -72,8 +72,9 @@ attributes:
   working_dir:
     widget: "path_selector"
     label: "Root Directory"
-    data-target-file-type: dirs  # Valid values are: files, dirs, or both
-    readonly: false
+    show_hidden: false
+    show_files: false   # Only display directories
+    readonly: false     # Allow typing in in the field
     help: "Select your project directory; defaults to $HOME"
   num_cores:
     widget: "number_field"
