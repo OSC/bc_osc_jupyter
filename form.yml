@@ -74,7 +74,6 @@ attributes:
     label: "Root Directory"
     show_hidden: false
     show_files: false   # Only display directories
-    readonly: false     # Allow typing in in the field
     help: "Select your project directory; defaults to $HOME"
   num_cores:
     widget: "number_field"
