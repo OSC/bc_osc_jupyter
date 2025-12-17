@@ -1,404 +1,172 @@
 ---
-cluster:
-  - "ascend"
-  - "pitzer"
-  - "kubernetes"
-  - "kubernetes-test"
-  - "kubernetes-dev"
-  - "cardinal"
 form:
+  - cluster
   - auto_accounts
   - mode
   - working_dir
   - bc_num_hours
   - node_type
   - gpus
-  - cuda_version
+  - auto_modules_cuda
   - num_cores
-  - jupyter_version
+  - auto_modules_app_jupyter
   - bc_email_on_started
 attributes:
-  jupyter_version:
-    widget: 'select'
+  cluster:
+    widget: select
+    label: "Cluster"
     options:
-      - [
-          '4.1.5', '4.1.5',
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-        ]
-      - [
-          '3.1.18', '3.1.18',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '3.0.17', '3.0.17',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '2.3.2', '2.3.2',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '2.2.10', '2.2.10',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '1.2.21', '1.2.21',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '0.35.6', '0.35.6',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
+      - ["cardinal", "cardinal"]
+      - ["ascend", "ascend"]
+      - ["pitzer", "pitzer"]
+  auto_modules_app_jupyter:
+    label: "JupyterLab version"
+    default: false
   mode:
-    widget: "radio"
+    widget: radio
     value: "1"
     options:
       - ["Jupyter Lab", "1"]
       - ["Jupyter Notebook", "0"]
   working_dir:
     widget: "path_selector"
-    label: "Root Directory"
+    label: "Root directory"
     show_hidden: false
     show_files: false   # Only display directories
     help: "Select your project directory; defaults to $HOME"
   num_cores:
-    widget: "number_field"
+    widget: number_field
     label: "Number of cores"
-    value: 1
     help: |
       Number of cores on node type. Minimums and maximums will change
       depending on the choice of node type and cluster.
+    value: 1
     min: 1
-    max: 28
+    max: 16
     step: 1
-  cuda_version:
-    widget: "select"
-    label: "CUDA Version"
-    help: |
-      CUDA is Nvidia's GPU-specific parallel computing framework. A GPU node
-      is required to make use of this functionality.  **Load from custom kernel**
-      means you have loaded the appropriate module in your own user defined kernel.
-    options:
-      - [ 'Load from custom kernel', 'none' ]
-      - [ 
-          "cuda/8.0.44",    "cuda/8.0.44",
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,  
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [ 
-          "cuda/8.0.61",    "cuda/8.0.61",
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [ 
-          "cuda/9.0.176",   "cuda/9.0.176",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [ 
-          "cuda/9.1.85",    "cuda/9.1.85",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [ 
-          "cuda/9.2.88",    "cuda/9.2.88",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [ 
-          "cuda/10.0.130",  "cuda/10.0.130",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [ 
-          "cuda/10.1.168",  "cuda/10.1.168",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/10.2.89",   "cuda/10.2.89",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.0.3",   "cuda/11.0.3",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.1.1",   "cuda/11.1.1",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.2.2",   "cuda/11.2.2",
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.6.1",   "cuda/11.6.1",
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.6.2",   "cuda/11.6.2",
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.7.1",   "cuda/11.7.1",
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/11.8.0",   "cuda/11.8.0",
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/12.0.0",   "cuda/12.0.0",
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/12.3.0",   "cuda/12.3.0",
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "cuda/12.3.2",   "cuda/12.3.2",
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-kubernetes: false,
-          data-option-for-kubernetes-dev: false,
-          data-option-for-kubernetes-test: false,
-        ]
-      - [
-          "cuda/12.4.1",   "cuda/12.4.1",
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-kubernetes: false,
-          data-option-for-kubernetes-dev: false,
-          data-option-for-kubernetes-test: false,
-        ]
+  gpus:
+    widget: number_field
+    label: "GPUs"
+    min: 0
+    max: 4
+  auto_modules_cuda:
+    label: "CUDA version"
+    default: false
   node_type:
     widget: select
     label: "Node type"
-    help: |
-      - **Standard Compute** <br>
-        These are standard HPC machines. Owens has 648 of these nodes with 40
-        cores and 128 GB of memory. Pitzer has 224 of these nodes with 40 cores and
-        340 of these nodes with 48 cores. All pitzer nodes have 192 GB of RAM. Chosing "any" as the node type will decrease
-        your wait time.
-      - **GPU Enabled** <br>
-        These are HPC machines with GPUs. Owens has 160 nodes with 1 [NVIDIA Tesla P100 GPU]
-        and Pitzer has 74 nodes with 2 [NVIDIA Tesla V100 GPUs]. They have the same
-        CPU and memory characteristics of standard compute. However, Pitzer's 40 core machines
-        have 2 GPUs with 16 GB of RAM; and Pitzer's 48 core machines have 2 GPUs with 32 GB of RAM.
-        Dense GPU types have 4 GPUs with 16 GB of RAM.
-      - **Large Memory** <br>
-        These are HPC machines with very large amounts of memory. Owens has 16 hugemem nodes
-        with 48 cores and 1.5 TB of RAM. Pitzer has 4 hugemem nodes with 3 TB of RAM and 80 cores.
-        Pitzer also has 12 Largmem nodes which have 48 cores with 768 GB of RAM.
-
-      [NVIDIA Tesla P100 GPU]: http://www.nvidia.com/object/tesla-p100.html
-      [NVIDIA Tesla V100 GPUs]: https://www.nvidia.com/en-us/data-center/v100/
     options:
       - [
-          "any",     "any",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
+          "cpu", "batch",
+          data-hide-auto-modules-cuda: true,
+          data-set-auto-modules-cuda: '',
           data-hide-gpus: true,
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 48,
-          data-min-num-cores-for-cluster-ascend: 1,
-          data-max-num-cores-for-cluster-ascend: 118,
           data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false
-        ]
-      - [
-          "40 core",     "any-40core",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
-          data-hide-gpus: true,
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 40,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "48 core",     "any-48core",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
-          data-hide-gpus: true,
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 48,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "any gpu",     "gpu",
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 48,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
           data-min-num-cores-for-cluster-ascend: 1,
           data-max-num-cores-for-cluster-ascend: 118,
-          data-min-num-cores-for-cluster-cardinal: 1,
-          data-max-num-cores-for-cluster-cardinal: 96,
-        ]
-      - [
-          "40 core gpu",     "gpu-40core",
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 40,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "48 core gpu",     "gpu-48core",
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
+        ]
+      - [
+          "gpu", "batch",
+          data-hide-auto-modules-cuda: false,
+          data-hide-gpus: false,
+          data-min-num-cores-for-cluster-cardinal: 1,
+          data-max-num-cores-for-cluster-cardinal: 96,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 120,
+          data-min-num-cores-for-cluster-pitzer: 1,
+          data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-gpus-for-cluster-cardinal: 1,
+          data-max-gpus-for-cluster-cardinal: 4,
+          data-min-gpus-for-cluster-ascend: 1,
+          data-max-gpus-for-cluster-ascend: 4,
+          data-min-gpus-for-cluster-pitzer: 1,
+          data-max-gpus-for-cluster-pitzer: 2,
+        ]
+      - [
+          "gpu-h100-94g", "gpu",
+          data-hide-auto-modules-cuda: false,
+          data-hide-gpus: false,
           data-option-for-cluster-ascend: false,
+          data-option-for-cluster-pitzer: false,
+          data-min-num-cores-for-cluster-cardinal: 1,
+          data-max-num-cores-for-cluster-cardinal: 96,
+          data-min-gpus-for-cluster-cardinal: 1,
+          data-max-gpus-for-cluster-cardinal: 4,
+        ]
+      - [
+          "gpu-a100-40g", "nextgen",
+          data-hide-auto-modules-cuda: false,
+          data-hide-gpus: false,
           data-option-for-cluster-cardinal: false,
+          data-option-for-cluster-pitzer: false,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 120,
+          data-min-gpus-for-cluster-ascend: 1,
+          data-max-gpus-for-cluster-ascend: 4,
+        ]
+      - [
+          "gpu-a100-80g", "quad",
+          data-hide-auto-modules-cuda: false,
+          data-hide-gpus: false,
+          data-option-for-cluster-cardinal: false,
+          data-option-for-cluster-pitzer: false,
+          data-min-num-cores-for-cluster-ascend: 1,
+          data-max-num-cores-for-cluster-ascend: 88,
+          data-min-gpus-for-cluster-ascend: 1,
+          data-max-gpus-for-cluster-ascend: 4,
+        ]
+      - [
+          "gpu-v100-16gb", "gpu",
+          data-hide-auto-modules-cuda: false,
+          data-hide-gpus: false,
+          data-option-for-cluster-cardinal: false,
+          data-option-for-cluster-ascend: false,
+          data-min-num-cores-for-cluster-pitzer: 1,
+          data-max-num-cores-for-cluster-pitzer: 40,
+          data-min-gpus-for-cluster-pitzer: 1,
+          data-max-gpus-for-cluster-pitzer: 2,
+        ]
+      - [
+          "gpu-v100-32gb", "gpu-exp",
+          data-hide-auto-modules-cuda: false,
+          data-hide-gpus: false,
+          data-option-for-cluster-cardinal: false,
+          data-option-for-cluster-ascend: false,
+          data-min-num-cores-for-cluster-pitzer: 1,
+          data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-gpus-for-cluster-pitzer: 1,
+          data-max-gpus-for-cluster-pitzer: 2,
         ]
       - [
           "largemem", "largemem",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
+          data-hide-auto-modules-cuda: true,
+          data-set-auto-modules-cuda: '',
           data-hide-gpus: true,
           data-min-num-cores-for-cluster-pitzer: 24,
           data-max-num-cores-for-cluster-pitzer: 48,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-ascend: false,
           data-option-for-cluster-cardinal: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
           "hugemem", "hugemem",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
+          data-hide-auto-modules-cuda: true,
+          data-set-auto-modules-cuda: '',
           data-hide-gpus: true,
           data-min-num-cores-for-cluster-pitzer: 20,
           data-max-num-cores-for-cluster-pitzer: 80,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-ascend: false,
           data-option-for-cluster-cardinal: false,
+          data-option-for-cluster-ascend: false,
         ]
       - [
-          "debug",   "debug",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
+          "hugemem", "hugemem",
+          data-hide-auto-modules-cuda: true,
+          data-set-auto-modules-cuda: '',
           data-hide-gpus: true,
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 48,
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
+          data-min-num-cores-for-cluster-cardinal: 48,
+          data-max-num-cores-for-cluster-cardinal: 96,
           data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "pitzer",   "pitzer",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
-          data-hide-gpus: true,
-          data-min-num-cores-for-cluster-kubernetes: 1,
-          data-max-num-cores-for-cluster-kubernetes: 10,
-          data-min-num-cores-for-cluster-kubernetes-test: 1,
-          data-max-num-cores-for-cluster-kubernetes-test: 10,
-          data-min-num-cores-for-cluster-kubernetes-dev: 1,
-          data-max-num-cores-for-cluster-kubernetes-dev: 6,
           data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
         ]
-      - [
-          "owens",   "owens",
-          data-hide-cuda-version: true,
-          data-set-cuda-version: '',
-          data-hide-gpus: true,
-          data-min-num-cores-for-cluster-kubernetes: 1,
-          data-max-num-cores-for-cluster-kubernetes: 10,
-          data-min-num-cores-for-cluster-kubernetes-test: 1,
-          data-max-num-cores-for-cluster-kubernetes-test: 10,
-          data-min-num-cores-for-cluster-kubernetes-dev: 1,
-          data-max-num-cores-for-cluster-kubernetes-dev: 6,
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "pitzer gpu",   "pitzer-gpu",
-          data-min-num-cores-for-cluster-kubernetes: 1,
-          data-max-num-cores-for-cluster-kubernetes: 10,
-          data-min-num-cores-for-cluster-kubernetes-test: 1,
-          data-max-num-cores-for-cluster-kubernetes-test: 10,
-          data-min-num-cores-for-cluster-kubernetes-dev: 1,
-          data-max-num-cores-for-cluster-kubernetes-dev: 6,
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "owens gpu",   "owens-gpu",
-          data-min-num-cores-for-cluster-kubernetes: 1,
-          data-max-num-cores-for-cluster-kubernetes: 10,
-          data-min-num-cores-for-cluster-kubernetes-test: 1,
-          data-max-num-cores-for-cluster-kubernetes-test: 10,
-          data-min-num-cores-for-cluster-kubernetes-dev: 1,
-          data-max-num-cores-for-cluster-kubernetes-dev: 6,
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-        ]
-      - [
-          "80 GB gpu",   "quad-gpu",
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-          data-option-for-cluster-pitzer: false,
-          data-option-for-cluster-cardinal: false,
-          data-min-num-cores-for-cluster-ascend: 1,
-          data-max-num-cores-for-cluster-ascend: 118,
-        ]
-  gpus:
-    widget: number_field
-    min: 0
-    max: 4
