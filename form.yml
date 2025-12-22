@@ -1,10 +1,5 @@
 ---
 cluster:
-  - "ascend"
-  - "pitzer"
-  - "kubernetes"
-  - "kubernetes-test"
-  - "kubernetes-dev"
   - "cardinal"
 form:
   - auto_accounts
@@ -13,7 +8,6 @@ form:
   - bc_num_hours
   - node_type
   - gpus
-  - cuda_version
   - num_cores
   - jupyter_version
   - bc_email_on_started
@@ -23,45 +17,6 @@ attributes:
     options:
       - [
           '4.1.5', '4.1.5',
-          data-option-for-cluster-kubernetes: false,
-          data-option-for-cluster-kubernetes-test: false,
-          data-option-for-cluster-kubernetes-dev: false,
-        ]
-      - [
-          '3.1.18', '3.1.18',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '3.0.17', '3.0.17',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '2.3.2', '2.3.2',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '2.2.10', '2.2.10',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '1.2.21', '1.2.21',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
-        ]
-      - [
-          '0.35.6', '0.35.6',
-          data-option-for-cluster-ascend: false,
-          data-option-for-cluster-cardinal: false,
-          data-option-for-cluster-pitzer: false,
         ]
   mode:
     widget: "radio"
@@ -203,24 +158,11 @@ attributes:
     widget: select
     label: "Node type"
     help: |
-      - **Standard Compute** <br>
-        These are standard HPC machines. Owens has 648 of these nodes with 40
-        cores and 128 GB of memory. Pitzer has 224 of these nodes with 40 cores and
-        340 of these nodes with 48 cores. All pitzer nodes have 192 GB of RAM. Chosing "any" as the node type will decrease
-        your wait time.
-      - **GPU Enabled** <br>
-        These are HPC machines with GPUs. Owens has 160 nodes with 1 [NVIDIA Tesla P100 GPU]
-        and Pitzer has 74 nodes with 2 [NVIDIA Tesla V100 GPUs]. They have the same
-        CPU and memory characteristics of standard compute. However, Pitzer's 40 core machines
-        have 2 GPUs with 16 GB of RAM; and Pitzer's 48 core machines have 2 GPUs with 32 GB of RAM.
-        Dense GPU types have 4 GPUs with 16 GB of RAM.
-      - **Large Memory** <br>
-        These are HPC machines with very large amounts of memory. Owens has 16 hugemem nodes
-        with 48 cores and 1.5 TB of RAM. Pitzer has 4 hugemem nodes with 3 TB of RAM and 80 cores.
-        Pitzer also has 12 Largmem nodes which have 48 cores with 768 GB of RAM.
-
-      [NVIDIA Tesla P100 GPU]: http://www.nvidia.com/object/tesla-p100.html
-      [NVIDIA Tesla V100 GPUs]: https://www.nvidia.com/en-us/data-center/v100/
+      - **any** - (*96 cores*) Use any available Cardinal node. This reduces the
+        wait time as there are no node requirements.
+      - **any gpu** - (*96 cores*) Use a Cardinal node that has [NVIDIA NVIDIA H100
+        GPUs](https://www.nvidia.com/en-us/data-center/h100/). Recommended for faster LLM processing.
+        Select 1 for the number of GPUs, as Ollama only supports running on a single GPU. 
     options:
       - [
           "any",     "any",
@@ -401,4 +343,4 @@ attributes:
   gpus:
     widget: number_field
     min: 0
-    max: 4
+    max: 1

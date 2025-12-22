@@ -20,9 +20,11 @@ cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
 module load project/ondemand app_jupyter/<%= context.jupyter_version %>
+module load ollama/0.13.1
+source ollama_start_helper 
 
 module list
-export JUPYTER_PATH="${PWD}/share/jupyter:${OSC_JUPYTER_PATH}"
+export JUPYTER_PATH="${PWD}/share/jupyter:${OSC_LLM_API_PATH}"
 
 echo "TTT - $(date)"
 

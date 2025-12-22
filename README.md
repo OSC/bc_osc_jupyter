@@ -1,10 +1,10 @@
-# Batch Connect - OSC Jupyter
+# Batch Connect - OSC Jupyter + Ollama
 
-![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_jupyter.svg)
+![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_jupyter_ollama.svg)
 [![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 An interactive app designed for OSC OnDemand that launches a Jupyter
-server within an Owens batch job.
+server and Ollama running in the background within an Cardinal batch job.
 
 ## Prerequisites
 
@@ -48,25 +48,9 @@ scl enable git19 -- git checkout <tag/branch>
 
 Again, you do not need to restart the app as it isn't a Passenger app.
 
-## Using Julia kernels
-
-Using Julia modules at OSC depends on the user intializing the environment and having
-IJulia for that particular version.
-
-As an example, before this app will recoginize the `julia/1.5.3` module as a valid
-kernel choice, the user must have an existing v1.5 environment. The user
-must also have added the `IJulia` package to that environment.
-
-The easiest way to do this is:
-* get a terminal where the module is available and load it
-* start an interactive julia session with the command `julia`
-* press `]` to active pkg
-* type `activate` to be sure you're using the right environment
-* type `add IJulia` to add the IJulia package to this enviroment
-
 ## Contributing
 
-1. Fork it ( https://github.com/OSC/bc_osc_jupyter/fork )
+1. Fork it ( https://github.com/OSC/bc_osc_jupyter_ollama/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
