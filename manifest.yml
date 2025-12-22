@@ -1,12 +1,15 @@
 ---
-name: Jupyter + Ollama
+name: Jupyter
 category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  Launch a [Jupyter] server with [Python] on [Cardinal] with Ollama.
+  Launch a [Jupyter] server with [Python] on [Cardinal], [Ascend], or [Pitzer].
+  Check the [Changelog] for the recent updates.
 
   [Jupyter]: https://jupyter.org/
   [Python]: https://www.python.org/
   [Cardinal]: https://www.osc.edu/resources/technical_support/supercomputers/cardinal
   [Ascend]: https://www.osc.edu/resources/technical_support/supercomputers/ascend
+  [Pitzer]: https://www.osc.edu/resources/technical_support/supercomputers/pitzer
+  [Changelog]: https://github.com/OSC/bc_osc_jupyter/releases
