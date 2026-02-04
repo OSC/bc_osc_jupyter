@@ -33,18 +33,19 @@ attributes:
 	data-set-mpi-procs: 1,
 	data-hide-memory: true,
 	data-set-memory: 10,
-        data-hide-enable-gpus: true,
-        data-set-enable-gpus: 0,
+  data-hide-enable-gpus: true,
+  data-set-enable-gpus: 0,
 	data-hide-num-gpus: true,
 	data-set-num-gpus: 0,
 	data-hide-gpu-type: true,
 	data-hide-bc-num-hours: true,
 	data-set-bc-num-hours: 720,
+  data-max-bc-num-hours: 720,
 	data-hide-jupyter-env: true,
 	data-set-jupyter-env: 'base' ]
       - [ 'Casper PBS batch', 'casper_batch',
-        data-set-custom-queue: 'casper',
-        data-set-bc-num-hours: 1 ]
+  data-set-custom-queue: 'casper',
+  data-set-bc-num-hours: 1 ]
   custom_queue:
     widget: 'select'
     label: "Queue or Reservation (-q)"
