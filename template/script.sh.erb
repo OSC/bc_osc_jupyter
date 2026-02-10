@@ -11,15 +11,15 @@ echo "TTT - $(date)"
 module purge
 
 # Required modules
-<%- unless context.cuda_version.empty? || context.cuda_version == 'none' -%>
-module load <%= context.cuda_version %>
+<%- unless context.auto_modules_cuda || context.auto_modules_cuda == 'none' -%>
+module load <%= context.auto_modules_cuda %>
 <%- end -%>
 
 # Set working directory to notebook root directory
 cd "${NOTEBOOK_ROOT}"
 
 # Setup Jupyter environment
-module load project/ondemand app_jupyter/<%= context.jupyter_version %>
+module load project/ondemand <%= context.auto_modules_app_jupyter %>
 
 module list
 export JUPYTER_PATH="${PWD}/share/jupyter:${OSC_JUPYTER_PATH}"
