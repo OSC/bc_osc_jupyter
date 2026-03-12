@@ -1,6 +1,9 @@
 ---
+cluster:
+  - cardinal
+  - ascend
+  - pitzer
 form:
-  - global_cluster
   - auto_accounts
   - mode
   - working_dir

@@ -1,5 +1,4 @@
 <%-
-
   base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{num_cores.to_i}"]
 
   # Remove cluster tag, e.g. pitzer-gpu-exp to gpu-exp
@@ -8,7 +7,7 @@
   slurm_args = base_slurm_args + ["--partition", partition]
 
 -%>
-<% if global_cluster =~ /pitzer|ascend|cardinal/ -%>
+<% if cluster =~ /pitzer|ascend|cardinal/ -%>
 ---
 batch_connect:
   template: "basic"
