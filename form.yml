@@ -90,7 +90,7 @@ attributes:
         ]
       # Cardinal GPU Nodes
       - [
-          "gpu-h100-94g", "carinal-gpu",
+          "gpu-h100-94g", "cardinal-gpu",
           data-hide-auto-modules-cuda: false,
           data-hide-gpus: false,
           data-set-gpus-for-cluster-cardinal: 1,
