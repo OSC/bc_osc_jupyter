@@ -5,10 +5,7 @@
 
 ## Overview
 
-An [Open OnDemand](https://openondemand.org/) Batch Connect app that launches
-a [Jupyter](https://jupyter.org/) server (Lab or Notebook) as an interactive
-session on OSC HPC clusters. Jupyter provides free, open-standard web services
-for interactive computing across multiple programming languages.
+An [Open OnDemand](https://openondemand.org/) Batch Connect app that launches a [Jupyter](https://jupyter.org/) server (Lab or Notebook) as an interactive session on OSC HPC clusters. Jupyter provides free, open-standard web services for interactive computing across multiple programming languages.
 
 This app uses the Batch Connect `basic` template with Slurm and supports
 clusters: Ascend, Pitzer, Cardinal, and Kubernetes.
@@ -19,7 +16,7 @@ clusters: Ascend, Pitzer, Cardinal, and Kubernetes.
 
 ## Screenshots
 
-<!-- TODO: Add a screenshot of the app's launch form or a running session -->
+![Jupyter running in browser](docs/bc_osc_jupyter.png)
 
 ## Features
 
@@ -157,7 +154,7 @@ If your site would like to add your name to our known deployments, please let us
 
 | Site                      | OOD Version    | Scheduler | Status     |
 |---------------------------|----------------|-----------|------------|
-| Ohio Supercomputer Center | <!-- TODO -->  | Slurm/K8s     | Production |
+| Ohio Supercomputer Center | 4.1.4 | Slurm/K8s     | Production |
 
 ## Known Limitations
 
