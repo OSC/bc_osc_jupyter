@@ -43,6 +43,11 @@ else
   export NOTEBOOK_ROOT="$HOME"
 fi
 
+# Extract the running user's default shell using getent
+export USER_SHELL=$(getent passwd $USER | cut -d: -f7)
+# Fallback to /bin/bash if getent fails or comes up empty
+export USER_SHELL=${USER_SHELL:-/bin/bash}
+
 # Generate Jupyter configuration file with secure file permissions
 (
 umask 077
@@ -57,5 +62,7 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.notebook_dir = '${NOTEBOOK_ROOT}'
 c.NotebookApp.disable_check_xsrf = True
+c.NotebookApp.terminado_settings = { "shell_command": ["${USER_SHELL}"] }
+c.ServerApp.terminado_settings = { "shell_command": ["${USER_SHELL}"] }
 EOL
 )
