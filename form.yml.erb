@@ -1,3 +1,4 @@
+<%- is_dev = ENV['OOD_DEV_SSH_HOST'].to_s.match?(/dev/i) -%>
 ---
 cluster:
   - "casper"
@@ -153,6 +154,10 @@ attributes:
     label: "Jupyter Environment"
     widget: 'select'
     options:
-      - "Base"
-      - "Vapor2"
-      - "VAPOR-3.10"
+      - ["Base", "base"]
+      - ["Vapor2", "/glade/u/apps/jupyterhub/envs/dev/vapor2"]
+      - ["VAPOR-3.10", "/glade/u/apps/jupyterhub/envs/dev/vapor-3.10"]
+      <%- if is_dev -%>
+      - ["Base updated", "/glade/u/apps/ondemand/jh-23.11.1"]
+      - ["JupyterLab 26.07", "/glade/u/apps/ondemand/jlab-26.07"]
+      <%- end -%>

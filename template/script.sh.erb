@@ -15,7 +15,7 @@ cd "${NOTEBOOK_ROOT}"
 
 export PAGER='cat'
 export LMOD_PAGER='cat'
-export NCAR_JUPYTERHUB_PREFIX="/glade/u/apps/jupyterhub/"
+export NCAR_JUPYTERHUB_PREFIX="/glade/u/apps/jupyterhub"
 export NCAR_JUPYTERHUB_INSTANCE="stable"
 grep -i opensuse /etc/os-release > /dev/null && { export NCAR_OS='opensuse' ; export NCAR_RESOURCE='casper' ; }
 [ -f /opt/cray/etc/release/cos ] && { export NCAR_OS='suse' ; export NCAR_RESOURCE='derecho' ; }
@@ -25,13 +25,11 @@ grep -i opensuse /etc/os-release > /dev/null && { export NCAR_OS='opensuse' ; ex
 # are outside of the tree.It may be advantageous to remove the DEFAULT Python
 # through the base environment. It's not a full environment, but still useful
 # in many instances.
-if [ "dev" = "${NCAR_JUPYTERHUB_INSTANCE}" ]
+if [ "ondemand-dev.hpc.ucar.edu" = "${PBS_O_HOST}" ]
 then
-    NCAR_JUPYTER_PATH=${NCAR_JUPYTERHUB_PREFIX}/csg-managed/${NCAR_JUPYTERHUB_INSTANCE}
-    JUPYTER_PATH=${JUPYTER_PATH}:${NCAR_JUPYTER_PATH}
+    JUPYTER_PATH=${NCAR_JUPYTERHUB_PREFIX}/csg-managed/dev
 else
-    NCAR_JUPYTER_PATH=${NCAR_JUPYTERHUB_PREFIX}/csg-managed/prod
-    JUPYTER_PATH=${JUPYTER_PATH}:${NCAR_JUPYTERHUB_PREFIX}/${NCAR_JUPYTERHUB_INSTANCE}/share/jupyter:${NCAR_JUPYTER_PATH}
+    JUPYTER_PATH=${NCAR_JUPYTERHUB_PREFIX}/csg-managed/prod
 fi
 export JUPYTER_PATH
 export FQDN=`hostname -f`
@@ -48,7 +46,7 @@ module restore
 # as much and could likely reduce environment divergence.
 CONDA_SETUP_FILE="${NCAR_JUPYTERHUB_PREFIX}/${NCAR_JUPYTERHUB_INSTANCE}/etc/profile.d/conda.sh"
 [ -f ${CONDA_SETUP_FILE} ] && . ${CONDA_SETUP_FILE}
-[ "function" = $(type -t conda) ] && conda activate base
+[ "function" = $(type -t conda) ] && conda activate <%= context.jupyter_env %>
 
 # Set the MEM_LIMIT environment variable dynamically for the
 # jupyter-resource-usage JupyterLab extension
