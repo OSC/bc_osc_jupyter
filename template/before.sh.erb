@@ -66,3 +66,6 @@ c.NotebookApp.terminado_settings = { "shell_command": ["${USER_SHELL}"] }
 c.ServerApp.terminado_settings = { "shell_command": ["${USER_SHELL}"] }
 EOL
 )
+
+# Enable job control to allow foreground processes to respond to SIGINT therefore Ctrl-C works.
+set -m
