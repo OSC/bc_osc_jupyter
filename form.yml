@@ -18,6 +18,7 @@ form:
   - auto_modules_cuda
   - global_enable_debug
   - bc_email_on_started
+  - global_default_values
 attributes:
   auto_modules_app_jupyter:
     label: "Jupyter version"
